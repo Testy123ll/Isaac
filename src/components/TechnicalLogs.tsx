@@ -17,19 +17,19 @@ export function TechnicalLogs() {
         <motion.div 
             onClick={() => setIsModalOpen(true)}
             whileHover={{ y: -5 }}
-            className="group cursor-pointer rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-purple-900/20 border border-slate-800 p-8 md:p-12 relative overflow-hidden"
+            className="group cursor-pointer rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-blue-900/20 border border-slate-800 p-8 md:p-12 relative overflow-hidden"
         >
             <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
                 <FileText size={200} />
             </div>
 
             <div className="relative z-10 max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono mb-6">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono mb-6">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
                     FEATURED INTEL
                 </div>
                 
-                <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white group-hover:text-purple-200 transition-colors">
+                <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white group-hover:text-blue-200 transition-colors">
                     The WordPress Trap: Why Custom Engineering Wins
                 </h3>
                 
@@ -37,7 +37,7 @@ export function TechnicalLogs() {
                     Many businesses choose WordPress for the low entry cost, only to pay double later in speed issues, security hacks, and plugin subscriptions. Custom architecture is an asset; templates are a liability.
                 </p>
 
-                <div className="flex items-center gap-2 text-purple-400 font-bold group-hover:translate-x-2 transition-transform">
+                <div className="flex items-center gap-2 text-blue-400 font-bold group-hover:translate-x-2 transition-transform">
                     READ TRANSMISSION <span className="text-xl">→</span>
                 </div>
             </div>

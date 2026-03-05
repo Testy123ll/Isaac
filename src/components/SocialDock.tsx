@@ -27,7 +27,7 @@ const DockIcon = ({ icon: Icon, href, mouseX }: { icon: any, href: string, mouse
         target="_blank"
         rel="noopener noreferrer"
         style={{ width }}
-        className="aspect-square rounded-full bg-slate-800/80 backdrop-blur-md border border-slate-700 flex items-center justify-center hover:bg-purple-600 transition-colors"
+        className="aspect-square rounded-full bg-slate-800/80 backdrop-blur-md border border-slate-700 flex items-center justify-center hover:bg-blue-600 transition-colors"
     >
       <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
     </motion.a>

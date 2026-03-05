@@ -85,7 +85,7 @@ export function SystemQueries() {
                 </span>
                 <span className={clsx(
                   "p-1.5 rounded-full transition-colors flex-shrink-0 ml-4",
-                  openIndex === index ? "bg-purple-900/30 text-purple-400" : "bg-slate-800 text-slate-400"
+                  openIndex === index ? "bg-blue-900/30 text-blue-400" : "bg-slate-800 text-slate-400"
                 )}>
                   {openIndex === index ? <Minus size={16} /> : <Plus size={16} />}
                 </span>

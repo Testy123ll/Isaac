@@ -61,10 +61,10 @@ export const HackerTerminal = () => {
         </div>
 
         {/* Terminal Body */}
-        <div className="p-6 text-sm md:text-base text-slate-300 min-h-[300px] selection:bg-purple-500/30 selection:text-purple-200">
+        <div className="p-6 text-sm md:text-base text-slate-300 min-h-[300px] selection:bg-blue-500/30 selection:text-blue-200">
             <div className="mb-4">
                 <span className="text-green-500 mr-2">$</span>
-                <span className="text-purple-400">{displayText}</span>
+                <span className="text-blue-400">{displayText}</span>
                 <motion.span 
                     animate={{ opacity: [0, 1] }}
                     transition={{ repeat: Infinity, duration: 0.8 }}
@@ -87,8 +87,8 @@ export const HackerTerminal = () => {
                             transition={{ delay: index * 0.1 }}
                             className="flex items-center gap-2 group cursor-text"
                         >
-                            <span className="text-purple-600">➜</span>
-                            <span className="text-slate-200 hover:text-purple-400 transition-colors">
+                            <span className="text-blue-600">➜</span>
+                            <span className="text-slate-200 hover:text-blue-400 transition-colors">
                                 "{skill}"
                             </span>
                         </motion.div>

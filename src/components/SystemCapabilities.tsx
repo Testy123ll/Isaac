@@ -49,23 +49,23 @@ export function SystemCapabilities() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               whileHover={{ y: -10 }}
-              className="group relative p-8 rounded-3xl bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-purple-500/50 transition-all duration-500 overflow-hidden"
+              className="group relative p-8 rounded-3xl bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-blue-500/50 transition-all duration-500 overflow-hidden"
             >
               {/* Purple Glow Effect */}
-              <div className="absolute inset-0 bg-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+              <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
               
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-14 h-14 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center mb-6 text-purple-500 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-purple-900/10">
+                <div className="w-14 h-14 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center mb-6 text-blue-500 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-blue-900/10">
                   <cap.icon size={28} />
                 </div>
                 
                 <div className="mb-2">
-                   <span className="text-xs font-mono text-purple-400 uppercase tracking-widest">
+                   <span className="text-xs font-mono text-blue-400 uppercase tracking-widest">
                     // {cap.subtitle}
                    </span>
                 </div>
                 
-                <h3 className="text-2xl font-bold font-header text-white mb-4 group-hover:text-purple-200 transition-colors">
+                <h3 className="text-2xl font-bold font-header text-white mb-4 group-hover:text-blue-200 transition-colors">
                   {cap.title}
                 </h3>
                 

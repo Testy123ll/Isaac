@@ -93,7 +93,7 @@ export function ContactTerminal() {
                 </div>
                 
                 <h3 className="text-xl font-bold mb-8 flex items-center gap-3 text-slate-200">
-                    <Terminal className="text-purple-500" />
+                    <Terminal className="text-blue-500" />
                     Project Specification Protocol
                 </h3>
 
@@ -105,14 +105,14 @@ export function ContactTerminal() {
                             type="text" 
                             name="name"
                             required
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] placeholder:text-slate-700"
+                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] placeholder:text-slate-700"
                             placeholder="Enter Identity..."
                             onFocus={() => setFocusedField('name')}
                             onBlur={() => setFocusedField(null)}
                         />
                         <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-xs mt-1" />
                         {focusedField === 'name' && (
-                            <span className="absolute top-0 right-0 text-[10px] text-purple-400 animate-pulse font-mono">Typing...</span>
+                            <span className="absolute top-0 right-0 text-[10px] text-blue-400 animate-pulse font-mono">Typing...</span>
                         )}
                     </div>
 
@@ -123,14 +123,14 @@ export function ContactTerminal() {
                             type="email" 
                             name="email"
                             required
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] placeholder:text-slate-700"
+                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] placeholder:text-slate-700"
                             placeholder="Enter Frequency Address..."
                             onFocus={() => setFocusedField('email')}
                             onBlur={() => setFocusedField(null)}
                         />
                         <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-xs mt-1" />
                         {focusedField === 'email' && (
-                            <span className="absolute top-0 right-0 text-[10px] text-purple-400 animate-pulse font-mono">Typing...</span>
+                            <span className="absolute top-0 right-0 text-[10px] text-blue-400 animate-pulse font-mono">Typing...</span>
                         )}
                     </div>
 
@@ -140,7 +140,7 @@ export function ContactTerminal() {
                             id="budget"
                             name="budget"
                             required
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] appearance-none"
+                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] appearance-none"
                             onFocus={() => setFocusedField('budget')}
                             onBlur={() => setFocusedField(null)}
                         >
@@ -151,7 +151,7 @@ export function ContactTerminal() {
                         </select>
                         <ValidationError prefix="Budget" field="budget" errors={state.errors} className="text-red-500 text-xs mt-1" />
                          {focusedField === 'budget' && (
-                            <span className="absolute top-0 right-0 text-[10px] text-purple-400 animate-pulse font-mono">Selecting...</span>
+                            <span className="absolute top-0 right-0 text-[10px] text-blue-400 animate-pulse font-mono">Selecting...</span>
                         )}
                     </div>
 
@@ -162,14 +162,14 @@ export function ContactTerminal() {
                             name="message"
                             required
                             rows={4}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] placeholder:text-slate-700 resize-none"
+                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.15)] placeholder:text-slate-700 resize-none"
                             placeholder="Describe mission parameters..."
                             onFocus={() => setFocusedField('details')}
                             onBlur={() => setFocusedField(null)}
                         />
                         <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-xs mt-1" />
                          {focusedField === 'details' && (
-                            <span className="absolute top-0 right-0 text-[10px] text-purple-400 animate-pulse font-mono">Typing...</span>
+                            <span className="absolute top-0 right-0 text-[10px] text-blue-400 animate-pulse font-mono">Typing...</span>
                         )}
                     </div>
                     
@@ -181,7 +181,7 @@ export function ContactTerminal() {
                                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                                     type="submit"
                                     disabled={state.submitting}
-                                    className="absolute inset-0 w-full bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-purple-500/25 active:scale-[0.98]"
+                                    className="absolute inset-0 w-full bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-blue-500/25 active:scale-[0.98]"
                                 >
                                     <span>TRANSMIT DATA</span>
                                     <Send className="w-4 h-4" />
@@ -193,7 +193,7 @@ export function ContactTerminal() {
                                     key="sending"
                                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                                     disabled
-                                    className="absolute inset-0 w-full bg-purple-600/50 text-white/80 font-bold rounded-xl flex items-center justify-center gap-2 cursor-wait"
+                                    className="absolute inset-0 w-full bg-blue-600/50 text-white/80 font-bold rounded-xl flex items-center justify-center gap-2 cursor-wait"
                                 >
                                     <Terminal className="w-4 h-4 animate-spin" />
                                     <span className="animate-pulse">TRANSMITTING...</span>

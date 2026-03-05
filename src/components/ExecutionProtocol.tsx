@@ -28,7 +28,7 @@ export function ExecutionProtocol() {
   return (
     <section className="py-24 bg-slate-950 relative overflow-hidden">
       {/* Background Ambience */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-900/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -55,7 +55,7 @@ export function ExecutionProtocol() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-purple-900 via-purple-500 to-purple-900 -translate-y-1/2 hidden md:block origin-left"
+            className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-500 to-blue-900 -translate-y-1/2 hidden md:block origin-left"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center relative z-10">
@@ -70,15 +70,15 @@ export function ExecutionProtocol() {
               >
                 <div className="relative inline-block mb-6">
                   {/* Node Background */}
-                  <div className="w-16 h-16 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:border-purple-500 transition-colors duration-500 flex items-center justify-center relative z-10">
-                    <step.icon className="w-6 h-6 text-slate-400 group-hover:text-purple-400 transition-colors duration-500" />
+                  <div className="w-16 h-16 rounded-full bg-slate-900 border-2 border-slate-800 group-hover:border-blue-500 transition-colors duration-500 flex items-center justify-center relative z-10">
+                    <step.icon className="w-6 h-6 text-slate-400 group-hover:text-blue-400 transition-colors duration-500" />
                   </div>
                   
                   {/* Glowing Node Effect */}
-                  <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 font-header text-white group-hover:text-purple-300 transition-colors">
+                <h3 className="text-xl font-bold mb-3 font-header text-white group-hover:text-blue-300 transition-colors">
                   {step.title}
                 </h3>
                 <p className="text-slate-400 text-sm">
