@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Sparkles, X, Send } from 'lucide-react';
+import { Sparkles, X, Send } from 'lucide-react';
 
 type Message = {
   id: string;
