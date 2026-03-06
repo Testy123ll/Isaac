@@ -87,6 +87,33 @@ const projects = [
         'A resilient, maintainable codebase ready for future feature expansion.'
       ]
     }
+  },
+  {
+    slug: 'impact-pest',
+    title: 'Impact Pest',
+    category: 'Lead-Gen Website',
+    description: 'A completely functional, high-converting lead generation platform built for a pest control company. This project seamlessly connects localized SEO with an ultra-fast frontend to capture residential and commercial leads before they bounce to competitors.',
+    techStack: ['React', 'SEO Optimization', 'Lead Gen', 'Tailwind'],
+    liveUrl: 'https://impactpest-com.vercel.app/',
+    imageUrl: 'impactpest.png',
+    caseStudy: {
+      overview: 'Impact Pest needed a dominant local presence to outrank established competitors. Their previous site was a slow, templated brochure that leaked potential leads. They needed a high-performance capture engine.',
+      challenges: [
+        'Outdated templated design failing to convert mobile traffic.',
+        'Extremely slow load times harming Google Business Profile rankings.',
+        'Lack of clear trust signals and immediate call-to-actions for stressed homeowners.'
+      ],
+      solutions: [
+        'Engineered a blazingly fast React frontend ensuring sub-second load times on 3G networks.',
+        'Structured the UI entirely around immediate lead capture (Click-to-Call and sticky Quick Quote forms).',
+        'Implemented rigorous on-page technical SEO to dominate local search queries.'
+      ],
+      results: [
+        'Massive spike in highly localized, qualified leads.',
+        'Zero-friction mobile experience leading to higher call volumes.',
+        'A scalable platform ready to expand into new service territories.'
+      ]
+    }
   }
 ];
 
@@ -175,6 +202,45 @@ If you only know how to center a div and fetch a REST API, you are falling behin
 -   **Agentic Workflows:** Building interfaces that act on behalf of the user, not just display data.
 
 The web is getting smarter. Our code needs to keep up.
+    `
+  },
+  {
+    slug: 'how-websites-fail-functionality',
+    title: 'How Websites Fail: Functionality Over Form',
+    excerpt: 'Why beautiful websites consistently lose money, and how engineering functional conversion architecture is the only design that matters.',
+    date: 'March 6, 2026',
+    readTime: '7 min read',
+    category: 'Conversion Architecture',
+    imageUrl: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1600&auto=format&fit=crop',
+    content: `
+# The Aesthetic Trap
+
+I see it every single week. A founder drops $15,000 on an award-winning creative agency. The website is delivered. It has 3D WebGL renders, cinematic scroll tracking, custom cursors, and 4K autoplaying background videos.
+
+It wins a CSS design award.
+
+And then... crickets. The bounce rate is 85%. The conversion rate is 0.2%. The business is bleeding money. 
+
+Why? Because they built an art gallery, not a sales engine. 
+
+## Design is Not Functionality
+Beautiful design builds trust, but **functionality drives revenue**. When a user visits your site, they are trying to solve a specific problem. If your 3D animations block them from understanding how to give you their money in the first 5 seconds, you have failed.
+
+### The 3 Core Pillars of a Functional Website:
+
+1.  **Ultra-Fast Value Proposition:** 
+    If a user has to read a 4-paragraph creative manifesto to understand what you sell, they will leave. You need a razor-sharp H1 dominating the viewport: *"We Build Software That Scales to 1M+ Users."* Done.
+2.  **Frictionless Architecture:**
+    Are you making them click a hamburger menu, navigate dropping lists, and scroll past a giant team photo just to find your contact form? Every click is friction. Put the CTA everywhere. Make the paths to revenue direct and undeniably obvious.
+3.  **Performance as a Feature:**
+    You cannot have a functional website if it takes 4 seconds to become interactive on a mobile device. Google penalizes slow sites. Users abandon slow sites. If your shiny new site has terrible Core Web Vitals, your "design" is actively harming your business.
+
+## The Engineering Solution
+At BlueStark, we don't start with colors and fonts. We start with the database architecture, the routing strategy, and the conversion funnel. We engineer the exact technical path a user must take to pull out their credit card or book a call.
+
+Only once the engine is flawlessly constructed do we paint the car. 
+
+A website fails when it is treated as a digital business card. A website succeeds when it is engineered as automated software.
     `
   }
 ];

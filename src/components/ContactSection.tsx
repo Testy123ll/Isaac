@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Zap, Send, Terminal, AlertCircle, CheckCircle2, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
+import { CalendlyWidget } from './CalendlyWidget';
 
 const FORM_ID = "xwvnkvkg";
 
@@ -111,7 +112,7 @@ export const ContactSection = () => {
                                   <Linkedin size={18} className="text-slate-400 group-hover:text-blue-400" />
                                   <span className="text-sm text-slate-300 group-hover:text-white font-mono">LinkedIn</span>
                               </a>
-                              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 transition-all duration-300">
+                              <a href="https://x.com/bluestark01" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 p-3 rounded-2xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 transition-all duration-300">
                                   <Twitter size={18} className="text-slate-400 group-hover:text-sky-400" />
                                   <span className="text-sm text-slate-300 group-hover:text-white font-mono">Twitter</span>
                               </a>
@@ -239,6 +240,16 @@ export const ContactSection = () => {
                 </motion.div>
             </div>
         </div>
+
+        <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="max-w-6xl mx-auto mt-16"
+        >
+            <CalendlyWidget />
+        </motion.div>
       </div>
     </section>
   );

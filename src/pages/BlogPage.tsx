@@ -16,7 +16,9 @@ export const BlogPage = () => {
         }`;
         const data = await client.fetch(query);
         if (data && data.length > 0) {
-          setBlogs(data);
+          const sanitySlugs = new Set(data.map((b: any) => b.slug));
+          const missingLocals = fallbackBlogs.filter(b => !sanitySlugs.has(b.slug));
+          setBlogs([...data, ...missingLocals]);
         }
       } catch(err) {
         console.error("Sanity blog fetch failed:", err);

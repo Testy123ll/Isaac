@@ -1,31 +1,43 @@
 import { motion } from 'framer-motion';
-import { Code2, Blocks, Palette, Database } from 'lucide-react';
+import { Code2, Blocks, Rocket, LayoutTemplate, Search, Cpu } from 'lucide-react';
 
 export const ServicesSection = () => {
   const services = [
     {
+      icon: Rocket,
+      title: "Platform Engineering",
+      description: "Designing and engineering robust web applications from the ground up, bypassing templates for pure, unrestricted custom code.",
+      tag: "CREATION"
+    },
+    {
+      icon: LayoutTemplate,
+      title: "Technical Redesigns",
+      description: "Overhauling failing, slow websites into blazing-fast, highly converting architectures engineered for modern web standards.",
+      tag: "REDESIGN"
+    },
+    {
+      icon: Search,
+      title: "Algorithmic SEO",
+      description: "Implementing server-side rendering, schema markup, and advanced optimization pipelines to absolutely dominate search visibility.",
+      tag: "VISIBILITY"
+    },
+    {
+      icon: Cpu,
+      title: "AI & Automation",
+      description: "Building intelligent RAG pipelines, custom LLM tools, and automated backend systems to drastically scale operational output.",
+      tag: "INTELLIGENCE"
+    },
+    {
       icon: Code2,
-      title: "Website Auditing",
-      description: "Deep-dive technical audits to identify render-blocking assets, bloated DOM structures, and architectural flaws.",
+      title: "Deep Website Auditing",
+      description: "Technical tear-downs to identify render-blocking assets, DOM bloat, and architectural flaws causing traffic drop-offs.",
       tag: "PERFORMANCE"
     },
     {
-      icon: Palette,
-      title: "UX/UI Teardowns",
-      description: "I tear down failing interfaces and engineer custom, high-converting React experiences tailored for your exact audience.",
-      tag: "CONVERSION UI"
-    },
-    {
       icon: Blocks,
-      title: "Conversion Rate Optimization (CRO)",
-      description: "Engineering smart funnels and triage systems to increase high-ticket lead conversion without increasing ad spend.",
-      tag: "REVENUE"
-    },
-    {
-      icon: Database,
-      title: "Legacy Code Refactoring",
-      description: "Transforming spaghetti code and bloated CMS builds into clean, scalable modern architectures.",
-      tag: "ARCHITECTURE"
+      title: "Conversion Architecture",
+      description: "Restructuring user flows and implementing strict behavioral tracking to maximize high-ticket lead generation and sales.",
+      tag: "CRO"
     }
   ];
 

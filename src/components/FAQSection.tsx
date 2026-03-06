@@ -42,6 +42,66 @@ const faqs = [
   {
     question: "What is the payment structure?",
     answer: "Typically a 50% initialization fee to begin architecture, and 50% upon successful deployment, depending on project scope."
+  },
+  {
+    question: "Why does my current website load so slowly?",
+    answer: "Performance bottlenecks are often caused by unoptimized images, bloated JavaScript, or poor server routing. I engineer blazingly fast sites using Next.js and Vercel edge networks to ensure sub-second load times."
+  },
+  {
+    question: "How do you approach website redesigns?",
+    answer: "We don't just paint a new coat of colors over a broken engine. A redesign starts with analyzing user flow, fixing conversion bottlenecks, and building a technically sound architecture from the ground up."
+  },
+  {
+    question: "Will redesigning my website hurt my current SEO rankings?",
+    answer: "If done incorrectly, yes. I implement careful 301 redirect mapping, preserve URL structures where possible, and ensure the new technical architecture actively boosts your rankings rather than dropping them."
+  },
+  {
+    question: "What is Technical SEO?",
+    answer: "It's the foundation of search engine visibility. It involves optimizing site speed, mobile-friendliness, structured data (schema), XML sitemaps, and Core Web Vitals so Google can efficiently crawl and index your site."
+  },
+  {
+    question: "Why are Core Web Vitals important?",
+    answer: "Core Web Vitals are Google's metrics for user experience. Failing these metrics results in lower rankings and higher bounce rates. My custom builds are engineered to easily ace these performance tests."
+  },
+  {
+    question: "Can you integrate third-party APIs into my site?",
+    answer: "Yes. Whether it's a custom Calendly integration, Stripe payments, Salesforce CRM, or complex AI pipelines using OpenAI, I can engineer seamless connections."
+  },
+  {
+    question: "What's the difference between a website and a web application?",
+    answer: "A website typically delivers content-driven information, while a web application features complex user interactions, authentication, databases, and dynamic logic (like a SaaS product). I engineer both."
+  },
+  {
+    question: "How do you ensure my website provides a good mobile experience?",
+    answer: "I design mobile-first. I don't just shrink a desktop site; I engineer specific mobile navigation patterns, optimized touch targets, and responsive layouts that perform flawlessly on any device."
+  },
+  {
+    question: "What happens after the website is launched?",
+    answer: "I offer ongoing retainer packages for continuous performance optimization, technical SEO monitoring, scaling architecture, and adding new features as your business grows."
+  },
+  {
+    question: "Do you use templates?",
+    answer: "No. Templates constrain functionality and introduce bloated code. I build custom, purpose-driven architectures tailored to your specific business conversion goals."
+  },
+  {
+    question: "How do you handle website accessibility (ADA compliance)?",
+    answer: "Accessibility is built into the foundation. I use semantic HTML, ARIA labels, adequate color contrast, and keyboard navigation support to ensure your site is usable by everyone."
+  },
+  {
+    question: "Can you migrate my data from my old platform?",
+    answer: "Yes. I can engineer automated migration scripts to seamlessly transfer your blogs, user data, e-commerce products, and order history to the new, modern architecture."
+  },
+  {
+    question: "What analytics tools do you integrate?",
+    answer: "Beyond basic Google Analytics, I can implement advanced tracking mechanisms like PostHog or Mixpanel for deep technical insights into user journeys, drop-offs, and feature adoption."
+  },
+  {
+    question: "Do you provide training on how to use the CMS?",
+    answer: "Absolutely. While the custom-engineered Dashboards (like Sanity Studio) are incredibly intuitive, I provide operational documentation so your team can comfortably manage content."
+  },
+  {
+    question: "Can you implement AI chatbots or automation?",
+    answer: "Yes. I can build intelligent RAG (Retrieval-Augmented Generation) pipelines and integrate LLMs directly into your platform to automate customer support or internal workflows."
   }
 ];
 

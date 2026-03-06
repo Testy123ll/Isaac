@@ -53,7 +53,7 @@ export const ProjectsSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project, index) => (
+          {projects.slice(0, 4).map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}

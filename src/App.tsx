@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { NavigationBar } from './components/NavigationBar';
+import { FloatingWidgets } from './components/FloatingWidgets';
 import { Home } from './pages/Home';
 import { PortfolioPage } from './pages/PortfolioPage';
 import { BlogPage } from './pages/BlogPage';
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <main className="min-h-screen bg-slate-950 text-white selection:bg-blue-600 selection:text-white font-sans overflow-x-hidden">
         <NavigationBar />
+        <FloatingWidgets />
         
         <Routes>
           <Route path="/" element={<Home />} />

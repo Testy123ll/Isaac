@@ -138,6 +138,27 @@ const TiltCard = ({ project }: { project: typeof fallbackProjects[0] }) => {
 
 export const PortfolioPage = () => {
   const [projects, setProjects] = useState(fallbackProjects);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
+
+  // Broad Category Mapper to aggregate highly specific tech stacks
+  const mapCategory = (cat: string) => {
+    const raw = cat.toLowerCase();
+    if (raw.includes('e-commerce') || raw.includes('marketplace')) return 'E-Commerce';
+    if (raw.includes('saas') || raw.includes('ai') || raw.includes('vision') || raw.includes('tech')) return 'SaaS & AI';
+    if (raw.includes('landing')) return 'Landing Pages';
+    if (raw.includes('portal') || raw.includes('dashboard')) return 'Portals';
+    return 'Engineering';
+  };
+
+  const categories = ["All", "SaaS & AI", "E-Commerce", "Portals", "Landing Pages", "Engineering"];
+
+  const filteredProjects = projects.filter(p => activeCategory === "All" || mapCategory(p.category) === activeCategory);
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -147,11 +168,14 @@ export const PortfolioPage = () => {
         }`;
         const data = await client.fetch(query);
         if (data && data.length > 0) {
-          const formatted = data.map((p: any) => ({
+          const sanitySlugs = new Set(data.map((p: any) => p.slug));
+          const formattedSanity = data.map((p: any) => ({
             ...p,
             imageUrl: p.imageUrl ? urlFor(p.imageUrl).url() : fallbackProjects.find((fb) => fb.slug === p.slug)?.imageUrl || '',
           }));
-          setProjects(formatted);
+          
+          const missingLocals = fallbackProjects.filter(p => !sanitySlugs.has(p.slug));
+          setProjects([...formattedSanity, ...missingLocals]);
         }
       } catch (err) {
         console.error("Sanity fetch failed, using local fallback data:", err);
@@ -185,13 +209,31 @@ export const PortfolioPage = () => {
             </p>
         </motion.div>
 
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => { setActiveCategory(cat); setCurrentPage(1); }}
+              className={`px-5 py-2 rounded-full font-mono text-sm transition-all duration-300 outline-none ${
+                activeCategory === cat 
+                  ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-900/40 cursor-default' 
+                  : 'bg-slate-900/80 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 cursor-pointer'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          {projects.map((project) => (
+          {currentProjects.map((project) => (
             <TiltCard key={project.slug} project={project} />
           ))}
 
-          {/* Special "Empty" Card from Projects Section */}
-          <motion.div
+          {/* Special "Empty" Card from Projects Section - Render only on the last page */}
+          {currentPage === totalPages && (
+            <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -214,7 +256,35 @@ export const PortfolioPage = () => {
                 Start a Project
              </a>
           </motion.div>
+          )}
         </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex justify-center items-center gap-6 mt-20"
+          >
+            <button 
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="px-6 py-3 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-800 hover:text-white transition-all duration-300 font-mono text-sm font-semibold cursor-pointer"
+            >
+              ← Prev
+            </button>
+            <span className="text-blue-400 font-mono font-medium tracking-widest bg-blue-950/30 px-4 py-2 rounded-lg border border-blue-900/30 shadow-inner">
+              {currentPage} / {totalPages}
+            </span>
+            <button 
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="px-6 py-3 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-800 hover:text-white transition-all duration-300 font-mono text-sm font-semibold cursor-pointer"
+            >
+              Next →
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

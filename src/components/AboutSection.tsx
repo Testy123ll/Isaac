@@ -3,14 +3,15 @@ import { User, Terminal } from 'lucide-react';
 
 export const AboutSection = () => {
   const tools = [
-    { name: "React", color: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20" },
-    { name: "Node.js", color: "text-green-400 bg-green-400/10 border-green-400/20" },
-    { name: "JavaScript", color: "text-yellow-400 bg-yellow-400/10 border-yellow-400/20" },
-    { name: "Bootstrap", color: "text-indigo-400 bg-indigo-400/10 border-indigo-400/20" },
-    { name: "HTML/CSS", color: "text-orange-400 bg-orange-400/10 border-orange-400/20" },
-    { name: "Figma", color: "text-pink-400 bg-pink-400/10 border-pink-400/20" },
-    { name: "REST APIs", color: "text-blue-400 bg-blue-400/10 border-blue-400/20" },
-    { name: "Git", color: "text-red-400 bg-red-400/10 border-red-400/20" }
+    { name: "Next.js", color: "text-slate-100 bg-slate-100/10 border-slate-100/20" },
+    { name: "TypeScript", color: "text-blue-400 bg-blue-400/10 border-blue-400/20" },
+    { name: "React & Native", color: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20" },
+    { name: "OpenAI & LLMs", color: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20" },
+    { name: "Tailwind CSS", color: "text-sky-400 bg-sky-400/10 border-sky-400/20" },
+    { name: "Node.js & Python", color: "text-green-400 bg-green-400/10 border-green-400/20" },
+    { name: "Supabase & Postgres", color: "text-teal-400 bg-teal-400/10 border-teal-400/20" },
+    { name: "Figma & Framer", color: "text-pink-400 bg-pink-400/10 border-pink-400/20" },
+    { name: "Sanity CMS", color: "text-red-400 bg-red-400/10 border-red-400/20" }
   ];
 
   return (
@@ -44,7 +45,7 @@ export const AboutSection = () => {
                                 I personally engineer the backend architecture and design the frontend UI, ensuring zero communication gaps.
                             </p>
                             <p>
-                                My core toolkit includes React, Node.js, JavaScript, and Bootstrap.
+                                My core toolkit includes Next.js, Typescript, Python, and integrations with cutting-edge LLMs.
                             </p>
                         </div>
             <div className="mt-10 flex gap-4">
@@ -94,8 +95,8 @@ export const AboutSection = () => {
               <div className="mt-12 pt-8 border-t border-slate-800/50">
                   <div className="bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-500 overflow-x-auto">
                      <p className="text-blue-400">const</p> engineer = {'{'}<br/>
-                     &nbsp;&nbsp;stack: <span className="text-green-400">['Frontend', 'Backend']</span>,<br/>
-                     &nbsp;&nbsp;focus: <span className="text-yellow-400">'Performance & UI/UX'</span>,<br/>
+                     &nbsp;&nbsp;stack: <span className="text-green-400">['Full-Stack', 'AI Integrations']</span>,<br/>
+                     &nbsp;&nbsp;focus: <span className="text-yellow-400">'Scalability & UI/UX'</span>,<br/>
                      &nbsp;&nbsp;status: <span className="text-cyan-400">'Available'</span><br/>
                      {'}'};
                   </div>

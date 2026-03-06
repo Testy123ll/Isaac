@@ -10,11 +10,11 @@ export const HackerTerminal = () => {
 
   const fullText = "> System.scan(Isaac_Testimony)...";
   const skills = [
-      "React_Native_Expertise",
-      "Solar_infrastructure_Logic",
-      "Business_Automation_Sytems",
+      "Agentic_AI_Workflows",
       "Next.js_Architecture",
-      "Typescript_Enforcement"
+      "Typescript_Enforcement",
+      "RAG_Pipelines",
+      "Supabase_&_Postgres"
   ];
 
   useEffect(() => {
