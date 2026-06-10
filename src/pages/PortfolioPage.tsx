@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowUpRight, Zap, Server, ShieldCheck } from 'lucide-react';
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { client, urlFor } from '../lib/sanity';
+import { supabase } from '../lib/supabase';
 
 const projectStyles: Record<string, any> = {
   'austin-elite-smiles': {
@@ -163,22 +163,20 @@ export const PortfolioPage = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const query = `*[_type == "project"]{
-          title, "slug": slug.current, category, description, techStack, liveUrl, "imageUrl": imageUrl.asset
-        }`;
-        const data = await client.fetch(query);
+        const { data, error } = await supabase
+          .from('projects')
+          .select('*')
+          .order('order_index', { ascending: true });
+
+        if (error) throw error;
+
         if (data && data.length > 0) {
-          const sanitySlugs = new Set(data.map((p: any) => p.slug));
-          const formattedSanity = data.map((p: any) => ({
-            ...p,
-            imageUrl: p.imageUrl ? urlFor(p.imageUrl).url() : fallbackProjects.find((fb) => fb.slug === p.slug)?.imageUrl || '',
-          }));
-          
-          const missingLocals = fallbackProjects.filter(p => !sanitySlugs.has(p.slug));
-          setProjects([...formattedSanity, ...missingLocals]);
+          const dbSlugs = new Set(data.map((p: any) => p.slug));
+          const missingLocals = fallbackProjects.filter(p => !dbSlugs.has(p.slug));
+          setProjects([...data, ...missingLocals]);
         }
       } catch (err) {
-        console.error("Sanity fetch failed, using local fallback data:", err);
+        console.error("Supabase fetch failed, using local fallback data:", err);
       }
     };
     fetchProjects();
@@ -247,13 +245,15 @@ export const PortfolioPage = () => {
                 Your Project Here
              </h3>
              <p className="text-slate-400 text-lg mb-8 max-w-sm mx-auto">
-                Ready to turn that complex idea into reality? We engineer the backend logic and design the frontend interfaces.
+                I'm currently available for new projects. If you need a website that works for your business, let's talk.
              </p>
              <a 
-                href="/contact"
+                href="https://wa.link/0cit50"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3 bg-transparent border border-blue-500 text-blue-400 hover:text-white rounded-full font-semibold transition-all duration-300 hover:bg-blue-600"
              >
-                Start a Project
+                Get a Free Mockup
              </a>
           </motion.div>
           )}

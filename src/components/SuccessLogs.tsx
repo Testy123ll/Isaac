@@ -1,34 +1,58 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { supabase } from '../lib/supabase';
 
-const testimonials = [
+const defaultTestimonials = [
   {
-    initials: "BO",
-    company: "Blessed Olas",
-    quote: "Isaac didn't just build a site; he built a sales machine. The load calculator saves us 5 hours of manual work every day.",
-    color: "bg-amber-500"
+    name: "John Doe",
+    position: "CEO",
+    company: "Acme Corp",
+    body: "[Placeholder: Real testimonial coming soon]",
+    avatar_url: "",
+    color: "bg-blue-500"
   },
   {
-    initials: "ER",
-    company: "EaasyReels",
-    quote: "The visual flow is incredible. It perfectly captures the high-energy vibe of my content brand.",
+    name: "Alice Smith",
+    position: "Founder",
+    company: "SaaS Startup",
+    body: "[Placeholder: Real testimonial coming soon]",
+    avatar_url: "",
     color: "bg-pink-500"
   },
-  // Duplicated for marquee effect
   {
-    initials: "BO",
-    company: "Blessed Olas",
-    quote: "Isaac didn't just build a site; he built a sales machine. The load calculator saves us 5 hours of manual work every day.",
+    name: "Karl Brown",
+    position: "Product Manager",
+    company: "Tech Solutions",
+    body: "[Placeholder: Real testimonial coming soon]",
+    avatar_url: "",
     color: "bg-amber-500"
-  },
-  {
-    initials: "ER",
-    company: "EaasyReels",
-    quote: "The visual flow is incredible. It perfectly captures the high-energy vibe of my content brand.",
-    color: "bg-pink-500"
   }
 ];
 
 export function SuccessLogs() {
+  const [list, setList] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('testimonials')
+          .select('*')
+          .order('order_index', { ascending: true });
+
+        if (error) throw error;
+        if (data && data.length > 0) {
+          setList(data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch testimonials from Supabase:", err);
+      }
+    };
+    fetchTestimonials();
+  }, []);
+
+  const items = list.length > 0 ? list : defaultTestimonials;
+  const colors = ["bg-blue-500", "bg-pink-500", "bg-amber-500", "bg-purple-500", "bg-green-500"];
   return (
     <section className="py-24 bg-slate-950 overflow-hidden">
       <div className="container mx-auto px-6 mb-12">
@@ -51,28 +75,37 @@ export function SuccessLogs() {
                 duration: 20 
             }}
         >
-          {testimonials.map((t, i) => (
-            <div 
-                key={i} 
-                className="flex-shrink-0 w-[400px] bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`w-12 h-12 rounded-full ${t.color} flex items-center justify-center font-bold text-black font-mono shadow-lg`}>
-                    {t.initials}
+          {[...items, ...items].map((t, i) => {
+            const initials = t.name.split(' ').map((n: any) => n[0]).join('').substring(0, 2).toUpperCase();
+            const colorClass = t.color || colors[i % colors.length];
+            return (
+              <div 
+                  key={i} 
+                  className="flex-shrink-0 w-[400px] bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-12 h-12 rounded-full ${colorClass} overflow-hidden flex items-center justify-center font-bold text-black font-mono shadow-lg shrink-0`}>
+                      {t.avatar_url ? (
+                        <img src={t.avatar_url} alt={t.name} className="w-full h-full object-cover" />
+                      ) : (
+                        initials
+                      )}
+                  </div>
+                  <div>
+                      <h4 className="font-bold text-white">{t.name}</h4>
+                      <p className="text-xs text-slate-400 font-mono">{t.position} at {t.company}</p>
+                      <div className="text-xs text-slate-500 font-mono flex items-center gap-1.5 mt-0.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                          VERIFIED CLIENT
+                      </div>
+                  </div>
                 </div>
-                <div>
-                    <h4 className="font-bold text-white">{t.company}</h4>
-                    <div className="text-xs text-slate-500 font-mono flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                        VERIFIED CLIENT
-                    </div>
-                </div>
+                <p className="text-slate-300 italic leading-relaxed">
+                  "{t.body || t.quote}"
+                </p>
               </div>
-              <p className="text-slate-300 italic leading-relaxed">
-                "{t.quote}"
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>

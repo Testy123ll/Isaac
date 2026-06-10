@@ -3,25 +3,32 @@ import { Terminal, FileText, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogs as fallbackBlogs } from '../data/blogs';
 import { useState, useEffect } from 'react';
-import { client } from '../lib/sanity';
+import { supabase } from '../lib/supabase';
 
 export const BlogPage = () => {
   const [blogs, setBlogs] = useState(fallbackBlogs);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const query = `*[_type == "post"] | order(date desc) {
-          title, "slug": slug.current, excerpt, date, readTime, category
-        }`;
-        const data = await client.fetch(query);
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('published', true)
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
         if (data && data.length > 0) {
-          const sanitySlugs = new Set(data.map((b: any) => b.slug));
-          const missingLocals = fallbackBlogs.filter(b => !sanitySlugs.has(b.slug));
+          const dbSlugs = new Set(data.map((b: any) => b.slug));
+          const missingLocals = fallbackBlogs.filter(b => !dbSlugs.has(b.slug));
           setBlogs([...data, ...missingLocals]);
         }
       } catch(err) {
-        console.error("Sanity blog fetch failed:", err);
+        console.error("Supabase blog fetch failed, using fallback:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchBlogs();
@@ -55,47 +62,58 @@ export const BlogPage = () => {
         </motion.div>
 
         <div className="space-y-8">
-            {blogs.map((post, index) => (
-                <motion.article 
-                    key={post.slug}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="group relative bg-slate-900/40 border border-slate-800 rounded-3xl p-8 md:p-10 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-500 overflow-hidden"
-                >
-                    {/* Hover Glow */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="relative z-10">
-                        <div className="flex flex-wrap items-center gap-4 mb-6 text-sm font-mono">
-                            <span className="px-3 py-1 bg-slate-950 text-blue-400 rounded-full border border-slate-800">
-                                {post.category}
-                            </span>
-                            <span className="text-slate-500">
-                                {post.date}
-                            </span>
-                            <span className="text-slate-700 hidden sm:block">•</span>
-                            <span className="text-slate-500 flex items-center gap-1.5">
-                                <FileText size={14} /> {post.readTime}
-                            </span>
-                        </div>
-
-                        <h3 className="text-2xl md:text-3xl font-bold font-header text-white mb-4 group-hover:text-blue-300 transition-colors">
-                            {post.title}
-                        </h3>
-
-                        <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                            {post.excerpt}
-                        </p>
-
-                        <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-blue-400 font-semibold group/btn hover:text-white transition-colors uppercase tracking-wide text-sm mt-4">
-                            Read Article 
-                            <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                        </Link>
+            {loading ? (
+                [...Array(3)].map((_, i) => (
+                    <div key={i} className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 md:p-10 animate-pulse space-y-4">
+                        <div className="h-6 w-24 bg-slate-800 rounded-full" />
+                        <div className="h-10 w-2/3 bg-slate-800 rounded-xl" />
+                        <div className="h-4 w-full bg-slate-800 rounded-lg" />
+                        <div className="h-4 w-5/6 bg-slate-800 rounded-lg" />
                     </div>
-                </motion.article>
-            ))}
+                ))
+            ) : (
+                blogs.map((post, index) => (
+                    <motion.article 
+                        key={post.slug}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1, duration: 0.5 }}
+                        className="group relative bg-slate-900/40 border border-slate-800 rounded-3xl p-8 md:p-10 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-500 overflow-hidden"
+                    >
+                        {/* Hover Glow */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        <div className="relative z-10">
+                            <div className="flex flex-wrap items-center gap-4 mb-6 text-sm font-mono">
+                                <span className="px-3 py-1 bg-slate-950 text-blue-400 rounded-full border border-slate-800">
+                                    {post.category}
+                                </span>
+                                <span className="text-slate-500">
+                                    {post.date}
+                                </span>
+                                <span className="text-slate-700 hidden sm:block">•</span>
+                                <span className="text-slate-500 flex items-center gap-1.5">
+                                    <FileText size={14} /> {post.readTime}
+                                </span>
+                            </div>
+
+                            <h3 className="text-2xl md:text-3xl font-bold font-header text-white mb-4 group-hover:text-blue-300 transition-colors">
+                                {post.title}
+                            </h3>
+
+                            <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                                {post.excerpt}
+                            </p>
+
+                            <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-blue-400 font-semibold group/btn hover:text-white transition-colors uppercase tracking-wide text-sm mt-4">
+                                Read Article 
+                                <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                            </Link>
+                        </div>
+                    </motion.article>
+                ))
+            )}
         </div>
       </div>
     </section>

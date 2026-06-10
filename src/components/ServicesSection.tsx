@@ -1,42 +1,69 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Blocks, Rocket, LayoutTemplate, Search, Cpu } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 export const ServicesSection = () => {
+  const [title, setTitle] = useState<string | null>(null);
+  const [desc, setDesc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchServicesContent = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('site_content')
+          .select('key, value')
+          .eq('section', 'services');
+        
+        if (error) throw error;
+        if (data) {
+          data.forEach(row => {
+            if (row.key === 'title') setTitle(row.value);
+            if (row.key === 'desc') setDesc(row.value);
+          });
+        }
+      } catch (err) {
+        console.warn('Failed to fetch services content, using defaults:', err);
+      }
+    };
+    fetchServicesContent();
+  }, []);
+
   const services = [
     {
       icon: Rocket,
       title: "Platform Engineering",
-      description: "Designing and engineering robust web applications from the ground up, bypassing templates for pure, unrestricted custom code.",
+      description: "I design and build web applications from scratch using clean, custom code. No templates, no shortcuts.",
       tag: "CREATION"
     },
     {
       icon: LayoutTemplate,
       title: "Technical Redesigns",
-      description: "Overhauling failing, slow websites into blazing-fast, highly converting architectures engineered for modern web standards.",
+      description: "I take slow, outdated websites and rebuild them properly — fast architecture, modern standards, real results.",
       tag: "REDESIGN"
     },
     {
       icon: Search,
       title: "Algorithmic SEO",
-      description: "Implementing server-side rendering, schema markup, and advanced optimization pipelines to absolutely dominate search visibility.",
+      description: "I implement server-side rendering, schema markup, and advanced search optimization to help your site dominate search visibility.",
       tag: "VISIBILITY"
     },
     {
       icon: Cpu,
       title: "AI & Automation",
-      description: "Building intelligent RAG pipelines, custom LLM tools, and automated backend systems to drastically scale operational output.",
+      description: "I build smart RAG pipelines, custom LLM tools, and automated backend systems to help scale your business operations.",
       tag: "INTELLIGENCE"
     },
     {
       icon: Code2,
       title: "Deep Website Auditing",
-      description: "Technical tear-downs to identify render-blocking assets, DOM bloat, and architectural flaws causing traffic drop-offs.",
+      description: "I run detailed technical audits to identify slow page-load speeds, unoptimized images, and issues that make visitors bounce.",
       tag: "PERFORMANCE"
     },
     {
       icon: Blocks,
       title: "Conversion Architecture",
-      description: "Restructuring user flows and implementing strict behavioral tracking to maximize high-ticket lead generation and sales.",
+      description: "I optimize layouts and map clean user flows to turn your website traffic into qualified leads and sales.",
       tag: "CRO"
     }
   ];
@@ -58,10 +85,10 @@ export const ServicesSection = () => {
              <span className="text-slate-600">//</span> Capabilities
           </div>
           <h2 className="text-4xl md:text-6xl font-bold font-header tracking-tight text-white leading-tight">
-            Engineered Solutions.
+            {title || "Engineered Solutions."}
           </h2>
           <p className="text-slate-400 text-lg md:text-xl font-light">
-            I don't just build websites; I audit failing platforms and engineer the exact solution required to scale.
+            {desc || "I don't just build websites; I audit failing platforms and engineer the exact solution required to scale."}
           </p>
         </motion.div>
 

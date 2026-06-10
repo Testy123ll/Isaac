@@ -87,7 +87,7 @@ export function TechnicalLogs() {
                         <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800">
                              <Layers className="text-blue-500 mb-4" size={32} />
                              <h4 className="font-bold text-white mb-2">Scalability</h4>
-                             <p className="text-sm text-slate-400">You own the source code. No monthly platform fees, and we can add features instantly.</p>
+                             <p className="text-sm text-slate-400">You own the source code. No monthly platform fees, and I can add features instantly.</p>
                         </div>
                     </div>
                 </motion.div>

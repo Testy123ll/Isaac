@@ -3,27 +3,31 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { client, urlFor } from '../lib/sanity';
+import { supabase } from '../lib/supabase';
 
 export const ProjectsSection = () => {
   const [projects, setProjects] = useState(fallbackProjects);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const query = `*[_type == "project"]{
-          title, "slug": slug.current, category, description, techStack, liveUrl, "imageUrl": imageUrl.asset
-        }`;
-        const data = await client.fetch(query);
+        const { data, error } = await supabase
+          .from('projects')
+          .select('*')
+          .order('order_index', { ascending: true });
+
+        if (error) throw error;
+
         if (data && data.length > 0) {
-          const formatted = data.map((p: any) => ({
-            ...p,
-            imageUrl: p.imageUrl ? urlFor(p.imageUrl).url() : fallbackProjects.find((fb) => fb.slug === p.slug)?.imageUrl || '',
-          }));
-          setProjects(formatted);
+          const dbSlugs = new Set(data.map((p: any) => p.slug));
+          const missingLocals = fallbackProjects.filter(p => !dbSlugs.has(p.slug));
+          setProjects([...data, ...missingLocals]);
         }
       } catch (err) {
-        console.error("Sanity fetch failed:", err);
+        console.error("Supabase projects fetch failed, using fallback:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchProjects();
@@ -52,59 +56,73 @@ export const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.slice(0, 4).map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative flex flex-col h-full rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden"
-            >
-              {/* Real Project Screenshot */}
-              <div className="h-64 sm:h-80 w-full bg-slate-950/50 border-b border-slate-800 relative overflow-hidden group-hover:bg-blue-900/10 transition-colors duration-500 flex items-center justify-center">
-                 <img 
-                    src={project.imageUrl} 
-                    alt={project.title}
-                    className="w-full h-full object-cover object-top opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
-                 />
-                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {loading ? (
+            [...Array(6)].map((_, i) => (
+              <div key={i} className="flex flex-col h-full rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden animate-pulse min-h-[400px]">
+                <div className="h-64 w-full bg-slate-950/50 border-b border-slate-800" />
+                <div className="p-8 space-y-4">
+                  <div className="h-4 w-20 bg-slate-850 rounded-full" />
+                  <div className="h-8 w-3/4 bg-slate-850 rounded-xl" />
+                  <div className="h-4 w-full bg-slate-850 rounded-lg" />
+                  <div className="h-4 w-5/6 bg-slate-850 rounded-lg" />
+                </div>
               </div>
-              
-              <div className="p-8 md:p-10 flex flex-col flex-1 relative z-10 shadow-[0_-20px_40px_rgba(2,6,23,0.8)] bg-slate-900">
-                <div className="flex justify-between items-start mb-6">
-                   <div>
-                     <span className="text-xs font-mono text-blue-400 uppercase tracking-widest mb-2 block">
-                        {project.category}
-                     </span>
-                     <h3 className="text-3xl font-bold font-header text-white group-hover:text-blue-300 transition-colors">
-                       {project.title}
-                     </h3>
-                   </div>
-                   
-                   <Link 
-                     to={`/portfolio/${project.slug}`}
-                     className="w-12 h-12 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-300 -mt-2 shrink-0"
-                   >
-                     <ArrowUpRight size={24} />
-                   </Link>
+            ))
+          ) : (
+            projects.slice(0, 6).map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="group relative flex flex-col h-full rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden"
+              >
+                {/* Real Project Screenshot */}
+                <div className="h-64 sm:h-80 w-full bg-slate-950/50 border-b border-slate-800 relative overflow-hidden group-hover:bg-blue-900/10 transition-colors duration-500 flex items-center justify-center">
+                   <img 
+                      src={project.imageUrl} 
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
+                   />
+                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
                 </div>
                 
-                <p className="text-slate-400 text-lg leading-relaxed mb-8 flex-1">
-                  {project.description}
-                </p>
+                <div className="p-8 md:p-10 flex flex-col flex-1 relative z-10 shadow-[0_-20px_40px_rgba(2,6,23,0.8)] bg-slate-900">
+                  <div className="flex justify-between items-start mb-6">
+                     <div>
+                       <span className="text-xs font-mono text-blue-400 uppercase tracking-widest mb-2 block">
+                          {project.category}
+                       </span>
+                       <h3 className="text-3xl font-bold font-header text-white group-hover:text-blue-300 transition-colors">
+                         {project.title}
+                       </h3>
+                     </div>
+                     
+                     <Link 
+                       to={`/portfolio/${project.slug}`}
+                       className="w-12 h-12 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-300 -mt-2 shrink-0"
+                     >
+                       <ArrowUpRight size={24} />
+                     </Link>
+                  </div>
+                  
+                  <p className="text-slate-400 text-lg leading-relaxed mb-8 flex-1">
+                    {project.description}
+                  </p>
 
-                <div className="flex flex-wrap gap-2 mt-auto pt-2">
-                   {project.techStack.map(tech => (
-                     <span key={tech} className="px-3 py-1 bg-slate-950 text-slate-300 rounded-full border border-slate-800 text-sm font-mono whitespace-nowrap">
-                        {tech}
-                     </span>
-                   ))}
+                  <div className="flex flex-wrap gap-2 mt-auto pt-2">
+                     {project.techStack.map(tech => (
+                       <span key={tech} className="px-3 py-1 bg-slate-950 text-slate-300 rounded-full border border-slate-800 text-sm font-mono whitespace-nowrap">
+                          {tech}
+                       </span>
+                     ))}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))
+          )}
 
           {/* Special "Empty" Card */}
           <motion.div
@@ -121,13 +139,15 @@ export const ProjectsSection = () => {
                 Your Project Here
              </h3>
              <p className="text-slate-400 text-lg mb-8 max-w-sm mx-auto">
-                Reserve this spot for our next big build. Ready to turn that complex idea into reality?
+                I'm currently available for new projects. If you need a website that works for your business, let's talk.
              </p>
              <a 
-                href="#contact"
+                href="https://wa.link/0cit50"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3 bg-transparent border border-blue-500 text-blue-400 hover:text-white rounded-full font-semibold transition-all duration-300 hover:bg-blue-600"
              >
-                Let's Talk
+                Get a Free Mockup
              </a>
           </motion.div>
         </div>

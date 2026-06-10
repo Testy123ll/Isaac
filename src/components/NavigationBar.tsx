@@ -110,7 +110,7 @@ export const NavigationBar = () => {
               to="/#contact"
               className="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-full hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] border border-blue-500/50"
             >
-              <span>Start a Project</span>
+              <span>Hire Me</span>
               <div className="absolute inset-0 rounded-full border border-white/20"></div>
             </Link>
           </div>
@@ -159,7 +159,7 @@ export const NavigationBar = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="inline-flex items-center justify-center px-6 py-3 mt-4 text-sm font-semibold text-white bg-blue-600 rounded-full"
               >
-                Start a Project
+                Hire Me
               </Link>
             </div>
           </motion.div>

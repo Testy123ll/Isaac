@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { projects as fallbackProjects, type Project } from '../data/projects';
-import { client, urlFor } from '../lib/sanity';
+import { supabase } from '../lib/supabase';
 
 const BASE_URL = 'https://blue-stark.vercel.app'; // Production URL for absolute links
 
@@ -16,21 +16,22 @@ export const CaseStudy = () => {
     window.scrollTo(0, 0);
     const fetchProject = async () => {
       try {
-        const query = `*[_type == "project" && slug.current == $slug][0]{
-          title, "slug": slug.current, category, description, techStack, liveUrl, "imageUrl": imageUrl.asset, caseStudy
-        }`;
-        const data = await client.fetch(query, { slug });
+        const { data, error } = await supabase
+          .from('projects')
+          .select('*')
+          .eq('slug', slug)
+          .maybeSingle();
+
+        if (error) throw error;
+
         if (data) {
-          setProject({
-            ...data,
-            imageUrl: data.imageUrl ? urlFor(data.imageUrl).url() : fallbackProjects.find(p => p.slug === slug)?.imageUrl || ''
-          });
+          setProject(data);
         } else {
           const foundProject = fallbackProjects.find(p => p.slug === slug);
           if (foundProject) setProject(foundProject);
         }
       } catch (err) {
-        console.error("Sanity fetch failed, using fallback:", err);
+        console.error("Supabase fetch failed, using fallback:", err);
         const foundProject = fallbackProjects.find(p => p.slug === slug);
         if (foundProject) setProject(foundProject);
       }
@@ -187,9 +188,9 @@ export const CaseStudy = () => {
         {/* Next Steps CTA */}
         <section className="container mx-auto px-6 max-w-4xl mt-32 text-center">
             <h2 className="text-4xl font-bold font-header text-white mb-6">Ready to upgrade your infrastructure?</h2>
-            <p className="text-slate-400 text-lg mb-10">We engineer the tools that ambitious businesses use to scale.</p>
+            <p className="text-slate-400 text-lg mb-10">I build the websites that ambitious businesses use to scale.</p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-xl shadow-blue-600/20">
-                Start a New Project <ArrowUpRight size={20} />
+                Hire Me <ArrowUpRight size={20} />
             </Link>
         </section>
     </article>

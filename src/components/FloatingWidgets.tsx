@@ -8,15 +8,117 @@ type Message = {
   content: string;
 };
 
+const SYSTEM_PROMPT = `You are Isaac's personal AI assistant on his portfolio website. Your job is to answer any question a potential client or collaborator might ask — thoroughly, honestly, and in a friendly but professional tone. Keep answers concise but complete. Always end responses that involve hiring or starting a project by pointing to WhatsApp.
+
+## WHO ISAAC IS
+Isaac Testimony is a Full-Stack Web Developer and final-year Civil Engineering student. He builds websites and web applications for businesses and founders worldwide. He operates under the BlueStark brand. His engineering background means he approaches every project with structure, planning, and first-principles thinking — not guesswork.
+
+He personally handles everything on every project: architecture, frontend, backend, and deployment. No subcontractors. No handoffs. One person, full accountability.
+
+## SERVICES
+1. Business Websites — clean, fast, SEO-optimized websites for small and medium businesses that need a proper web presence.
+2. Landing Pages — high-converting single-page sites built to capture leads and drive action.
+3. E-commerce Websites — online stores with smooth product browsing, cart, and checkout flows.
+4. Web Applications — custom apps built with React and Next.js for businesses that need functionality beyond a standard website.
+5. Website Redesigns — taking slow, outdated, or broken websites and rebuilding them properly.
+6. SEO Optimization — technical SEO, fast load times, structured markup, and Google-ready architecture.
+7. WhatsApp & Lead Generation Integration — building sites with WhatsApp CTAs, lead capture forms, and conversion-focused flows.
+
+## PRICING
+- Landing page: from $150
+- Business website (up to 5 pages): from $300
+- E-commerce website: from $600
+- Web application: quoted per project based on scope
+- Website redesign: from $250
+- Payment structure: 50% upfront, 50% on delivery
+- No hidden fees. Flat-fee pricing only. The quote given is the final price.
+- Isaac does not charge hourly.
+
+## TIMELINES
+- Landing page: 3–5 days
+- Business website: 1–2 weeks
+- E-commerce site: 2–3 weeks
+- Web application: scoped per project, timeline agreed before starting
+- Isaac gives a clear timeline before every project starts and sticks to it.
+
+## PROCESS
+1. Discovery — Isaac learns the business, goals, and requirements before writing any code.
+2. Design & Wireframe — layout and user flow mapped out, reviewed and approved by the client.
+3. Build & Test — frontend and backend built simultaneously with testing throughout.
+4. Launch & Handover — deployed to live, full documentation provided, client trained on any CMS if applicable.
+
+## REVISIONS & SUPPORT
+- 2 rounds of revisions included in every project
+- 2 weeks of free post-launch support included
+- Monthly maintenance packages available after that
+- Additional revisions beyond the 2 included rounds are available at a flat fee
+
+## TECH STACK
+Frontend: React, Next.js, TypeScript, Tailwind CSS, HTML, CSS, JavaScript
+Backend: Node.js, Express
+Database: PostgreSQL, MongoDB, Supabase, Firebase
+Tools: Git, GitHub, Figma, VS Code, Cursor
+Deployment: Vercel, Netlify
+
+## MARKETS & AVAILABILITY
+Isaac works with clients worldwide — no geographic restriction. He has worked with businesses across Nigeria, the UK, the Middle East, and beyond. He is currently available for new projects.
+
+## ABOUT THE CIVIL ENGINEERING BACKGROUND
+Isaac is a final-year Civil Engineering student. This is not unrelated to his web work — it directly shapes how he builds. Engineering teaches systems thinking, planning under constraints, and building things that hold up under pressure. He applies the same discipline to code: plan first, build right, test thoroughly.
+
+## WHAT MAKES ISAAC DIFFERENT
+- He writes every line of code himself — no templates, no page builders, no outsourcing
+- Flat-fee pricing — clients always know the full cost upfront
+- Engineering mindset — structured, planned, reliable
+- Direct communication — one person to talk to from start to finish
+- Fast delivery without cutting corners
+- He has experience working across multiple industries and markets worldwide
+
+## COMMON CLIENT SITUATIONS ISAAC HANDLES
+- Businesses with no website currently losing customers to competitors
+- Founders with a clear idea who can't find a developer who actually gets it
+- Businesses burned by previous developers who disappeared or overcharged
+- DIY websites on Wix or similar that look unprofessional and aren't converting
+- Slow or broken websites that are damaging the brand
+- Businesses being quoted thousands by agencies for simple sites
+
+## CONTACT & HIRING
+If anyone wants to start a project, get a quote, ask about availability, or just have a conversation — direct them to WhatsApp: https://wa.link/0cit50
+
+## RESPONSE RULES
+- Always answer in friendly, plain English — not corporate speak
+- Keep answers focused and scannable — use short paragraphs
+- Never make up information not listed here
+- If asked something not covered here, say: 'That\'s a great question — I don\'t have that detail here, but you can ask Isaac directly on WhatsApp and he\'ll get back to you fast.'
+- If someone seems ready to hire or start a project, always end with the WhatsApp link
+- Never mention competitors by name
+- Never discuss Isaac's personal life beyond what's listed here`;
+
 export const FloatingWidgets = () => {
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', role: 'assistant', content: "Hello! Welcome to BlueStark. I'm Isaac's virtual engineering assistant." },
-    { id: '2', role: 'assistant', content: 'Are you looking for a website audit, custom web app development, or just have a general question about our tech stack?' }
+    { id: '1', role: 'assistant', content: "Hi! I'm Isaac's assistant. Ask me anything about his work, pricing, or how to get started." }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const [showPop, setShowPop] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    let triggered = false;
+    const handleScroll = () => {
+      if (!triggered && window.scrollY > 200) {
+        triggered = true;
+        setShowPop(true);
+        setShowTooltip(true);
+        setTimeout(() => setShowTooltip(false), 4000);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -26,7 +128,7 @@ export const FloatingWidgets = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const handleSend = (text: string) => {
+  const handleSend = async (text: string) => {
     if (!text.trim()) return;
     
     const userMsg: Message = { id: Date.now().toString(), role: 'user', content: text };
@@ -34,38 +136,78 @@ export const FloatingWidgets = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate AI response based on keywords
-    setTimeout(() => {
-      let replyContent = "I'm a simulated assistant! To explore further, please book a call or use the contact form.";
-      
-      const lowerText = text.toLowerCase();
-      if (lowerText.includes('audit') || lowerText.includes('seo') || lowerText.includes('speed')) {
-        replyContent = "A technical SEO audit is the perfect starting point. I can analyze your Core Web Vitals, DOM bloat, and render-blocking scripts. Check out the 'Services' section or book a call!";
-      } else if (lowerText.includes('redesign') || lowerText.includes('build') || lowerText.includes('custom')) {
-        replyContent = "We specialize in high-performance custom architectures using React and Next.js. Engineered platforms convert vastly better than templates.";
-      } else if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('budget')) {
-        replyContent = "Project costs scale entirely on scope and functionality requirements. Use the main contact form to provide details and get a precise quote.";
+    try {
+      const geminiHistory = [...messages, userMsg].map(msg => ({
+        role: msg.role === 'user' ? 'user' : 'model',
+        parts: [{ text: msg.content }]
+      }));
+
+      const apiKey = import.meta.env.VITE_CHATBOT_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            system_instruction: {
+              parts: [{ text: SYSTEM_PROMPT }]
+            },
+            contents: geminiHistory
+          })
+        }
+      );
+
+      if (!response.ok) {
+        const errBody = await response.text();
+        console.error('Gemini API error:', response.status, errBody);
+        const isQuota = response.status === 429;
+        throw new Error(isQuota ? 'quota' : `API error ${response.status}`);
       }
 
-      const aiMsg: Message = { id: (Date.now() + 1).toString(), role: 'assistant', content: replyContent };
+      const data = await response.json();
+      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Something went wrong. Message Isaac directly on WhatsApp.";
+      
+      const aiMsg: Message = { id: (Date.now() + 1).toString(), role: 'assistant', content: reply.trim() };
       setMessages(prev => [...prev, aiMsg]);
+    } catch (error: any) {
+      console.error('Gemini chatbot error:', error.message);
+      const isQuota = error.message === 'quota';
+      const errorMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: isQuota
+          ? "I'm temporarily unavailable due to high demand. Message Isaac directly on WhatsApp at wa.link/0cit50 — he responds within hours."
+          : "I'm having trouble connecting right now. Message Isaac directly on WhatsApp."
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   return (
     <>
+      <style>{`
+        @keyframes widgetPop {
+          0%   { transform: scale(1); }
+          25%  { transform: scale(1.25); }
+          50%  { transform: scale(0.95); }
+          70%  { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
       {/* Fixed Container for multiple widgets */}
       <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-4">
         
         {/* WhatsApp Floating Button */}
         <motion.a
-          href="https://wa.link/xb1rpa"
+          href="https://wa.link/0cit50"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="group relative flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transition-shadow duration-300"
+          style={showPop ? { animation: 'widgetPop 0.5s ease forwards' } : {}}
         >
           {/* Using a custom SVG for exact WhatsApp Icon if needed, or MessageCircle as fallback. We'll use a precise SVG path for WhatsApp */}
           <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -73,9 +215,23 @@ export const FloatingWidgets = () => {
           </svg>
           
           {/* Tooltip */}
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono rounded-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-300">
+          <span className={`absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono rounded-lg opacity-0 ${showTooltip ? '' : 'group-hover:opacity-100'} whitespace-nowrap pointer-events-none transition-opacity duration-300`}>
             Chat on WhatsApp
           </span>
+
+          <AnimatePresence>
+            {showTooltip && (
+              <motion.span
+                initial={{ opacity: 0, x: 10, y: "-50%" }}
+                animate={{ opacity: 1, x: 0, y: "-50%" }}
+                exit={{ opacity: 0, x: 10, y: "-50%" }}
+                transition={{ duration: 0.5 }}
+                className="absolute right-16 top-1/2 px-3 py-1.5 bg-slate-900 border border-slate-800 text-white text-xs font-mono rounded-full whitespace-nowrap pointer-events-none"
+              >
+                Need help? Ask me anything
+              </motion.span>
+            )}
+          </AnimatePresence>
         </motion.a>
 
         {/* AI Chatbot Trigger */}
@@ -88,7 +244,7 @@ export const FloatingWidgets = () => {
         >
           <Sparkles className="w-6 h-6 text-white" />
           <span className="absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono rounded-lg opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-300">
-            Ask BlueStark AI
+            Ask Portfolio AI
           </span>
         </motion.button>
       </div>
@@ -110,7 +266,7 @@ export const FloatingWidgets = () => {
                   <Sparkles className="w-4 h-4 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-white font-medium text-sm">BlueStark AI</h3>
+                  <h3 className="text-white font-medium text-sm">Portfolio AI</h3>
                   <p className="text-xs text-slate-400 font-mono flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     Online
@@ -143,10 +299,10 @@ export const FloatingWidgets = () => {
                     {msg.id === '2' && (
                       <div className="mt-3 flex flex-col gap-2">
                         <button onClick={() => handleSend("I need a functional redesign")} className="text-left px-3 py-2 bg-slate-950 border border-slate-800 hover:border-blue-500/50 text-xs text-blue-400 font-mono rounded-lg transition-colors">
-                          🚀 I need a functional redesign
+                          I need a functional redesign
                         </button>
                         <button onClick={() => handleSend("I need an SEO Audit")} className="text-left px-3 py-2 bg-slate-950 border border-slate-800 hover:border-blue-500/50 text-xs text-blue-400 font-mono rounded-lg transition-colors">
-                          🔍 I need an SEO Audit
+                          I need an SEO Audit
                         </button>
                       </div>
                     )}

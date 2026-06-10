@@ -1,8 +1,10 @@
 import { Hero } from '../components/Hero';
 import { ServicesSection } from '../components/ServicesSection';
+import { PainPointsSection } from '../components/PainPointsSection';
 import { ProcessSection } from '../components/ProcessSection';
 import { ProjectsSection } from '../components/ProjectsSection';
 import { AboutSection } from '../components/AboutSection';
+import { ExperienceSection } from '../components/ExperienceSection';
 import { FAQSection } from '../components/FAQSection';
 import { ContactSection } from '../components/ContactSection';
 
@@ -11,9 +13,11 @@ export const Home = () => {
     <div className="pt-0"> {/* PT-0 because Hero has Min-H-Screen and Centers */}
         <Hero />
         <ServicesSection />
+        <PainPointsSection />
         <ProcessSection />
         <ProjectsSection />
         <AboutSection />
+        <ExperienceSection />
         <FAQSection />
         <ContactSection />
     </div>

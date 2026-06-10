@@ -9,8 +9,6 @@ import blessedOlasImg from '/blessed-olas.png?w=1200&format=webp';
 
 // --- NEW PROJECTS (Bypassing Sharp/Vite-Imagetools for AI mockups) ---
 // @ts-ignore
-import captionsAiImg from '/captions-ai.png';
-// @ts-ignore
 import nuptAiImg from '/nupt-ai.png';
 // @ts-ignore
 import scentbirdImg from '/scentbird.png';
@@ -41,6 +39,36 @@ import genLandImg from '/generic_landing.png';
 // @ts-ignore
 import genPortImg from '/generic_portal.png';
 
+// --- NEW MOCKUPS (JPGs from portfolio image) ---
+// @ts-ignore
+import accentAdvisorImg from '/accent-advisor.jpg';
+// @ts-ignore
+import boutiqueImg from '/boutique.jpg';
+// @ts-ignore
+import curtsyJpg from '/curtsy.jpg';
+// @ts-ignore
+import dojoChampImg from '/dojo-champ.jpg';
+// @ts-ignore
+import drSaadImg from '/dr-saad.jpg';
+// @ts-ignore
+import esseyiImg from '/esseyi.jpg';
+// @ts-ignore
+import feltImg from '/felt.jpg';
+// @ts-ignore
+import hatachImg from '/hatach.jpg';
+// @ts-ignore
+import jessicaImg from '/jessica.jpg';
+// @ts-ignore
+import kittenishJpg from '/kittenish.jpg';
+// @ts-ignore
+import oceanAirImg from '/ocean-air.jpg';
+// @ts-ignore
+import opositivJpg from '/opositiv.jpg';
+// @ts-ignore
+import riseImg from '/rise.jpg';
+// @ts-ignore
+import weglobaleeImg from '/weglobalee.jpg';
+
 export interface Project {
   slug: string;
   title: string;
@@ -65,7 +93,7 @@ export const projects: Project[] = [
     description: 'A complete Website Audit & Redesign for a luxury dental clinic. By identifying UX friction—specifically treating high-ticket veneer leads like standard cleaning leads—I engineered a custom "Smart Triage" React modal and an immersive "Atmosphere Video" hero to significantly increase VIP conversions.',
     techStack: ['React', 'Site Audit', 'CRO', 'Tailwind CSS'],
     liveUrl: 'https://austin-smiles.vercel.app/',
-    imageUrl: austinSmilesImg,
+    imageUrl: drSaadImg,
     caseStudy: {
       overview: 'Austin Elite Smiles handles high-ticket VIP patients. A thorough website audit revealed critical UX friction: the original site treated a $30,000 veneer lead identical to an $80 cleaning lead. This generic funnel caused massive drop-offs.',
       challenges: [
@@ -86,64 +114,10 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'eaasyreels',
-    title: 'Eaasyreels',
-    category: 'Creator Platform',
-    description: 'A high-performance, visually engaging portfolio built specifically for a videographer and content creator. Engineered with a sleek dark-mode aesthetic, the platform focuses on ultra-fast load times and seamless media playback without performance bottlenecks.',
-    techStack: ['Next.js', 'Media Stream', 'Performance', 'Dark Mode'],
-    liveUrl: 'https://eaasyreels.vercel.app/',
-    imageUrl: eaasyreelsImg,
-    caseStudy: {
-      overview: 'Eaasyreels required a platform that matched the visual fidelity of their video content. A videographer\'s portfolio lives and dies by media performance, so ultra-fast load times and seamless playback were non-negotiable.',
-      challenges: [
-        'Balancing high-quality massive video assets with rapid page load speeds.',
-        'Creating an interface that doesn\'t distract from the actual content.',
-        'Ensuring perfectly smooth scrolling and media playback across all devices.'
-      ],
-      solutions: [
-        'Built a custom dark-mode aesthetic that allows the vibrant video content to pop without UI distraction.',
-        'Engineered a highly optimized media pipeline ensuring ultra-fast load times and lazy loading.',
-        'Implemented seamless video playback components that perform flawlessly under heavy asset loads.'
-      ],
-      results: [
-        'Sub-second load times despite heavy, uncompromised media files.',
-        'A sleek, cinematic user experience matching the creator\'s brand.',
-        'Higher engagement times as visitors seamlessly explore the video galleries.'
-      ]
-    }
-  },
-  {
-    slug: 'blessed-olas',
-    title: 'Blessed Olas',
-    category: 'Modern Web App',
-    description: 'A modern, conversion-optimized web application engineered for scalability. This project focused heavily on clean architectural principles, perfect mobile responsiveness, and an incredibly seamless user experience that guides visitors intuitively toward the primary call-to-action.',
-    techStack: ['React', 'Clean Arch', 'Responsive', 'UX Design'],
-    liveUrl: 'https://blessed-olas.vercel.app/',
-    imageUrl: blessedOlasImg,
-    caseStudy: {
-      overview: 'Blessed Olas needed a completely modern web application that not only looked great but was architected for optimal conversions and seamless user traversal.',
-      challenges: [
-        'Lack of structural clarity leading to confused user journeys.',
-        'Poor mobile optimization causing traffic drop-offs.',
-        'A need for pure, scalable code architecture.'
-      ],
-      solutions: [
-        'Prioritized clean architecture and maintainable code for extreme scalability.',
-        'Engineered perfect mobile responsiveness, ensuring the application feels native on any device.',
-        'Optimized the entire UX flow to guide visitors intuitively to the primary call-to-action.'
-      ],
-      results: [
-        'Massively improved mobile conversion pipeline.',
-        'A seamlessly smooth user experience free of structural friction.',
-        'A resilient, maintainable codebase ready for future feature expansion.'
-      ]
-    }
-  },
-  {
     slug: 'impact-pest',
     title: 'Impact Pest',
     category: 'Lead-Gen Website',
-    description: 'A completely functional, high-converting lead generation platform built for a pest control company. This project seamlessly connects localized SEO with an ultra-fast frontend to capture residential and commercial leads before they bounce to competitors.',
+    description: 'A completely functional, high-converting lead generation platform built for a pest control company. This project directly connects localized SEO with an ultra-fast frontend to capture residential and commercial leads before they bounce to competitors.',
     techStack: ['React', 'SEO Optimization', 'Lead Gen', 'Tailwind'],
     liveUrl: 'https://impactpest-com.vercel.app/',
     imageUrl: impactPestImg,
@@ -167,29 +141,299 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'captions-ai',
-    title: 'Captions AI',
-    category: 'AI Video Engine',
-    description: 'Engineered complex frontend dashboard interactions for a massive AI-driven video processing platform. The application handles heavy client-side video scrubbing, real-time waveform generation, and instant AI caption rendering over a resilient Next.js infrastructure.',
-    techStack: ['Next.js', 'WebGL', 'AI Integ.', 'React'],
-    liveUrl: 'https://www.captions.ai',
-    imageUrl: captionsAiImg,
+    slug: 'curtsy',
+    title: 'Curtsy App',
+    category: 'P2P Marketplace',
+    description: 'A modern, ultra-clean P2P fashion marketplace. Engineered massive feeds of high-quality clothing items, intricate user profile interactions, and heavily complex filtering and search mechanisms optimized for mobile conversion.',
+    techStack: ['React', 'GraphQL', 'Algolia', 'Tailwind'],
+    liveUrl: 'https://curtsyapp.com',
+    imageUrl: curtsyJpg,
     caseStudy: {
-      overview: 'Captions AI requires immense browser performance to edit video through text. The core challenge was migrating heavy server-side processing demands into seamless client-side browser experiences without lagging or dropping frames.',
+      overview: 'Curtsy is a rapidly growing P2P marketplace. The core engineering requirement was speed. When users search for "vintage pink dress", they expect instantaneous, infinite-scrolling results mapped precisely against dense inventory databases.',
       challenges: [
-        'Browser locking during heavy video file processing.',
-        'Complex state management syncing audio waveforms with dynamic text overlays.',
-        'Rendering a sleek, dark-mode technical UI that feels instantly familiar to professional editors.'
+        'Infinite scrolling feeds lagging heavily on mid-range Android and older iOS devices.',
+        'Complex multi-variable filtering (size, brand, color, condition) slowing down DB queries.',
+        'Messy, untrusted user-uploaded images ruining the aesthetic consistency.'
       ],
       solutions: [
-        'Implemented Web Worker pipelines allowing async video generation without blocking the main React thread.',
-        'Architected a highly localized state proxy system to sync audio timestamps with subtitle arrays instantly.',
-        'Engineered a custom timeline scrubber using WebGL for unparalleled frame-rate stability.'
+        'Re-architected the main product feed using virtualization techniques to ensure 60fps scrolling regardless of feed length.',
+        'Integrated Algolia Search pipelines natively into the React application for sub-10ms query returns.',
+        'Built a client-side image cropping and normalization pipeline to maintain the app\'s strict pink/slate-gray aesthetic.'
       ],
       results: [
-        'Zero-latency timeline scrubbing achieved across commercial browsers.',
-        'Massive reduction in server-costs due to offloading rendering logic to client hardware.',
-        'A sleek, futuristic dark-mode UI that established extreme brand authority.'
+        'Liquid-smooth infinite scrolling unlocked massive increases in session duration.',
+        'Lightning-fast filter manipulation drove higher cart-add rates.',
+        'A highly scalable, universally aesthetic marketplace spanning thousands of independent peers.'
+      ]
+    }
+  },
+  {
+    slug: 'blessed-olas',
+    title: 'Blessed Olas',
+    category: 'Modern Web App',
+    description: 'A modern, conversion-optimized web application engineered for scalability. This project focused heavily on clean architectural principles, perfect mobile responsiveness, and an incredibly smooth user experience that guides visitors intuitively toward the primary call-to-action.',
+    techStack: ['React', 'Clean Arch', 'Responsive', 'UX Design'],
+    liveUrl: 'https://blessed-olas.vercel.app/',
+    imageUrl: blessedOlasImg,
+    caseStudy: {
+      overview: 'Blessed Olas needed a completely modern web application that not only looked great but was architected for optimal conversions and smooth user traversal.',
+      challenges: [
+        'Lack of structural clarity leading to confused user journeys.',
+        'Poor mobile optimization causing traffic drop-offs.',
+        'A need for pure, scalable code architecture.'
+      ],
+      solutions: [
+        'Prioritized clean architecture and maintainable code for extreme scalability.',
+        'Engineered perfect mobile responsiveness, ensuring the application feels native on any device.',
+        'Optimized the entire UX flow to guide visitors intuitively to the primary call-to-action.'
+      ],
+      results: [
+        'Massively improved mobile conversion pipeline.',
+        'A consistently smooth user experience free of structural friction.',
+        'A resilient, maintainable codebase ready for future feature expansion.'
+      ]
+    }
+  },
+  {
+    slug: 'rise-fairsketch',
+    title: 'Rise Fairsketch',
+    category: 'SaaS',
+    description: 'An enterprise-scale productivity suite dashboard designed to drastically reduce cognitive load.',
+    techStack: ['React', 'TypeScript', 'Redux'],
+    liveUrl: 'https://rise.fairsketch.com',
+    imageUrl: riseImg,
+    caseStudy: {
+      overview: 'Fairsketch needed a rigid, highly typed dashboard capable of digesting massive real-time project metrics.',
+      challenges: ['Deeply nested state objects causing infinite re-renders.', 'Complex drag-and-drop mechanics rendering slowly.'],
+      solutions: ['Architected a flattened Redux state lattice.', 'Integrated strictly memoized drag-and-drop contexts.'],
+      results: ['Utterly solid 60fps interaction models.', 'Massive reduction in memory profiling spikes.']
+    }
+  },
+  {
+    slug: 'weglobalee',
+    title: 'WeGlobalee',
+    category: 'Portal',
+    description: 'A complex, multi-tenant portal application orchestrating extensive global logistics flows.',
+    techStack: ['React', 'Dashboards', 'API Auth'],
+    liveUrl: 'https://app.weglobalee.com',
+    imageUrl: weglobaleeImg,
+    caseStudy: {
+      overview: 'WeGlobalee acts as the central hub for global supply chains, requiring strict data access controls and complex tabular rendering.',
+      challenges: ['Rendering immense datasets without locking the browser.', 'Complex multi-role authorization layers.'],
+      solutions: ['Implemented strict windowed list virtualization.', 'Engineered middleware-level JWT parsing.'],
+      results: ['Liquid-smooth scrolling on huge datasets.', 'Absolute security compliance.']
+    }
+  },
+  {
+    slug: 'hatch-collection',
+    title: 'Hatch Collection',
+    category: 'Luxury Maternity D2C',
+    description: 'Designed and deployed a chic, high-end editorial commerce platform. Blended high-fashion editorial content directly with a highly optimized, high-converting Shopify cart pipeline.',
+    techStack: ['Next.js', 'Shopify', 'Framer Motion', 'React'],
+    liveUrl: 'https://www.hatchcollection.com',
+    imageUrl: hatachImg,
+    caseStudy: {
+      overview: 'Hatch Collection bridges the gap between high-fashion editorial and D2C commerce. The platform needed to feel like reading a luxury magazine while simultaneously driving aggressive sales funnels through a highly custom headless architecture.',
+      challenges: [
+        'Rigid, heavily customized CSS grid layouts breaking across non-standard viewport sizes.',
+        'Integrating a complex, high-res editorial CMS (Sanity) directly with a transaction engine (Shopify).',
+        'Creating liquid-smooth page transitions to emulate physical magazine turning without bloating the bundle size.'
+      ],
+      solutions: [
+        'Engineered a fluid, deeply responsive CSS Grid foundation that scales perfectly from ultra-wide monitors to legacy mobile devices.',
+        'Built a custom Next.js middleware bridge to instantly sync Sanity editorial content with live Shopify inventory data.',
+        'Implemented strict Framer Motion orchestration for smooth, hardware-accelerated page transitions.'
+      ],
+      results: [
+        'A flawlessly premium, uncompromised luxury shopping experience.',
+        'Eliminated inventory mismatches between editorial features and live stock.',
+        'Significant increase in Average Order Value (AOV) driven by the high-end editorial framing.'
+      ]
+    }
+  },
+  {
+    slug: 'kittenish',
+    title: 'Kittenish',
+    category: 'Fast-Fashion D2C',
+    description: 'A vibrant, high-energy fashion boutique platform engineered for massive traffic spikes. Built a deeply optimized, highly dynamic product grid capable of handling extreme fast-fashion inventory turnover.',
+    techStack: ['React', 'GraphQL', 'Redis', 'Vercel'],
+    liveUrl: 'https://kittenish.com',
+    imageUrl: kittenishJpg,
+    caseStudy: {
+      overview: 'Kittenish operates in the hyper-fast world of trendy fast-fashion. When new collections drop, the traffic spikes are immense. The frontend required an architecture capable of surviving massive concurrent loads while presenting a flawless, high-energy aesthetic.',
+      challenges: [
+        'Database bottlenecking during major influencer-driven collection drops.',
+        'Rendering hundreds of unique, dynamically requested product cards smoothly on the feed.',
+        'Maintaining a strict pink/gold visual aesthetic across aggressively changing inventory datasets.'
+      ],
+      solutions: [
+        'Bypassed the primary database entirely utilizing a highly distributed Redis edge caching layer to serve concurrent traffic spikes.',
+        'Implemented strict DOM virtualization mapping for the main infinite-scrolling product grid, locking the framerate at 60fps.',
+        'Built a centralized Tailwind design-token system to enforce the pink/gold/white aesthetic regardless of the content injected.'
+      ],
+      results: [
+        'The platform successfully absorbed 10x traffic multipliers during collection drops without a single timeout.',
+        'Flawless, jitter-free infinite scrolling across massive product catalogs.',
+        'A highly vibrant, instantly recognizable brand storefront UI.'
+      ]
+    }
+  },
+  {
+    slug: 'opositiv',
+    title: 'O Positiv',
+    category: 'Clinical Wellness SaaS',
+    description: 'Architected a highly interactive, clinical-grade D2C subscription platform for health supplements. Engineered a bespoke subscription builder paired with deep data visualizations regarding active ingredient efficacy.',
+    techStack: ['Next.js', 'Stripe', 'D3.js', 'TypeScript'],
+    liveUrl: 'https://opositiv.com',
+    imageUrl: opositivJpg,
+    caseStudy: {
+      overview: 'O Positiv combines D2C wellness with clinical data. The user interface needed to project extreme medical trust while remaining approachable, guiding users through a complex, highly personalized supplement subscription builder.',
+      challenges: [
+        'High drop-off rates in the multi-step personalized subscription onboarding funnel.',
+        'Displaying complex clinical ingredient data without overwhelming the user.',
+        'Navigating intricate recurring billing edge cases (pausing, skipping, multiple cadences) cleanly in the UI.'
+      ],
+      solutions: [
+        'Engineered a highly fluid, optimistic-UI driven onboarding wizard that instantly validates and persists data without loading spinners.',
+        'Integrated custom, interactive D3.js ingredient visualizations allowing users to explore clinical efficacy intuitively.',
+        'Built a centralized, rigorously tested TypeScript state machine to hand off flawless billing mutations to the Stripe API.'
+      ],
+      results: [
+        'Drastic improvements in personalized subscription completion rates.',
+        'Established immense consumer trust via clinical, interaction-driven ingredient data mapping.',
+        'A profoundly stable, beautifully clinical white-and-peach dashboard architecture.'
+      ]
+    }
+  },
+  {
+    slug: 'oceanair-travels',
+    title: 'OceanAir Travels',
+    category: 'Landing Page',
+    description: 'A heavily optimized travel and tourism platform handling immense visual media without stuttering.',
+    techStack: ['React', 'Next.js', 'Image Caching'],
+    liveUrl: 'https://www.oceanairtravels.com',
+    imageUrl: oceanAirImg,
+    caseStudy: {
+      overview: 'Travel sites are notoriously heavy. OceanAir required an architecture that loaded ultra-HD video backgrounds effortlessly.',
+      challenges: ['Heavy LCP penalties from background videos.', 'Cluttered mobile nav systems.'],
+      solutions: ['Engineered aggressive lazy-loading Intersection Observers.', 'Built an elegant, hardware-accelerated mobile side-sheet.'],
+      results: ['Sub-second First Input Delay.', 'Massive spike in mobile bookings.']
+    }
+  },
+  {
+    slug: 'california-realty',
+    title: 'California Realty',
+    category: 'Landing Page',
+    description: 'A localized real-estate portal explicitly engineered for hyper-fast localized search indexing.',
+    techStack: ['React', 'SSR', 'SEO Engine'],
+    liveUrl: 'https://jessicabouzane.californiarealtyagents.com',
+    imageUrl: jessicaImg,
+    caseStudy: {
+      overview: 'Local real estate depends on brutal algorithmic SEO. The entire site had to be Server-Side Rendered for maximum crawlability.',
+      challenges: ['Dynamically generated property pages indexing poorly.', 'Slow map-pin clustering.'],
+      solutions: ['Architected dynamic Next.js routes with aggressive getStaticPaths.', 'Implemented cluster-based WebGL map rendering.'],
+      results: ['Dominated local hyper-specific search queries.', 'Flawless map interactions.']
+    }
+  },
+  {
+    slug: 'accentadvisor',
+    title: 'AccentAdvisor',
+    category: 'SaaS',
+    description: 'A complex educational SaaS portal bridging students with real-time video tutoring protocols.',
+    techStack: ['WebRTC', 'React', 'Node.js'],
+    liveUrl: 'https://accentadvisor.com',
+    imageUrl: accentAdvisorImg,
+    caseStudy: {
+      overview: 'Providing smooth VoIP/Video tutoring directly in the browser demands strict real-time protocol management.',
+      challenges: ['WebRTC connection instability across disparate networks.', 'Synthesizing scheduling logic dynamically.'],
+      solutions: ['Deployed global STUN/TURN resilient fallbacks.', 'Built a deeply custom calendar slot grid using React hook mechanics.'],
+      results: ['Pristine, non-dropping video sessions.', 'Utterly frictionless tutor-to-student scheduling.']
+    }
+  },
+  {
+    slug: 'k-boutique',
+    title: 'K-Boutique',
+    category: 'E-Commerce',
+    description: 'A minimalist fashion storefront focusing entirely on cart optimization and visual aesthetics.',
+    techStack: ['Shopify Headless', 'React', 'Tailwind'],
+    liveUrl: 'https://www.kboutiquere.com',
+    imageUrl: boutiqueImg,
+    caseStudy: {
+      overview: 'K-Boutique required a stark departure from raw Shopify templates into a purely bespoke headless environment.',
+      challenges: ['Slow checkout transitions via native liquid.', 'Boring product grids.'],
+      solutions: ['Engineered a headless abstraction utilizing Shopify Storefront API.', 'Implemented masonry-grid fluid product feeds.'],
+      results: ['Lightning-fast cart management.', 'Massive aesthetic uplift.']
+    }
+  },
+  {
+    slug: 'felt-nz',
+    title: 'Felt.co.nz',
+    category: 'E-Commerce',
+    description: 'A fully scaled marketplace architecture managing massive volumes of independent vendor hubs.',
+    techStack: ['React', 'PostgreSQL', 'Microservices'],
+    liveUrl: 'https://felt.co.nz',
+    imageUrl: feltImg,
+    caseStudy: {
+      overview: 'P2P marketplaces demand incredible scalability. When independent vendors push items, the feeds must update synchronously.',
+      challenges: ['Vendor dashboard slowness.', 'Feed staleness vs aggressive caching matrices.'],
+      solutions: ['Decoupled frontend ingestion logic into discrete edge functions.', 'Engineered optimistic UI mutation handling for vendors.'],
+      results: ['Highly snappy vendor management interaction.', 'Frictionless buyer exploration flow.']
+    }
+  },
+  {
+    slug: 'dojochamp',
+    title: 'DojoChamp',
+    category: 'Portal',
+    description: 'A vibrant, highly localized martial arts academy portal designed explicitly to maximize parent onboarding.',
+    techStack: ['React', 'Stripe', 'Tailwind'],
+    liveUrl: 'https://dojochamp.com/',
+    imageUrl: dojoChampImg,
+    caseStudy: {
+      overview: 'DojoChamp requires extremely fluid class scheduling and integrated liability waivers.',
+      challenges: ['Cumbersome onboarding forms.', 'Confusing nested class schedules.'],
+      solutions: ['Built a linear, step-by-step React form pipeline.', 'Engineered an interactive, color-coded weekly class timeline.'],
+      results: ['Massive spike in trial-class signups.', 'Zero-confusion scheduling mapping.']
+    }
+  },
+  {
+    slug: 'esseyi',
+    title: 'Esseyi',
+    category: 'Landing Page',
+    description: 'A high-impact, deeply atmospheric corporate brand landing page.',
+    techStack: ['React', 'GSAP', 'Next.js'],
+    liveUrl: 'https://www.esseyi.com',
+    imageUrl: esseyiImg,
+    caseStudy: {
+      overview: 'Esseyi demanded a UI that instantly commanded respect via massive typography and immersive motion.',
+      challenges: ['GSAP animations conflicting with React strict mode.', 'Mobile scroll-jacking penalties.'],
+      solutions: ['Architected a custom useLayoutEffect wrapper for GSAP timelines.', 'Strictly disabled scroll manipulation on touch devices.'],
+      results: ['Profoundly impactful desktop experience.', 'Immaculate mobile interaction.']
+    }
+  },
+  {
+    slug: 'eaasyreels',
+    title: 'Eaasyreels',
+    category: 'Creator Platform',
+    description: 'A high-performance, visually engaging portfolio built specifically for a videographer and content creator. Engineered with a sleek dark-mode aesthetic, the platform focuses on ultra-fast load times and fluid media playback without performance bottlenecks.',
+    techStack: ['Next.js', 'Media Stream', 'Performance', 'Dark Mode'],
+    liveUrl: 'https://eaasyreels.vercel.app/',
+    imageUrl: eaasyreelsImg,
+    caseStudy: {
+      overview: 'Eaasyreels required a platform that matched the visual fidelity of their video content. A videographer\'s portfolio lives and dies by media performance, so ultra-fast load times and fluid playback were non-negotiable.',
+      challenges: [
+        'Balancing high-quality massive video assets with rapid page load speeds.',
+        'Creating an interface that doesn\'t distract from the actual content.',
+        'Ensuring perfectly smooth scrolling and media playback across all devices.'
+      ],
+      solutions: [
+        'Built a custom dark-mode aesthetic that allows the vibrant video content to pop without UI distraction.',
+        'Engineered a highly optimized media pipeline ensuring ultra-fast load times and lazy loading.',
+        'Implemented fluid video playback components that perform flawlessly under heavy asset loads.'
+      ],
+      results: [
+        'Sub-second load times despite heavy, uncompromised media files.',
+        'A sleek, cinematic user experience matching the creator\'s brand.',
+        'Higher engagement times as visitors explore the video galleries.'
       ]
     }
   },
@@ -224,7 +468,7 @@ export const projects: Project[] = [
     slug: 'nupt-ai',
     title: 'Nupt AI',
     category: 'Computer Vision SaaS',
-    description: 'A high-end photography editing platform powered by Machine Learning. I architected the real-time processing pipeline and the seamless React interface allowing photographers to bulk-process thousands of raw images instantly.',
+    description: 'A high-end photography editing platform powered by Machine Learning. I architected the real-time processing pipeline and the responsive React interface allowing photographers to bulk-process thousands of raw images instantly.',
     techStack: ['Next.js', 'Python API', 'Data Viz', 'Vercel'],
     liveUrl: 'https://nupt.ai/',
     imageUrl: nuptAiImg,
@@ -232,7 +476,7 @@ export const projects: Project[] = [
       overview: 'Nupt handles massive payloads of RAW photography. The frontend needed to effortlessly accept gigabytes of data, stream the progress to the user via WebSockets, and present a sleek, minimalist environment to review the AI-edited outputs without distracting from the photography itself.',
       challenges: [
         'Managing massive multi-file client-side uploads without crashing the browser tab.',
-        'Communicating real-time AI processing progress back to the user seamlessly.',
+        'Communicating real-time AI processing progress back to the user smoothly.',
         'Rendering hundreds of high-res edited outputs instantly.'
       ],
       solutions: [
@@ -244,33 +488,6 @@ export const projects: Project[] = [
         'Photographers can now process entire wedding albums without single browser failure.',
         'Extremely high user retention driven by an incredibly satisfying, frictionless UI.',
         'A scalable frontend specifically engineered to handle limitless asset arrays.'
-      ]
-    }
-  },
-  {
-    slug: 'curtsy',
-    title: 'Curtsy App',
-    category: 'P2P Marketplace',
-    description: 'A modern, ultra-clean P2P fashion marketplace. Engineered massive feeds of high-quality clothing items, intricate user profile interactions, and heavily complex filtering and search mechanisms optimized for mobile conversion.',
-    techStack: ['React', 'GraphQL', 'Algolia', 'Tailwind'],
-    liveUrl: 'https://curtsyapp.com',
-    imageUrl: curtsyImg,
-    caseStudy: {
-      overview: 'Curtsy is a rapidly growing P2P marketplace. The core engineering requirement was speed. When users search for "vintage pink dress", they expect instantaneous, infinite-scrolling results mapped precisely against dense inventory databases.',
-      challenges: [
-        'Infinite scrolling feeds lagging heavily on mid-range Android and older iOS devices.',
-        'Complex multi-variable filtering (size, brand, color, condition) slowing down DB queries.',
-        'Messy, untrusted user-uploaded images ruining the aesthetic consistency.'
-      ],
-      solutions: [
-        'Re-architected the main product feed using virtualization techniques to ensure 60fps scrolling regardless of feed length.',
-        'Integrated Algolia Search pipelines natively into the React application for sub-10ms query returns.',
-        'Built a client-side image cropping and normalization pipeline to maintain the app\'s strict pink/slate-gray aesthetic.'
-      ],
-      results: [
-        'Liquid-smooth infinite scrolling unlocked massive increases in session duration.',
-        'Lightning-fast filter manipulation drove higher cart-add rates.',
-        'A highly scalable, universally aesthetic marketplace spanning thousands of independent peers.'
       ]
     }
   },
@@ -356,88 +573,6 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'hatch-collection',
-    title: 'Hatch Collection',
-    category: 'Luxury Maternity D2C',
-    description: 'Designed and deployed a chic, high-end editorial commerce platform. Blended high-fashion editorial content seamlessly with a highly optimized, high-converting Shopify cart pipeline.',
-    techStack: ['Next.js', 'Shopify', 'Framer Motion', 'React'],
-    liveUrl: 'https://www.hatchcollection.com',
-    imageUrl: hatchImg,
-    caseStudy: {
-      overview: 'Hatch Collection bridges the gap between high-fashion editorial and D2C commerce. The platform needed to feel like reading a luxury magazine while simultaneously driving aggressive sales funnels through a highly custom headless architecture.',
-      challenges: [
-        'Rigid, heavily customized CSS grid layouts breaking across non-standard viewport sizes.',
-        'Integrating a complex, high-res editorial CMS (Sanity) seamlessly with a transaction engine (Shopify).',
-        'Creating liquid-smooth page transitions to emulate physical magazine turning without bloating the bundle size.'
-      ],
-      solutions: [
-        'Engineered a fluid, deeply responsive CSS Grid foundation that scales perfectly from ultra-wide monitors to legacy mobile devices.',
-        'Built a custom Next.js middleware bridge to instantly sync Sanity editorial content with live Shopify inventory data.',
-        'Implemented strict Framer Motion orchestration for seamless, hardware-accelerated page transitions.'
-      ],
-      results: [
-        'A flawlessly premium, uncompromised luxury shopping experience.',
-        'Eliminated inventory mismatches between editorial features and live stock.',
-        'Significant increase in Average Order Value (AOV) driven by the high-end editorial framing.'
-      ]
-    }
-  },
-  {
-    slug: 'kittenish',
-    title: 'Kittenish',
-    category: 'Fast-Fashion D2C',
-    description: 'A vibrant, high-energy fashion boutique platform engineered for massive traffic spikes. Built a deeply optimized, highly dynamic product grid capable of handling extreme fast-fashion inventory turnover.',
-    techStack: ['React', 'GraphQL', 'Redis', 'Vercel'],
-    liveUrl: 'https://kittenish.com',
-    imageUrl: kittenishImg,
-    caseStudy: {
-      overview: 'Kittenish operates in the hyper-fast world of trendy fast-fashion. When new collections drop, the traffic spikes are immense. The frontend required an architecture capable of surviving massive concurrent loads while presenting a flawless, high-energy aesthetic.',
-      challenges: [
-        'Database bottlenecking during major influencer-driven collection drops.',
-        'Rendering hundreds of unique, dynamically requested product cards seamlessly on the feed.',
-        'Maintaining a strict pink/gold visual aesthetic across aggressively changing inventory datasets.'
-      ],
-      solutions: [
-        'Bypassed the primary database entirely utilizing a highly distributed Redis edge caching layer to serve concurrent traffic spikes.',
-        'Implemented strict DOM virtualization mapping for the main infinite-scrolling product grid, locking the framerate at 60fps.',
-        'Built a centralized Tailwind design-token system to enforce the pink/gold/white aesthetic regardless of the content injected.'
-      ],
-      results: [
-        'The platform successfully absorbed 10x traffic multipliers during collection drops without a single timeout.',
-        'Flawless, jitter-free infinite scrolling across massive product catalogs.',
-        'A highly vibrant, instantly recognizable brand storefront UI.'
-      ]
-    }
-  },
-  {
-    slug: 'opositiv',
-    title: 'O Positiv',
-    category: 'Clinical Wellness SaaS',
-    description: 'Architected a highly interactive, clinical-grade D2C subscription platform for health supplements. Engineered a bespoke subscription builder paired with deep data visualizations regarding active ingredient efficacy.',
-    techStack: ['Next.js', 'Stripe', 'D3.js', 'TypeScript'],
-    liveUrl: 'https://opositiv.com',
-    imageUrl: opositivImg,
-    caseStudy: {
-      overview: 'O Positiv combines D2C wellness with clinical data. The user interface needed to project extreme medical trust while remaining approachable, guiding users through a complex, highly personalized supplement subscription builder.',
-      challenges: [
-        'High drop-off rates in the multi-step personalized subscription onboarding funnel.',
-        'Displaying complex clinical ingredient data without overwhelming the user.',
-        'Navigating intricate recurring billing edge cases (pausing, skipping, multiple cadences) cleanly in the UI.'
-      ],
-      solutions: [
-        'Engineered a highly fluid, optimistic-UI driven onboarding wizard that instantly validates and persists data without loading spinners.',
-        'Integrated custom, interactive D3.js ingredient visualizations allowing users to explore clinical efficacy intuitively.',
-        'Built a centralized, rigorously tested TypeScript state machine to hand off flawless billing mutations to the Stripe API.'
-      ],
-      results: [
-        'Drastic improvements in personalized subscription completion rates.',
-        'Established immense consumer trust via clinical, interaction-driven ingredient data mapping.',
-        'A profoundly stable, beautifully clinical white-and-peach dashboard architecture.'
-      ]
-    }
-  },
-  // --- BATCH 3: 20 NEW PROJECTS ---
-  {
     slug: 'addx-studio',
     title: 'AddX Studio',
     category: 'Landing Page',
@@ -471,7 +606,7 @@ export const projects: Project[] = [
     slug: 'gundo-shoe',
     title: 'Gundo Shoe',
     category: 'E-Commerce',
-    description: 'A highly custom frontend storefront seamlessly marrying Webflow aesthetics with transactional speed.',
+    description: 'A highly custom frontend storefront marrying Webflow aesthetics with transactional speed.',
     techStack: ['Node.js', 'E-Commerce', 'Tailwind'],
     liveUrl: 'https://gundo-shoe.webflow.io',
     imageUrl: genEcomImg,
@@ -480,21 +615,6 @@ export const projects: Project[] = [
       challenges: ['Complex CMS linking for variant management.', 'Mobile cart slide-out latency.'],
       solutions: ['Architected strict state mapping for instantaneous color swaps.', 'Virtual DOM optimization on cart rendering.'],
       results: ['Higher average session duration.', 'Flawless cart logic execution.']
-    }
-  },
-  {
-    slug: 'weglobalee',
-    title: 'WeGlobalee',
-    category: 'Portal',
-    description: 'A complex, multi-tenant portal application orchestrating extensive global logistics flows.',
-    techStack: ['React', 'Dashboards', 'API Auth'],
-    liveUrl: 'https://app.weglobalee.com',
-    imageUrl: genPortImg,
-    caseStudy: {
-      overview: 'WeGlobalee acts as the central hub for global supply chains, requiring strict data access controls and complex tabular rendering.',
-      challenges: ['Rendering immense datasets without locking the browser.', 'Complex multi-role authorization layers.'],
-      solutions: ['Implemented strict windowed list virtualization.', 'Engineered middleware-level JWT parsing.'],
-      results: ['Liquid-smooth scrolling on huge datasets.', 'Absolute security compliance.']
     }
   },
   {
@@ -513,81 +633,6 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'rise-fairsketch',
-    title: 'Rise Fairsketch',
-    category: 'SaaS',
-    description: 'An enterprise-scale productivity suite dashboard designed to drastically reduce cognitive load.',
-    techStack: ['React', 'TypeScript', 'Redux'],
-    liveUrl: 'https://rise.fairsketch.com',
-    imageUrl: genSaasImg,
-    caseStudy: {
-      overview: 'Fairsketch needed a rigid, highly typed dashboard capable of digesting massive real-time project metrics.',
-      challenges: ['Deeply nested state objects causing infinite re-renders.', 'Complex drag-and-drop mechanics rendering slowly.'],
-      solutions: ['Architected a flattened Redux state lattice.', 'Integrated strictly memoized drag-and-drop contexts.'],
-      results: ['Utterly solid 60fps interaction models.', 'Massive reduction in memory profiling spikes.']
-    }
-  },
-  {
-    slug: 'oceanair-travels',
-    title: 'OceanAir Travels',
-    category: 'Landing Page',
-    description: 'A heavily optimized travel and tourism platform handling immense visual media without stuttering.',
-    techStack: ['React', 'Next.js', 'Image Caching'],
-    liveUrl: 'https://www.oceanairtravels.com',
-    imageUrl: genLandImg,
-    caseStudy: {
-      overview: 'Travel sites are notoriously heavy. OceanAir required an architecture that loaded ultra-HD video backgrounds effortlessly.',
-      challenges: ['Heavy LCP penalties from background videos.', 'Cluttered mobile nav systems.'],
-      solutions: ['Engineered aggressive lazy-loading Intersection Observers.', 'Built an elegant, hardware-accelerated mobile side-sheet.'],
-      results: ['Sub-second First Input Delay.', 'Massive spike in mobile bookings.']
-    }
-  },
-  {
-    slug: 'california-realty',
-    title: 'California Realty',
-    category: 'Landing Page',
-    description: 'A localized real-estate portal explicitly engineered for hyper-fast localized search indexing.',
-    techStack: ['React', 'SSR', 'SEO Engine'],
-    liveUrl: 'https://jessicabouzane.californiarealtyagents.com',
-    imageUrl: genLandImg,
-    caseStudy: {
-      overview: 'Local real estate depends on brutal algorithmic SEO. The entire site had to be Server-Side Rendered for maximum crawlability.',
-      challenges: ['Dynamically generated property pages indexing poorly.', 'Slow map-pin clustering.'],
-      solutions: ['Architected dynamic Next.js routes with aggressive getStaticPaths.', 'Implemented cluster-based WebGL map rendering.'],
-      results: ['Dominated local hyper-specific search queries.', 'Flawless map interactions.']
-    }
-  },
-  {
-    slug: 'accentadvisor',
-    title: 'AccentAdvisor',
-    category: 'SaaS',
-    description: 'A complex educational SaaS portal bridging students with real-time video tutoring protocols.',
-    techStack: ['WebRTC', 'React', 'Node.js'],
-    liveUrl: 'https://accentadvisor.com',
-    imageUrl: genSaasImg,
-    caseStudy: {
-      overview: 'Providing seamless VoIP/Video tutoring directly in the browser demands strict real-time protocol management.',
-      challenges: ['WebRTC connection instability across disparate networks.', 'Synthesizing scheduling logic dynamically.'],
-      solutions: ['Deployed global STUN/TURN resilient fallbacks.', 'Built a deeply custom calendar slot grid using React hook mechanics.'],
-      results: ['Pristine, non-dropping video sessions.', 'Utterly frictionless tutor-to-student scheduling.']
-    }
-  },
-  {
-    slug: 'k-boutique',
-    title: 'K-Boutique',
-    category: 'E-Commerce',
-    description: 'A minimalist fashion storefront focusing entirely on cart optimization and visual aesthetics.',
-    techStack: ['Shopify Headless', 'React', 'Tailwind'],
-    liveUrl: 'https://www.kboutiquere.com',
-    imageUrl: genEcomImg,
-    caseStudy: {
-      overview: 'K-Boutique required a stark departure from raw Shopify templates into a purely bespoke headless environment.',
-      challenges: ['Slow checkout transitions via native liquid.', 'Boring product grids.'],
-      solutions: ['Engineered a headless abstraction utilizing Shopify Storefront API.', 'Implemented masonry-grid fluid product feeds.'],
-      results: ['Lightning-fast cart management.', 'Massive aesthetic uplift.']
-    }
-  },
-  {
     slug: 'boutique-africaine',
     title: 'Boutique Africaine',
     category: 'E-Commerce',
@@ -600,21 +645,6 @@ export const projects: Project[] = [
       challenges: ['Complex filtering by extremely granular product tags.', 'Slow category indexing.'],
       solutions: ['Implemented Algolia for instant sub-millisecond facet mapping.', 'Cached collection trees in edge nodes.'],
       results: ['Immediate search gratification for users.', 'Vastly increased multi-item cart additions.']
-    }
-  },
-  {
-    slug: 'felt-nz',
-    title: 'Felt.co.nz',
-    category: 'E-Commerce',
-    description: 'A fully scaled marketplace architecture managing massive volumes of independent vendor hubs.',
-    techStack: ['React', 'PostgreSQL', 'Microservices'],
-    liveUrl: 'https://felt.co.nz',
-    imageUrl: genEcomImg,
-    caseStudy: {
-      overview: 'P2P marketplaces demand incredible scalability. When independent vendors push items, the feeds must update synchronously.',
-      challenges: ['Vendor dashboard slowness.', 'Feed staleness vs aggressive caching matrices.'],
-      solutions: ['Decoupled frontend ingestion logic into discrete edge functions.', 'Engineered optimistic UI mutation handling for vendors.'],
-      results: ['Highly snappy vendor management interaction.', 'Frictionless buyer exploration flow.']
     }
   },
   {
@@ -693,21 +723,6 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: 'dojochamp',
-    title: 'DojoChamp',
-    category: 'Portal',
-    description: 'A vibrant, highly localized martial arts academy portal designed explicitly to maximize parent onboarding.',
-    techStack: ['React', 'Stripe', 'Tailwind'],
-    liveUrl: 'https://dojochamp.com/',
-    imageUrl: genPortImg,
-    caseStudy: {
-      overview: 'DojoChamp requires extremely fluid class scheduling and integrated liability waivers.',
-      challenges: ['Cumbersome onboarding forms.', 'Confusing nested class schedules.'],
-      solutions: ['Built a linear, step-by-step React form pipeline.', 'Engineered an interactive, color-coded weekly class timeline.'],
-      results: ['Massive spike in trial-class signups.', 'Zero-confusion scheduling mapping.']
-    }
-  },
-  {
     slug: 'yojana-academic',
     title: 'Yojana Academic',
     category: 'SaaS',
@@ -720,21 +735,6 @@ export const projects: Project[] = [
       challenges: ['Deep GraphQL querying returning immensely nested data.', 'Displaying recursive hierarchies.'],
       solutions: ['Engineered a custom recursive tree-component rendered virtually.', 'Aggressive apollo cache normalizing.'],
       results: ['Instantaneous UI responses to deep data queries.', 'Flawless institutional metric tracking.']
-    }
-  },
-  {
-    slug: 'esseyi',
-    title: 'Esseyi',
-    category: 'Landing Page',
-    description: 'A high-impact, deeply atmospheric corporate brand landing page.',
-    techStack: ['React', 'GSAP', 'Next.js'],
-    liveUrl: 'https://www.esseyi.com',
-    imageUrl: genLandImg,
-    caseStudy: {
-      overview: 'Esseyi demanded a UI that instantly commanded respect via massive typography and immersive motion.',
-      challenges: ['GSAP animations conflicting with React strict mode.', 'Mobile scroll-jacking penalties.'],
-      solutions: ['Architected a seamless useLayoutEffect wrapper for GSAP timelines.', 'Strictly disabled scroll manipulation on touch devices.'],
-      results: ['Profoundly impactful desktop experience.', 'Immaculate mobile interaction.']
     }
   }
 ];

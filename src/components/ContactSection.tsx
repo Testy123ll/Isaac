@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Zap, Send, Terminal, AlertCircle, CheckCircle2, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Mail, Zap, Send, Terminal, AlertCircle, CheckCircle2, Github, Linkedin, Twitter, Instagram, MessageCircle } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 import { CalendlyWidget } from './CalendlyWidget';
 
@@ -56,7 +56,7 @@ export const ContactSection = () => {
                Let's Build Something Real.
             </h2>
              <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light">
-               Drop a message to start engineering your next platform.
+               Let's build something great together.
              </p>
         </motion.div>
 
@@ -87,10 +87,10 @@ export const ContactSection = () => {
                   </h3>
                   
                   <p className="text-slate-400 text-lg leading-relaxed font-light mb-12">
-                     Whether you have a fully scoped technical brief or just a concept that needs validation, let's discuss how we can engineer it into reality.
+                     Whether you have a fully scoped technical brief or just a concept that needs validation, let's discuss how I can engineer it into reality.
                   </p>
 
-                  <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-4">
                       <a href="mailto:isaactestimony.dev@gmail.com" className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/50 transition-all duration-300">
                           <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                               <Mail size={20} />
@@ -98,6 +98,16 @@ export const ContactSection = () => {
                           <div>
                               <p className="text-sm font-mono text-slate-500 mb-1">Email Connection</p>
                               <p className="text-white font-medium">isaactestimony.dev@gmail.com</p>
+                          </div>
+                      </a>
+
+                      <a href="https://wa.link/0cit50" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-green-500/50 transition-all duration-300">
+                          <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center text-green-400 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                              <MessageCircle size={20} />
+                          </div>
+                          <div>
+                              <p className="text-sm font-mono text-slate-500 mb-1">WhatsApp Connection</p>
+                              <p className="text-white font-medium">Chat on WhatsApp</p>
                           </div>
                       </a>
 
@@ -206,7 +216,7 @@ export const ContactSection = () => {
                                     disabled={state.submitting}
                                     className="absolute inset-0 w-full py-4 bg-white text-slate-950 font-bold rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-2 group"
                                 >
-                                    <span>🚀 Send Message</span>
+                                    <span>Send Message</span>
                                     <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                 </motion.button>
                               )}

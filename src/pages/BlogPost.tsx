@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { blogs as fallbackBlogs, type BlogPost as BlogPostType } from '../data/blogs';
-import { client, urlFor } from '../lib/sanity';
+import { supabase } from '../lib/supabase';
 
 const BASE_URL = 'https://blue-stark.vercel.app'; // Production URL for absolute links
 
@@ -16,37 +16,22 @@ export const BlogPost = () => {
     window.scrollTo(0, 0);
     const fetchPost = async () => {
       try {
-        const query = `*[_type == "post" && slug.current == $slug][0]{
-          title, "slug": slug.current, excerpt, date, readTime, category, "imageUrl": imageUrl.asset, content
-        }`;
-        const data = await client.fetch(query, { slug });
-        if (data) {
-          let parsedContent = '';
-          if (Array.isArray(data.content)) {
-             parsedContent = data.content.map((block: any) => {
-               if (block._type !== 'block' || !block.children) return '';
-               let text = block.children.map((c: any) => c.text).join('');
-               if (block.style === 'h2') return `## ${text}`;
-               if (block.style === 'h1') return `# ${text}`;
-               if (block.listItem === 'bullet') return `- ${text}`;
-               if (block.listItem === 'number') return `1. ${text}`;
-               return text;
-             }).join('\n\n');
-          } else {
-             parsedContent = data.content || '';
-          }
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('slug', slug)
+          .maybeSingle();
 
-          setPost({
-            ...data,
-            content: parsedContent || fallbackBlogs.find(b => b.slug === slug)?.content || '',
-            imageUrl: data.imageUrl ? urlFor(data.imageUrl).url() : fallbackBlogs.find(b => b.slug === slug)?.imageUrl || ''
-          });
+        if (error) throw error;
+
+        if (data) {
+          setPost(data);
         } else {
           const foundPost = fallbackBlogs.find(b => b.slug === slug);
           if (foundPost) setPost(foundPost);
         }
       } catch (err) {
-        console.error("Sanity fetch failed:", err);
+        console.error("Supabase fetch failed, using fallback:", err);
         const foundPost = fallbackBlogs.find(b => b.slug === slug);
         if (foundPost) setPost(foundPost);
       }
@@ -173,15 +158,19 @@ export const BlogPost = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-slate-300 font-light article-content"
             >
-                {renderContent(post.content)}
+                {post.content.trim().startsWith('<') || post.content.includes('<p>') || post.content.includes('<h2>') ? (
+                  <div dangerouslySetInnerHTML={{ __html: post.content }} className="prose prose-invert max-w-none space-y-6 leading-relaxed" />
+                ) : (
+                  renderContent(post.content)
+                )}
             </motion.div>
             
             {/* CTA */}
             <div className="mt-24 p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-center">
                 <h3 className="text-2xl font-bold font-header text-white mb-4">Want to build something similar?</h3>
-                <p className="text-slate-400 mb-8">We engineer the tools that ambitious businesses use to scale.</p>
+                <p className="text-slate-400 mb-8">I build the websites that ambitious businesses use to scale.</p>
                 <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-600/20">
-                    Pitch Your Project <ArrowUpRight size={18} />
+                    Hire Me <ArrowUpRight size={18} />
                 </Link>
             </div>
         </section>

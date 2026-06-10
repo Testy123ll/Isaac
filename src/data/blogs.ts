@@ -30,27 +30,27 @@ Here is exactly how I audit and tear down these sites.
 ## 1. The UX Teardown
 First, I map the user flow. Where is the "Book Now" button leading? Usually, it's a generic contact form with 15 required fields. 
 
-**The Fix:** We engineer a "Smart Triage" system. A React-based modal that asks 3 simple questions: "What is your main concern?", "What is your timeline?", "What is your budget?". Based on the answers, high-ticket leads are routed directly to a VIP concierge calendar.
+**The Fix:** I build a "Smart Triage" system. A React-based modal that asks 3 simple questions: "What is your main concern?", "What is your timeline?", "What is your budget?". Based on the answers, high-ticket leads are routed directly to a VIP concierge calendar.
 
 ## 2. The Performance Audit
 Luxury means speed. If a page takes 4 seconds to load its massive stock images, the luxury illusion shatters.
 I run Lighthouse audits and usually find unoptimized assets and render-blocking scripts.
 
-**The Fix:** I rebuild the foundation. We lazy-load every image outside the viewport, compress hero visuals to next-gen formats (WebP/AVIF), and strip out bloated WordPress plugins in favor of a lean React/Next.js architecture.
+**The Fix:** I rebuild the foundation. I lazy-load every image outside the viewport, compress hero visuals to next-gen formats (WebP/AVIF), and strip out bloated WordPress plugins in favor of a lean React/Next.js architecture.
 
 ## 3. The Visual Hierarchy
 A premium service needs a premium aesthetic. Dark mode accents, subtle Framer Motion reveals, and crisp typography (like Inter or Plus Jakarta Sans). 
 
-We move away from the "medical clinic" vibe and towards a "luxury boutique" experience.
+I move away from the "medical clinic" vibe and towards a "luxury boutique" experience.
 
 ## Conclusion
-A website is not a brochure; it is an engineered sales machine. By combining rigorous auditing with bespoke code, we turn leaky funnels into high-converting assets.
+A website is not a brochure; it is an engineered sales machine. By combining rigorous auditing with bespoke code, I turn leaky funnels into high-converting assets.
     `
   },
   {
     slug: 'traditional-coding-vs-no-code',
     title: 'Traditional Coding vs. No-Code & WordPress: The Hard Truth',
-    excerpt: 'The reality of when to use No-Code tools, and when you absolutely need custom software engineering.',
+    excerpt: 'The reality of when to use No-Code tools, and when you absolutely need custom web development.',
     date: 'February 28, 2026',
     readTime: '5 min read',
     category: 'Architecture',
@@ -62,11 +62,11 @@ No-code tools like Webflow and Framer are incredible for rapid prototyping and s
 
 ## When Custom Engineering Wins
 
-1.  **Complex Logic:** If your application requires intricate state management, complex data relationships, or custom algorithms, dragging and dropping won't cut it. You need a real backend (Node.js, Postgres) and a robust frontend framework (React).
+1.  **Complex Logic:** If your application requires intricate state management, complex data relationships, or custom algorithms, dragging and dropping won't cut it. You need a real backend (Node.js, Postgres) and a powerful frontend framework (React).
 2.  **Performance at Scale:** WordPress and heavy page builders inherently output bloated DOM structures. Custom React/Vite builds achieve perfect core web vitals because you control every single byte of code shipped to the browser.
 3.  **Security & Control:** When you rely on third-party plugins to hold your platform together, every update is a terrifying game of Russian Roulette. Custom code means you own the architecture.
 
-At BlueStark, we use the right tool for the job. But when it matters, we write code.
+I use the right tool for the job. But when it matters, I write code.
     `
   },
   {
@@ -83,17 +83,17 @@ At BlueStark, we use the right tool for the job. But when it matters, we write c
 The era of navigating through deeply nested menus is ending. The future interface is generative, predictive, and wildly conversational.
 
 ## The Shift in UI/UX
-We are moving from "Click here to find this" to "Ask for this, and the UI builds itself to show it." This requires a completely different architectural approach.
+The web is moving from "Click here to find this" to "Ask for this, and the UI builds itself to show it." This requires a completely different architectural approach.
 
 Instead of hardcoding every possible UI state, engineers must now build dynamic component systems that an AI layer can compose on the fly.
 
 ## What this means for Engineers
-If you only know how to center a div and fetch a REST API, you are falling behind. We must learn:
+If you only know how to center a div and fetch a REST API, you are falling behind. Developers must learn:
 -   **Vector Databases & RAG:** Integrating semantic search deeply into the frontend.
 -   **Streaming Architectures:** Handling real-time, token-by-token responses smoothly without judder.
 -   **Agentic Workflows:** Building interfaces that act on behalf of the user, not just display data.
 
-The web is getting smarter. Our code needs to keep up.
+The web is getting smarter. My code needs to keep up.
     `
   },
   {
@@ -121,16 +121,16 @@ Beautiful design builds trust, but **functionality drives revenue**. When a user
 ### The 3 Core Pillars of a Functional Website:
 
 1.  **Ultra-Fast Value Proposition:** 
-    If a user has to read a 4-paragraph creative manifesto to understand what you sell, they will leave. You need a razor-sharp H1 dominating the viewport: *"We Build Software That Scales to 1M+ Users."* Done.
+    If a user has to read a 4-paragraph creative manifesto to understand what you sell, they will leave. You need a razor-sharp H1 dominating the viewport: *"I Build Websites That Scale to 1M+ Users."* Done.
 2.  **Frictionless Architecture:**
     Are you making them click a hamburger menu, navigate dropping lists, and scroll past a giant team photo just to find your contact form? Every click is friction. Put the CTA everywhere. Make the paths to revenue direct and undeniably obvious.
 3.  **Performance as a Feature:**
     You cannot have a functional website if it takes 4 seconds to become interactive on a mobile device. Google penalizes slow sites. Users abandon slow sites. If your shiny new site has terrible Core Web Vitals, your "design" is actively harming your business.
 
 ## The Engineering Solution
-At BlueStark, we don't start with colors and fonts. We start with the database architecture, the routing strategy, and the conversion funnel. We engineer the exact technical path a user must take to pull out their credit card or book a call.
+I don't start with colors and fonts. I start with the database architecture, the routing strategy, and the conversion funnel. I design the exact technical path a user must take to pull out their credit card or book a call.
 
-Only once the engine is flawlessly constructed do we paint the car. 
+Only once the engine is flawlessly constructed do I paint the car. 
 
 A website fails when it is treated as a digital business card. A website succeeds when it is engineered as automated software.
     `

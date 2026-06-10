@@ -1,7 +1,36 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HashLink } from 'react-router-hash-link';
+import { supabase } from '../lib/supabase';
 
 export const Hero = () => {
+  const [headline, setHeadline] = useState<string | null>(null);
+  const [subheadline, setSubheadline] = useState<string | null>(null);
+  const [availability, setAvailability] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchHeroContent = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('site_content')
+          .select('key, value')
+          .eq('section', 'hero');
+        
+        if (error) throw error;
+        if (data) {
+          data.forEach(row => {
+            if (row.key === 'headline') setHeadline(row.value);
+            if (row.key === 'subheadline') setSubheadline(row.value);
+            if (row.key === 'availability') setAvailability(row.value);
+          });
+        }
+      } catch (err) {
+        console.warn('Failed to fetch hero content, using defaults:', err);
+      }
+    };
+    fetchHeroContent();
+  }, []);
+
   return (
     <section className="min-h-screen pt-32 pb-20 flex flex-col items-center justify-center relative overflow-hidden bg-slate-950">
       
@@ -46,7 +75,7 @@ export const Hero = () => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
             <span className="text-blue-300 font-mono text-sm tracking-widest uppercase">
-              ✦ A BlueStark Initiative
+              {availability || "✦ A BlueStark Initiative"}
             </span>
           </motion.div>
 
@@ -57,26 +86,15 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold font-header tracking-tight text-white mb-8 leading-tight"
           >
-            Welcome to{' '}
-            <span className="inline-block text-blue-600">
-              {"BlueStark.".split('').map((char, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.05 }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </span>
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-500 to-blue-400 animate-gradient-x">
-              Custom Architecture.
-            </span>
-            <br />
-            Pure Results.
+            {headline ? (
+              <span dangerouslySetInnerHTML={{ __html: headline }} />
+            ) : (
+              <>
+                I Build Websites <br className="hidden md:inline" />
+                That Generate <br className="hidden md:inline" />
+                <span className="text-blue-400">Leads, Sales, and Growth</span>
+              </>
+            )}
           </motion.h1>
 
           {/* Subheadline */}
@@ -86,7 +104,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
-            Engineered by Isaac Testimony. From ambitious founders to scaling startups, BlueStark turns complex ideas into lightning-fast, fully functional web applications. If it requires custom logic and flawless UI, we build it.
+            {subheadline || "Full-Stack Web Developer helping businesses and founders build fast, conversion-focused websites — written in real code, no templates, no shortcuts."}
           </motion.p>
         
         {/* CTA Buttons */}
@@ -101,7 +119,7 @@ export const Hero = () => {
               to="/#contact"
               className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(124,58,237,0.4)] hover:-translate-y-1 flex items-center justify-center gap-2"
             >
-              <span>🚀 Start Your Project</span>
+              <span>Start Your Project</span>
             </HashLink>
             <HashLink 
               smooth
@@ -119,7 +137,7 @@ export const Hero = () => {
            {/* Duplicate array for seamless infinite scroll */}
            {[...Array(4)].map((_, idx) => (
              <div key={idx} className="flex items-center shrink-0">
-               <span className="mx-8 text-sm font-mono text-blue-400/80">🚀 Fast SaaS Delivery ✦ 📱 Mobile-First Always ✦ ⚡ React • Node.js • JavaScript • Bootstrap ✦ ✅ From Idea to Launch ✦ 🔒 Scalable & Secure</span>
+               <span className="mx-8 text-sm font-mono text-blue-400/80">Fast SaaS Delivery ✦ Mobile-First Always ✦ React • Node.js • JavaScript • Bootstrap ✦ From Idea to Launch ✦ Scalable & Secure</span>
              </div>
            ))}
         </div>

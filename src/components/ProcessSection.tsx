@@ -4,23 +4,23 @@ export const ProcessSection = () => {
   const steps = [
     {
       number: "01",
-      title: "Discovery & Strategy",
-      description: "Scope and budget. We define the exact architecture and requirements before writing a single line of code."
+      title: "We Define the Brief",
+      description: "I learn your business, your goals, and what the site needs to do before writing a single line of code."
     },
     {
       number: "02",
-      title: "UI/UX Validation",
-      description: "Wireframes and high-fidelity mockups. Ensuring the user journey is intuitive and conversion-focused."
+      title: "Design & Wireframe",
+      description: "I map out the layout and user flow, making sure every page is built to convert."
     },
     {
       number: "03",
-      title: "Custom Build & Test",
-      description: "Clean architecture. I engineer the backend logic and frontend interfaces simultaneously with rigorous testing."
+      title: "Build & Test",
+      description: "I engineer the frontend and backend simultaneously, testing as I go."
     },
     {
       number: "04",
-      title: "Launch & Support",
-      description: "Go live. Deployment to scalable infrastructure with ongoing monitoring and performance optimization."
+      title: "Launch & Handover",
+      description: "I deploy the site, make sure everything runs cleanly, and hand over with full documentation."
     }
   ];
 
@@ -40,7 +40,7 @@ export const ProcessSection = () => {
             The Engineering Process
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light">
-            A transparent, milestone-driven protocol to take your project from raw concept to a live platform.
+            Here's exactly how I work — from your first message to a live, performing website.
           </p>
         </motion.div>
 

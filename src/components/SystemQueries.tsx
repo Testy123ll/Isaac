@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     question: "What happens if I need to scale up?",
-    answer: "My code is modular. We can add e-commerce or user portals later without rebuilding the site."
+    answer: "My code is modular. I can add e-commerce or user portals later without rebuilding the site."
   },
   {
     question: "What is the payment structure?",
