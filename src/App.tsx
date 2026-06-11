@@ -24,7 +24,7 @@ function AppContent() {
   const isAdminPath = location.pathname.startsWith('/admin');
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white selection:bg-blue-600 selection:text-white font-sans overflow-x-hidden">
+    <main className="min-h-screen bg-slate-950 text-white selection:bg-blue-600 selection:text-white font-sans overflow-x-hidden pb-28">
       {!isAdminPath && <NavigationBar />}
       {!isAdminPath && <FloatingWidgets />}
       

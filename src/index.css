@@ -26,3 +26,45 @@
     @apply font-header;
   }
 }
+
+/* ─── Light Mode Overrides ─────────────────────────────── */
+html.light body {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-slate-950  { background-color: #f1f5f9 !important; }
+html.light .bg-slate-900  { background-color: #ffffff !important; }
+html.light .bg-slate-800  { background-color: #e2e8f0 !important; }
+html.light .bg-slate-900\/40,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/80 { background-color: rgba(255,255,255,0.9) !important; }
+
+html.light .text-white      { color: #0f172a !important; }
+html.light .text-slate-100  { color: #1e293b !important; }
+html.light .text-slate-200  { color: #334155 !important; }
+html.light .text-slate-300  { color: #475569 !important; }
+html.light .text-slate-400  { color: #64748b !important; }
+html.light .text-slate-500  { color: #94a3b8 !important; }
+html.light .text-slate-600  { color: #cbd5e1 !important; }
+
+html.light .border-slate-800,
+html.light .border-slate-800\/50,
+html.light .border-slate-700,
+html.light .border-slate-700\/60 { border-color: #cbd5e1 !important; }
+
+/* Cards & panels */
+html.light section { background-color: #f1f5f9; }
+html.light [class*="rounded"] { box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+/* Dock navbar in light mode */
+html.light .backdrop-blur-xl { background-color: rgba(255,255,255,0.85) !important; }
+
+/* Keep blue accents as-is */
+html.light .text-blue-400  { color: #7c3aed !important; }
+html.light .bg-blue-600    { background-color: #7c3aed !important; }
+html.light .border-blue-500\/50 { border-color: rgba(124,58,237,0.4) !important; }
+
+/* Gradient overlays adjustment */
+html.light .from-slate-950 { --tw-gradient-from: #f1f5f9 !important; }
+html.light .to-slate-950   { --tw-gradient-to: #f1f5f9 !important; }

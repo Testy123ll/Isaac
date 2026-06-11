@@ -92,7 +92,184 @@ If anyone wants to start a project, get a quote, ask about availability, or just
 - If asked something not covered here, say: 'That\'s a great question — I don\'t have that detail here, but you can ask Isaac directly on WhatsApp and he\'ll get back to you fast.'
 - If someone seems ready to hire or start a project, always end with the WhatsApp link
 - Never mention competitors by name
-- Never discuss Isaac's personal life beyond what's listed here`;
+- Never discuss Isaac's personal life beyond what's listed here`
+const formatMessageText = (text: string, isUser: boolean) => {
+  if (!text) return null;
+
+  const lines = text.split('\n');
+  
+  return lines.map((line, lineIndex) => {
+    const tokenRegex = /(\[[^\]]+\]\(https?:\/\/[^\s)]+\)|https?:\/\/[^\s]+)/g;
+    const lineParts = line.split(tokenRegex);
+    const parts: React.ReactNode[] = [];
+    
+    const formatBoldAndText = (str: string, keyPrefix: string) => {
+      const boldParts = str.split(/(\*\*[^*]+\*\*)/g);
+      return boldParts.map((part, idx) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return (
+            <strong key={`${keyPrefix}-bold-${idx}`} className="font-semibold text-white">
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
+        return part;
+      });
+    };
+
+    lineParts.forEach((part, idx) => {
+      if (!part) return;
+      
+      const mdLinkMatch = part.match(/^\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)$/);
+      if (mdLinkMatch) {
+        parts.push(
+          <a
+            key={`link-${idx}`}
+            href={mdLinkMatch[2]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${
+              isUser ? 'text-white underline font-semibold' : 'text-blue-400 hover:text-blue-300 underline font-medium'
+            } transition-colors inline-flex items-center gap-0.5`}
+          >
+            {mdLinkMatch[1]}
+            <span className="text-[10px]">↗</span>
+          </a>
+        );
+        return;
+      }
+      
+      const rawUrlMatch = part.match(/^https?:\/\/[^\s]+$/);
+      if (rawUrlMatch) {
+        parts.push(
+          <a
+            key={`url-${idx}`}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${
+              isUser ? 'text-white underline font-semibold' : 'text-blue-400 hover:text-blue-300 underline font-medium'
+            } transition-colors inline-flex items-center gap-0.5`}
+          >
+            {part}
+            <span className="text-[10px]">↗</span>
+          </a>
+        );
+        return;
+      }
+      
+      parts.push(...formatBoldAndText(part, `text-${idx}`));
+    });
+
+    return (
+      <span key={`line-${lineIndex}`} className="block min-h-[1rem]">
+        {parts.length > 0 ? parts : "\u00A0"}
+      </span>
+    );
+  });
+};
+
+const getLocalResponse = (text: string): string => {
+  const query = text.toLowerCase();
+  
+  if (query.includes('price') || query.includes('cost') || query.includes('charge') || query.includes('rate') || query.includes('fee') || query.includes('dollar') || query.includes('budget') || query.includes('quote') || query.includes('how much') || query.includes('pricing')) {
+    return `Isaac offers transparent, flat-fee pricing based on the scope of work. All engagements require a 50% upfront payment, with the remaining 50% due upon project completion:
+
+• **Landing Page**: From $150 (3–5 days timeline)
+• **Business Website** (up to 5 pages): From $300 (1–2 weeks timeline)
+• **E-commerce Website**: From $600 (2–3 weeks timeline)
+• **Custom Web Application**: Custom quote based on technical scope
+• **Website Redesign**: From $250
+
+To receive a detailed quote tailored to your business, please initiate a request via [WhatsApp](https://wa.link/0cit50) or email at **isaactestimony.dev@gmail.com**.`;
+  }
+  
+  if (query.includes('service') || query.includes('offer') || query.includes('do') || query.includes('build') || query.includes('make') || query.includes('create') || query.includes('develop') || query.includes('work') || query.includes('capable') || query.includes('skills') || query.includes('specialize')) {
+    return `Isaac operates under the **BlueStark** brand and specializes in the following professional web development services:
+
+1. **Business Websites** – Modern, responsive, and SEO-optimized sites designed to build credible web presence.
+2. **Landing Pages** – High-converting single-page experiences built to capture leads.
+3. **E-commerce Stores** – Fully functional storefronts with smooth checkout and payment flows.
+4. **Web Applications** – Custom React/Next.js dynamic applications with secure backend logic.
+5. **Website Redesigns** – Complete overhaul and engineering rebuild of slow or outdated sites.
+6. **SEO & Performance Optimization** – Core Web Vitals optimization, speed enhancements, and structured metadata.
+
+Let's discuss your requirements. You can connect with Isaac on [WhatsApp](https://wa.link/0cit50) or email **isaactestimony.dev@gmail.com** to start the conversation.`;
+  }
+  
+  if (query.includes('time') || query.includes('timeline') || query.includes('duration') || query.includes('long') || query.includes('days') || query.includes('weeks') || query.includes('schedule') || query.includes('fast') || query.includes('quick')) {
+    return `Project timelines are defined during the discovery phase and strictly adhered to:
+
+• **Landing Pages**: Completed within 3–5 business days.
+• **Business Websites**: Completed within 1–2 business weeks.
+• **E-commerce Stores**: Completed within 2–3 business weeks.
+• **Web Applications**: Scoped and scheduled on a per-project basis.
+
+*Note: Each project includes 2 complete rounds of revisions and 2 weeks of dedicated post-launch support to ensure smooth transition.*
+
+Please connect on [WhatsApp](https://wa.link/0cit50) to discuss scheduling.`;
+  }
+  
+  if (query.includes('process') || query.includes('step') || query.includes('stage') || query.includes('method') || query.includes('how do you') || query.includes('workflow')) {
+    return `Isaac follows a structured, engineering-led development process to ensure clarity and success:
+
+1. **Discovery** – We analyze your business goals, target audience, and precise system parameters.
+2. **Design & Wireframe** – We map the user experience, architecture, and layout for your explicit review and sign-off.
+3. **Build & Test** – The custom frontend and backend are coded and rigorously tested for performance and security.
+4. **Launch & Handover** – We deploy your live project to Vercel/Netlify, set up domains, and hand over documentation.
+
+Ready to begin? Message Isaac directly on [WhatsApp](https://wa.link/0cit50).`;
+  }
+  
+  if (query.includes('stack') || query.includes('tech') || query.includes('language') || query.includes('framework') || query.includes('code') || query.includes('react') || query.includes('next') || query.includes('typescript') || query.includes('tailwind') || query.includes('node') || query.includes('database') || query.includes('postgres') || query.includes('supabase')) {
+    return `Isaac builds scalable and modern web solutions utilizing a robust, industry-standard stack:
+
+• **Frontend Technologies**: React, Next.js, TypeScript, Tailwind CSS, JavaScript (ES6+), HTML5, CSS3.
+• **Backend & Databases**: Node.js, Express, PostgreSQL, MongoDB, Supabase, Firebase.
+• **Infrastructure & Deployment**: Vercel, Netlify.
+• **Engineering Tools**: Git, GitHub, Figma, VS Code.
+
+No bloated page builders or templates are used; every line of code is custom-written. Contact Isaac on [WhatsApp](https://wa.link/0cit50) for architectural inquiries.`;
+  }
+  
+  if (query.includes('civil') || query.includes('engineering') || query.includes('student') || query.includes('university') || query.includes('degree') || query.includes('school') || query.includes('education')) {
+    return `Isaac is a final-year Civil Engineering student. This background strongly influences his approach to software development: it instills rigorous systems thinking, structural planning, planning within tight constraints, and engineering products that withstand heavy stress. He applies these exact principles to code quality and app architecture.`;
+  }
+  
+  if (query.includes('who is') || query.includes('about') || query.includes('isaac') || query.includes('testimony') || query.includes('brand') || query.includes('bluestark') || query.includes('location') || query.includes('where')) {
+    return `Isaac Testimony is a professional Full-Stack Web Developer and Civil Engineering student building premium web applications under the **BlueStark** brand. 
+
+He serves a global client base (spanning Nigeria, the UK, the Middle East, and beyond) and maintains direct, single-point accountability—meaning he personally writes every line of code without outsourcing.
+
+To discuss collaboration opportunities, message him on [WhatsApp](https://wa.link/0cit50) or email **isaactestimony.dev@gmail.com**.`;
+  }
+  
+  if (query.includes('contact') || query.includes('hire') || query.includes('email') || query.includes('phone') || query.includes('call') || query.includes('talk') || query.includes('chat') || query.includes('whatsapp') || query.includes('message') || query.includes('reach')) {
+    return `You can establish direct contact with Isaac through the following channels:
+
+• **WhatsApp**: Click to connect on [WhatsApp](https://wa.link/0cit50)
+• **Email**: **isaactestimony.dev@gmail.com**
+
+For inquiries regarding active availability, pricing quotes, or architectural consultations, he typically responds within a few business hours.`;
+  }
+  
+  if (query.includes('why') || query.includes('different') || query.includes('better') || query.includes('choose') || query.includes('special')) {
+    return `Choosing Isaac (BlueStark) offers distinct structural advantages:
+
+1. **End-to-End Execution**: He manages the entire development lifecycle himself—no subcontractors or hand-offs.
+2. **Fixed-Fee Clarity**: All project quotes are flat fees with zero hidden charges. No billing by the hour.
+3. **Engineering Discipline**: Development is structured, systematic, and thoroughly verified.
+4. **Transparent Communication**: You communicate directly with the individual engineer writing your code.
+
+Connect on [WhatsApp](https://wa.link/0cit50) to start your project.`;
+  }
+  
+  if (query.includes('hi') || query.includes('hello') || query.includes('hey') || query.includes('sup') || query.includes('morning') || query.includes('afternoon') || query.includes('evening')) {
+    return `Hello. I am Isaac's professional AI assistant. Please let me know how I can assist you today regarding services, pricing, project timelines, tech stack, or booking a consultation.`;
+  }
+  
+  return `Thank you for your inquiry. To get a precise answer or initiate a project request, please contact Isaac directly on [WhatsApp](https://wa.link/0cit50) or via email at **isaactestimony.dev@gmail.com**. He will respond promptly to coordinate next steps.`;
+};
 
 export const FloatingWidgets = () => {
   const [isAiOpen, setIsAiOpen] = useState(false);
@@ -137,49 +314,87 @@ export const FloatingWidgets = () => {
     setIsTyping(true);
 
     try {
-      const geminiHistory = [...messages, userMsg].map(msg => ({
-        role: msg.role === 'user' ? 'user' : 'model',
-        parts: [{ text: msg.content }]
-      }));
-
       const apiKey = import.meta.env.VITE_CHATBOT_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            system_instruction: {
-              parts: [{ text: SYSTEM_PROMPT }]
-            },
-            contents: geminiHistory
-          })
-        }
-      );
+      const groqKey = import.meta.env.VITE_GROQ_API_KEY;
 
-      if (!response.ok) {
-        const errBody = await response.text();
-        console.error('Gemini API error:', response.status, errBody);
-        const isQuota = response.status === 429;
-        throw new Error(isQuota ? 'quota' : `API error ${response.status}`);
+      if (!apiKey && !groqKey) {
+        throw new Error('no_key');
       }
 
-      const data = await response.json();
-      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Something went wrong. Message Isaac directly on WhatsApp.";
-      
+      let reply = "";
+
+      // Check if it's a Groq key
+      if ((groqKey && groqKey.startsWith('gsk_')) || (apiKey && apiKey.startsWith('gsk_'))) {
+        const activeGroqKey = (groqKey && groqKey.startsWith('gsk_')) ? groqKey : apiKey;
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${activeGroqKey}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "llama-3.3-70b-versatile",
+            messages: [
+              { role: "system", content: SYSTEM_PROMPT },
+              ...messages.map(msg => ({
+                role: msg.role === 'user' ? 'user' : 'assistant',
+                content: msg.content
+              })),
+              { role: "user", content: text }
+            ]
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`groq_error_${response.status}`);
+        }
+
+        const data = await response.json();
+        reply = data.choices?.[0]?.message?.content || "";
+      } else {
+        // Use Gemini API
+        const geminiHistory = [...messages, userMsg].map(msg => ({
+          role: msg.role === 'user' ? 'user' : 'model',
+          parts: [{ text: msg.content }]
+        }));
+
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              system_instruction: {
+                parts: [{ text: SYSTEM_PROMPT }]
+              },
+              contents: geminiHistory
+            })
+          }
+        );
+
+        if (!response.ok) {
+          const errBody = await response.text();
+          console.error('Gemini API error:', response.status, errBody);
+          throw new Error(`gemini_error_${response.status}`);
+        }
+
+        const data = await response.json();
+        reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+      }
+
+      if (!reply) {
+        throw new Error('empty_reply');
+      }
+
       const aiMsg: Message = { id: (Date.now() + 1).toString(), role: 'assistant', content: reply.trim() };
       setMessages(prev => [...prev, aiMsg]);
     } catch (error: any) {
-      console.error('Gemini chatbot error:', error.message);
-      const isQuota = error.message === 'quota';
-      const errorMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: isQuota
-          ? "I'm temporarily unavailable due to high demand. Message Isaac directly on WhatsApp at wa.link/0cit50 — he responds within hours."
-          : "I'm having trouble connecting right now. Message Isaac directly on WhatsApp."
-      };
-      setMessages(prev => [...prev, errorMsg]);
+      console.warn('API chat failed, falling back to local database:', error.message);
+      // Simulate a typing delay for realistic user experience
+      await new Promise(resolve => setTimeout(resolve, 800));
+      const reply = getLocalResponse(text);
+      const aiMsg: Message = { id: (Date.now() + 1).toString(), role: 'assistant', content: reply };
+      setMessages(prev => [...prev, aiMsg]);
     } finally {
       setIsTyping(false);
     }
@@ -295,7 +510,9 @@ export const FloatingWidgets = () => {
                       ? 'bg-blue-600 border-blue-500 rounded-tr-sm text-white' 
                       : 'bg-slate-900 border-slate-800 rounded-tl-sm text-slate-200'
                   }`}>
-                    <p className="text-sm leading-relaxed">{msg.content}</p>
+                    <div className="text-sm leading-relaxed space-y-1">
+                      {formatMessageText(msg.content, msg.role === 'user')}
+                    </div>
                     {msg.id === '2' && (
                       <div className="mt-3 flex flex-col gap-2">
                         <button onClick={() => handleSend("I need a functional redesign")} className="text-left px-3 py-2 bg-slate-950 border border-slate-800 hover:border-blue-500/50 text-xs text-blue-400 font-mono rounded-lg transition-colors">
