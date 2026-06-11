@@ -412,7 +412,7 @@ export const FloatingWidgets = () => {
         }
       `}</style>
       {/* Fixed Container for multiple widgets */}
-      <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-4">
+      <div className="fixed bottom-32 right-6 z-[100] flex flex-col items-end gap-4">
         {/* AI Chatbot Trigger */}
         <motion.button
           onClick={() => setIsAiOpen(true)}
@@ -456,7 +456,7 @@ export const FloatingWidgets = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
-            className="fixed bottom-6 right-6 z-[110] w-[360px] max-w-[calc(100vw-32px)] h-[500px] max-h-[calc(100vh-32px)] bg-slate-950/90 backdrop-blur-xl border border-slate-800 shadow-2xl rounded-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-32 right-6 z-[110] w-[360px] max-w-[calc(100vw-32px)] h-[500px] max-h-[calc(100vh-160px)] bg-slate-950/90 backdrop-blur-xl border border-slate-800 shadow-2xl rounded-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-slate-800 bg-slate-900/50">
