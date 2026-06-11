@@ -57,9 +57,10 @@ INSERT INTO auth.users (
   email_change,
   email_change_token_new,
   recovery_token
-) VALUES (
+) 
+SELECT 
   '00000000-0000-0000-0000-000000000000',
-  gen_random_uuid(),
+  'd0d3d3d3-d3d3-d3d3-d3d3-d3d3d3d3d3d3', -- Fixed static UUID
   'authenticated',
   'admin@testimony.com',
   crypt('IsaacTestimonyAdmin2026!', gen_salt('bf')),
@@ -74,7 +75,9 @@ INSERT INTO auth.users (
   '',
   '',
   ''
-) ON CONFLICT (email) DO NOTHING;
+WHERE NOT EXISTS (
+  SELECT 1 FROM auth.users WHERE email = 'admin@testimony.com'
+);
 
 -- 2. Link identity for the user so login functions properly
 INSERT INTO auth.identities (
@@ -96,4 +99,7 @@ SELECT
   now()
 FROM auth.users
 WHERE email = 'admin@testimony.com'
-ON CONFLICT DO NOTHING;
+  AND NOT EXISTS (
+    SELECT 1 FROM auth.identities WHERE user_id = auth.users.id
+  );
+
