@@ -59,7 +59,7 @@ export const FAQSection = () => {
 
   return (
     <section id="faq" className="py-24 bg-slate-950/50 relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-4xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-4xl relative z-10">
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -95,7 +95,7 @@ export const FAQSection = () => {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full text-left px-6 py-5 md:px-8 md:py-6 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-2xl"
+                  className="w-full text-left px-4 py-4 sm:px-8 sm:py-6 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-2xl"
                 >
                   <span className={`text-xl font-bold font-header transition-colors ${
                       isOpen ? 'text-white' : 'text-slate-300 hover:text-white'
@@ -126,7 +126,7 @@ export const FAQSection = () => {
                       }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <p className="px-6 md:px-8 text-slate-400 text-lg leading-relaxed font-light">
+                      <p className="px-4 sm:px-8 text-slate-400 text-lg leading-relaxed font-light">
                         {faq.answer}
                       </p>
                     </motion.div>

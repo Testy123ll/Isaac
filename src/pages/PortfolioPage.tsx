@@ -94,7 +94,7 @@ const TiltCard = ({ project }: { project: typeof fallbackProjects[0] }) => {
         </div>
 
         {/* Top Bar: Tag & Icon */}
-        <div className="absolute top-0 left-0 right-0 p-6 md:p-8 flex justify-between items-start z-10" style={{ transform: "translateZ(50px)" }}>
+        <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 md:p-8 flex justify-between items-start z-10" style={{ transform: "translateZ(50px)" }}>
           <div className={`p-3 rounded-2xl bg-slate-950/70 backdrop-blur-md border border-slate-800/50 text-white ${style.shadow}`}>
             <Icon className="w-5 h-5" />
           </div>
@@ -104,7 +104,7 @@ const TiltCard = ({ project }: { project: typeof fallbackProjects[0] }) => {
         </div>
 
         {/* Bottom Content Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-32" style={{ transform: "translateZ(60px)" }}>
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 z-10 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-32" style={{ transform: "translateZ(60px)" }}>
           <div className="space-y-3 mb-6">
             <h3 className={`text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${style.colors}`}>
               {project.title}
@@ -189,7 +189,7 @@ export const PortfolioPage = () => {
           <div className="absolute w-[800px] h-[800px] border border-slate-800/20 rounded-full flex items-center justify-center" />
        </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -236,7 +236,7 @@ export const PortfolioPage = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="group flex flex-col items-center justify-center text-center p-12 h-[500px] md:h-[600px] rounded-3xl border-2 border-dashed border-slate-800 hover:border-blue-500/50 hover:bg-blue-900/5 transition-all duration-500"
+            className="group flex flex-col items-center justify-center text-center p-6 sm:p-12 h-[500px] md:h-[600px] rounded-3xl border-2 border-dashed border-slate-800 hover:border-blue-500/50 hover:bg-blue-900/5 transition-all duration-500"
           >
              <div className="w-16 h-16 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-600 group-hover:text-blue-400 mb-6 transition-colors duration-500">
                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>

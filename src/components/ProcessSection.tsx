@@ -26,7 +26,7 @@ export const ProcessSection = () => {
 
   return (
     <section id="process" className="py-24 bg-slate-950/50 relative overflow-hidden pointer-events-auto">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,23 +68,23 @@ export const ProcessSection = () => {
               >
                 {/* Mobile connecting line */}
                 {index !== steps.length - 1 && (
-                  <div className="md:hidden absolute left-6 top-24 bottom-[-48px] w-[1px] bg-slate-800 z-0"></div>
+                  <div className="md:hidden absolute left-8 top-20 bottom-[-48px] w-[1px] bg-slate-800 z-0"></div>
                 )}
 
                 <div className="relative z-10 flex flex-col md:items-center md:text-center group">
-                  <div className="w-24 h-24 mb-6 relative shrink-0">
-                    <div className="absolute inset-0 border-2 border-slate-800 rounded-full group-hover:border-blue-500/50 transition-colors duration-500 bg-slate-950 flex items-center justify-center -ml-6 md:ml-0">
-                      <span className="font-mono text-2xl text-slate-500 group-hover:text-blue-400 font-bold transition-colors">
+                  <div className="w-20 h-20 md:w-24 md:h-24 mb-6 relative shrink-0">
+                    <div className="absolute inset-0 border-2 border-slate-800 rounded-full group-hover:border-blue-500/50 transition-colors duration-500 bg-slate-950 flex items-center justify-center -ml-2 md:ml-0">
+                      <span className="font-mono text-xl md:text-2xl text-slate-500 group-hover:text-blue-400 font-bold transition-colors">
                         {step.number}
                       </span>
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-bold font-header text-white mb-3 group-hover:text-blue-200 transition-colors pl-12 md:pl-0">
+                  <h3 className="text-2xl font-bold font-header text-white mb-3 group-hover:text-blue-200 transition-colors pl-14 md:pl-0">
                     {step.title}
                   </h3>
                   
-                  <p className="text-slate-400 leading-relaxed pl-12 md:pl-0">
+                  <p className="text-slate-400 leading-relaxed pl-14 md:pl-0">
                     {step.description}
                   </p>
                 </div>

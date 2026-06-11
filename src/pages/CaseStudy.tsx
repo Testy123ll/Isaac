@@ -78,7 +78,7 @@ export const CaseStudy = () => {
         </div>
 
         {/* Hero Section */}
-        <section className="relative pt-32 md:pt-48 pb-16 md:pb-24 px-6 overflow-hidden">
+        <section className="relative pt-32 md:pt-48 pb-16 md:pb-24 px-4 sm:px-6 overflow-hidden">
              {/* Techy background */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
             
@@ -127,7 +127,7 @@ export const CaseStudy = () => {
         </section>
 
         {/* Case Study Content */}
-        <section className="container mx-auto px-6 max-w-3xl">
+        <section className="container mx-auto px-4 sm:px-6 max-w-3xl">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -161,7 +161,7 @@ export const CaseStudy = () => {
                     </h2>
                     <div className="grid gap-6">
                         {project.caseStudy.solutions.map((solution, i) => (
-                            <div key={i} className="p-6 md:p-8 rounded-2xl bg-slate-900/50 border border-slate-800">
+                            <div key={i} className="p-4 sm:p-8 rounded-2xl bg-slate-900/50 border border-slate-800">
                                 <p className="text-slate-300 leading-relaxed font-light">{solution}</p>
                             </div>
                         ))}
@@ -175,7 +175,7 @@ export const CaseStudy = () => {
                     </h2>
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {project.caseStudy.results.map((result, i) => (
-                            <div key={i} className="p-6 rounded-2xl bg-blue-900/10 border border-blue-500/20 text-center flex flex-col items-center justify-center">
+                            <div key={i} className="p-4 sm:p-6 rounded-2xl bg-blue-900/10 border border-blue-500/20 text-center flex flex-col items-center justify-center">
                                 <p className="text-blue-100 font-medium leading-relaxed">{result}</p>
                             </div>
                         ))}
@@ -186,7 +186,7 @@ export const CaseStudy = () => {
         </section>
         
         {/* Next Steps CTA */}
-        <section className="container mx-auto px-6 max-w-4xl mt-32 text-center">
+        <section className="container mx-auto px-4 sm:px-6 max-w-4xl mt-32 text-center">
             <h2 className="text-4xl font-bold font-header text-white mb-6">Ready to upgrade your infrastructure?</h2>
             <p className="text-slate-400 text-lg mb-10">I build the websites that ambitious businesses use to scale.</p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-xl shadow-blue-600/20">

@@ -55,7 +55,7 @@ export function SuccessLogs() {
   const colors = ["bg-blue-500", "bg-pink-500", "bg-amber-500", "bg-purple-500", "bg-green-500"];
   return (
     <section className="py-24 bg-slate-950 overflow-hidden">
-      <div className="container mx-auto px-6 mb-12">
+      <div className="container mx-auto px-4 sm:px-6 mb-12">
         <h2 className="text-3xl font-bold font-header tracking-tight text-center md:text-left">
           Success Logs_
         </h2>
@@ -81,7 +81,7 @@ export function SuccessLogs() {
             return (
               <div 
                   key={i} 
-                  className="flex-shrink-0 w-[400px] bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm"
+                  className="flex-shrink-0 w-[300px] sm:w-[400px] bg-slate-900/50 border border-slate-800 rounded-2xl p-5 sm:p-8 backdrop-blur-sm"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className={`w-12 h-12 rounded-full ${colorClass} overflow-hidden flex items-center justify-center font-bold text-black font-mono shadow-lg shrink-0`}>

@@ -76,7 +76,7 @@ export const AboutSection = () => {
        {/* Decorative gradient overlay */}
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-blue-900/10 to-transparent pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left Column (Bio) */}
@@ -139,7 +139,7 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8 md:p-12 rounded-3xl bg-slate-900/40 border border-slate-800 relative overflow-hidden"
+            className="p-5 sm:p-8 md:p-12 rounded-3xl bg-slate-900/40 border border-slate-800 relative overflow-hidden"
           >
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
               

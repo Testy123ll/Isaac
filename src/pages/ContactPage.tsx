@@ -23,7 +23,7 @@ export const ContactPage = () => {
              {/* Background Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
             
-            <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center justify-center">
                  <motion.div 
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -52,7 +52,7 @@ export const ContactPage = () => {
       <div className="absolute top-1/2 right-0 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export const ContactPage = () => {
              </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto bg-slate-900/40 rounded-[2rem] md:rounded-[2.5rem] border border-slate-800 p-4 sm:p-8 md:p-14 backdrop-blur-sm relative overflow-hidden">
+        <div className="max-w-6xl mx-auto bg-slate-900/40 rounded-[2rem] md:rounded-[2.5rem] border border-slate-800 p-3 sm:p-8 md:p-14 backdrop-blur-sm relative overflow-hidden">
              
              {/* Inner Glow */}
              <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/5 to-transparent pointer-events-none" />
@@ -148,7 +148,7 @@ export const ContactPage = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="lg:col-span-3 bg-slate-950 p-5 sm:p-8 md:p-10 rounded-[2rem] border border-slate-800 shadow-xl shadow-slate-950/50"
+                    className="lg:col-span-3 bg-slate-950 p-4 sm:p-8 md:p-10 rounded-[2rem] border border-slate-800 shadow-xl shadow-slate-950/50"
                 >
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Hidden budget input to pass select value to formspree */}

@@ -20,7 +20,7 @@ export function ExperienceSection() {
       {/* Subtle Background Radial Gradient */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_bottom_left,#1e3a8a0a,transparent_60%)]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export function ExperienceSection() {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto relative border-l-2 border-slate-800 ml-4 md:ml-auto">
+        <div className="max-w-4xl mx-auto relative border-l-2 border-slate-800 ml-2 md:ml-auto">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -46,7 +46,7 @@ export function ExperienceSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="relative pl-8 md:pl-12 pb-16 last:pb-0"
+              className="relative pl-6 sm:pl-8 md:pl-12 pb-16 last:pb-0"
             >
               {/* Timeline Indicator Dot */}
               <div className="absolute -left-3 top-1.5 w-6 h-6 rounded-full bg-slate-950 border-2 border-blue-500 flex items-center justify-center">
@@ -54,7 +54,7 @@ export function ExperienceSection() {
               </div>
 
               {/* Experience Card */}
-              <div className="group relative p-8 rounded-3xl bg-slate-900/40 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-900/60 transition-all duration-500">
+              <div className="group relative p-4 sm:p-6 md:p-8 rounded-3xl bg-slate-900/40 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-900/60 transition-all duration-500">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">

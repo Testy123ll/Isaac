@@ -40,7 +40,7 @@ export const BlogPage = () => {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-900/10 rounded-full blur-[100px] pointer-events-none" />
       
-      <div className="container mx-auto px-6 max-w-5xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ export const BlogPage = () => {
         <div className="space-y-8">
             {loading ? (
                 [...Array(3)].map((_, i) => (
-                    <div key={i} className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 md:p-10 animate-pulse space-y-4">
+                    <div key={i} className="bg-slate-900/40 border border-slate-800 rounded-3xl p-5 sm:p-8 md:p-10 animate-pulse space-y-4">
                         <div className="h-6 w-24 bg-slate-800 rounded-full" />
                         <div className="h-10 w-2/3 bg-slate-800 rounded-xl" />
                         <div className="h-4 w-full bg-slate-800 rounded-lg" />
@@ -79,7 +79,7 @@ export const BlogPage = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1, duration: 0.5 }}
-                        className="group relative bg-slate-900/40 border border-slate-800 rounded-3xl p-8 md:p-10 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-500 overflow-hidden"
+                        className="group relative bg-slate-900/40 border border-slate-800 rounded-3xl p-5 sm:p-8 md:p-10 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-500 overflow-hidden"
                     >
                         {/* Hover Glow */}
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

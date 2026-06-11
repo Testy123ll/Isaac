@@ -35,7 +35,7 @@ export const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-24 bg-slate-950 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export const ProjectsSection = () => {
                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
                 </div>
                 
-                <div className="p-8 md:p-10 flex flex-col flex-1 relative z-10 shadow-[0_-20px_40px_rgba(2,6,23,0.8)] bg-slate-900">
+                <div className="p-5 sm:p-8 md:p-10 flex flex-col flex-1 relative z-10 shadow-[0_-20px_40px_rgba(2,6,23,0.8)] bg-slate-900">
                   <div className="flex justify-between items-start mb-6">
                      <div>
                        <span className="text-xs font-mono text-blue-400 uppercase tracking-widest mb-2 block">

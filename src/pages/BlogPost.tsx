@@ -120,7 +120,7 @@ export const BlogPost = () => {
         </section>
 
         {/* Content Container - 750px max width for optimal reading */}
-        <section className="container mx-auto px-6 max-w-[750px] relative -mt-32 z-10">
+        <section className="container mx-auto px-4 sm:px-6 max-w-[750px] relative -mt-32 z-10">
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -166,7 +166,7 @@ export const BlogPost = () => {
             </motion.div>
             
             {/* CTA */}
-            <div className="mt-24 p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-center">
+            <div className="mt-24 p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-center">
                 <h3 className="text-2xl font-bold font-header text-white mb-4">Want to build something similar?</h3>
                 <p className="text-slate-400 mb-8">I build the websites that ambitious businesses use to scale.</p>
                 <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-600/20">

@@ -70,7 +70,7 @@ export function PainPointsSection() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,#1e3a8a05,transparent_60%)]" />
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_bottom_left,#0ea5e905,transparent_65%)]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Label & Header */}
         <motion.div
@@ -99,7 +99,7 @@ export function PainPointsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`group p-8 rounded-3xl bg-slate-900/40 border transition-all duration-300 ${
+              className={`group p-5 sm:p-8 rounded-3xl bg-slate-900/40 border transition-all duration-300 ${
                 point.highlighted 
                   ? 'border-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.15)] bg-slate-900/60' 
                   : 'border-slate-800 hover:border-blue-500/50 hover:bg-slate-900/60'
