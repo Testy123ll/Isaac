@@ -18,6 +18,8 @@ import { BlogPage as AdminBlogPage } from './pages/admin/BlogPage';
 import { TestimonialsPage } from './pages/admin/TestimonialsPage';
 import { SiteContentPage } from './pages/admin/SiteContentPage';
 import { FAQPage } from './pages/admin/FAQPage';
+import { AnalyticsPage } from './pages/admin/AnalyticsPage';
+import { AnalyticsTracker } from './components/AnalyticsTracker';
 
 function AppContent() {
   const location = useLocation();
@@ -25,6 +27,7 @@ function AppContent() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-white selection:bg-blue-600 selection:text-white font-sans overflow-x-hidden pb-28">
+      {!isAdminPath && <AnalyticsTracker />}
       {!isAdminPath && <NavigationBar />}
       {!isAdminPath && <FloatingWidgets />}
       
@@ -49,6 +52,7 @@ function AppContent() {
           <Route path="testimonials" element={<TestimonialsPage />} />
           <Route path="site-content" element={<SiteContentPage />} />
           <Route path="faq" element={<FAQPage />} />
+          <Route path="analytics" element={<AnalyticsPage />} />
         </Route>
       </Routes>
       

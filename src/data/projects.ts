@@ -1,74 +1,3 @@
-// @ts-ignore - Vite imaginary tools imports
-import austinSmilesImg from '/austin-smiles.png?w=1200&format=webp';
-// @ts-ignore
-import impactPestImg from '/impactpest.png';
-// @ts-ignore
-import eaasyreelsImg from '/eaasyreels.png?w=1200&format=webp';
-// @ts-ignore
-import blessedOlasImg from '/blessed-olas.png?w=1200&format=webp';
-
-// --- NEW PROJECTS (Bypassing Sharp/Vite-Imagetools for AI mockups) ---
-// @ts-ignore
-import nuptAiImg from '/nupt-ai.png';
-// @ts-ignore
-import scentbirdImg from '/scentbird.png';
-// @ts-ignore
-import curtsyImg from '/curtsy.png';
-// @ts-ignore
-import betterLegalImg from '/betterlegal.png';
-// @ts-ignore
-import carmaImg from '/carma.png';
-
-// --- BATCH 2: D2C / E-COMMERCE ---
-// @ts-ignore
-import allbirdsImg from '/allbirds.png';
-// @ts-ignore
-import hatchImg from '/hatch.png';
-// @ts-ignore
-import kittenishImg from '/kittenish.png';
-// @ts-ignore
-import opositivImg from '/opositiv.png';
-
-// --- BATCH 3: MASSIVE PORTFOLIO EXPANSION ---
-// @ts-ignore
-import genSaasImg from '/generic_saas.png';
-// @ts-ignore
-import genEcomImg from '/generic_ecommerce.png';
-// @ts-ignore
-import genLandImg from '/generic_landing.png';
-// @ts-ignore
-import genPortImg from '/generic_portal.png';
-
-// --- NEW MOCKUPS (JPGs from portfolio image) ---
-// @ts-ignore
-import accentAdvisorImg from '/accent-advisor.jpg';
-// @ts-ignore
-import boutiqueImg from '/boutique.jpg';
-// @ts-ignore
-import curtsyJpg from '/curtsy.jpg';
-// @ts-ignore
-import dojoChampImg from '/dojo-champ.jpg';
-// @ts-ignore
-import drSaadImg from '/dr-saad.jpg';
-// @ts-ignore
-import esseyiImg from '/esseyi.jpg';
-// @ts-ignore
-import feltImg from '/felt.jpg';
-// @ts-ignore
-import hatachImg from '/hatach.jpg';
-// @ts-ignore
-import jessicaImg from '/jessica.jpg';
-// @ts-ignore
-import kittenishJpg from '/kittenish.jpg';
-// @ts-ignore
-import oceanAirImg from '/ocean-air.jpg';
-// @ts-ignore
-import opositivJpg from '/opositiv.jpg';
-// @ts-ignore
-import riseImg from '/rise.jpg';
-// @ts-ignore
-import weglobaleeImg from '/weglobalee.jpg';
-
 export interface Project {
   slug: string;
   title: string;
@@ -93,7 +22,7 @@ export const projects: Project[] = [
     description: 'A complete Website Audit & Redesign for a luxury dental clinic. By identifying UX friction, specifically treating high-ticket veneer leads like standard cleaning leads, I engineered a custom "Smart Triage" React modal and an immersive "Atmosphere Video" hero to significantly increase VIP conversions.',
     techStack: ['React', 'Site Audit', 'CRO', 'Tailwind CSS'],
     liveUrl: 'https://austin-smiles.vercel.app/',
-    imageUrl: drSaadImg,
+    imageUrl: '/dr-saad.jpg',
     caseStudy: {
       overview: 'Austin Elite Smiles handles high-ticket VIP patients. A thorough website audit revealed critical UX friction: the original site treated a $30,000 veneer lead identical to an $80 cleaning lead. This generic funnel caused massive drop-offs.',
       challenges: [
@@ -120,7 +49,7 @@ export const projects: Project[] = [
     description: 'A completely functional, high-converting lead generation platform built for a pest control company. This project directly connects localized SEO with an ultra-fast frontend to capture residential and commercial leads before they bounce to competitors.',
     techStack: ['React', 'SEO Optimization', 'Lead Gen', 'Tailwind'],
     liveUrl: 'https://impactpest-com.vercel.app/',
-    imageUrl: impactPestImg,
+    imageUrl: '/impactpest.png',
     caseStudy: {
       overview: 'Impact Pest needed a dominant local presence to outrank established competitors. Their previous site was a slow, templated brochure that leaked potential leads. They needed a high-performance capture engine.',
       challenges: [
@@ -147,7 +76,7 @@ export const projects: Project[] = [
     description: 'A modern, ultra-clean P2P fashion marketplace. Engineered massive feeds of high-quality clothing items, intricate user profile interactions, and heavily complex filtering and search mechanisms optimized for mobile conversion.',
     techStack: ['React', 'GraphQL', 'Algolia', 'Tailwind'],
     liveUrl: 'https://curtsyapp.com',
-    imageUrl: curtsyJpg,
+    imageUrl: '/curtsy.jpg',
     caseStudy: {
       overview: 'Curtsy is a rapidly growing P2P marketplace. The core engineering requirement was speed. When users search for "vintage pink dress", they expect instantaneous, infinite-scrolling results mapped precisely against dense inventory databases.',
       challenges: [
@@ -174,7 +103,7 @@ export const projects: Project[] = [
     description: 'A modern, conversion-optimized web application engineered for scalability. This project focused heavily on clean architectural principles, perfect mobile responsiveness, and an incredibly smooth user experience that guides visitors intuitively toward the primary call-to-action.',
     techStack: ['React', 'Clean Arch', 'Responsive', 'UX Design'],
     liveUrl: 'https://blessed-olas.vercel.app/',
-    imageUrl: blessedOlasImg,
+    imageUrl: '/blessed-olas.png',
     caseStudy: {
       overview: 'Blessed Olas needed a completely modern web application that not only looked great but was architected for optimal conversions and smooth user traversal.',
       challenges: [
@@ -201,7 +130,7 @@ export const projects: Project[] = [
     description: 'An enterprise-scale productivity suite dashboard designed to drastically reduce cognitive load.',
     techStack: ['React', 'TypeScript', 'Redux'],
     liveUrl: 'https://rise.fairsketch.com',
-    imageUrl: riseImg,
+    imageUrl: '/rise.jpg',
     caseStudy: {
       overview: 'Fairsketch needed a rigid, highly typed dashboard capable of digesting massive real-time project metrics.',
       challenges: ['Deeply nested state objects causing infinite re-renders.', 'Complex drag-and-drop mechanics rendering slowly.'],
@@ -216,7 +145,7 @@ export const projects: Project[] = [
     description: 'A complex, multi-tenant portal application orchestrating extensive global logistics flows.',
     techStack: ['React', 'Dashboards', 'API Auth'],
     liveUrl: 'https://app.weglobalee.com',
-    imageUrl: weglobaleeImg,
+    imageUrl: '/weglobalee.jpg',
     caseStudy: {
       overview: 'WeGlobalee acts as the central hub for global supply chains, requiring strict data access controls and complex tabular rendering.',
       challenges: ['Rendering immense datasets without locking the browser.', 'Complex multi-role authorization layers.'],
@@ -231,7 +160,7 @@ export const projects: Project[] = [
     description: 'Designed and deployed a chic, high-end editorial commerce platform. Blended high-fashion editorial content directly with a highly optimized, high-converting Shopify cart pipeline.',
     techStack: ['Next.js', 'Shopify', 'Framer Motion', 'React'],
     liveUrl: 'https://www.hatchcollection.com',
-    imageUrl: hatachImg,
+    imageUrl: '/hatach.jpg',
     caseStudy: {
       overview: 'Hatch Collection bridges the gap between high-fashion editorial and D2C commerce. The platform needed to feel like reading a luxury magazine while simultaneously driving aggressive sales funnels through a highly custom headless architecture.',
       challenges: [
@@ -258,7 +187,7 @@ export const projects: Project[] = [
     description: 'A vibrant, high-energy fashion boutique platform engineered for massive traffic spikes. Built a deeply optimized, highly dynamic product grid capable of handling extreme fast-fashion inventory turnover.',
     techStack: ['React', 'GraphQL', 'Redis', 'Vercel'],
     liveUrl: 'https://kittenish.com',
-    imageUrl: kittenishJpg,
+    imageUrl: '/kittenish.jpg',
     caseStudy: {
       overview: 'Kittenish operates in the hyper-fast world of trendy fast-fashion. When new collections drop, the traffic spikes are immense. The frontend required an architecture capable of surviving massive concurrent loads while presenting a flawless, high-energy aesthetic.',
       challenges: [
@@ -285,7 +214,7 @@ export const projects: Project[] = [
     description: 'Architected a highly interactive, clinical-grade D2C subscription platform for health supplements. Engineered a bespoke subscription builder paired with deep data visualizations regarding active ingredient efficacy.',
     techStack: ['Next.js', 'Stripe', 'D3.js', 'TypeScript'],
     liveUrl: 'https://opositiv.com',
-    imageUrl: opositivJpg,
+    imageUrl: '/opositiv.jpg',
     caseStudy: {
       overview: 'O Positiv combines D2C wellness with clinical data. The user interface needed to project extreme medical trust while remaining approachable, guiding users through a complex, highly personalized supplement subscription builder.',
       challenges: [
@@ -312,7 +241,7 @@ export const projects: Project[] = [
     description: 'A heavily optimized travel and tourism platform handling immense visual media without stuttering.',
     techStack: ['React', 'Next.js', 'Image Caching'],
     liveUrl: 'https://www.oceanairtravels.com',
-    imageUrl: oceanAirImg,
+    imageUrl: '/ocean-air.jpg',
     caseStudy: {
       overview: 'Travel sites are notoriously heavy. OceanAir required an architecture that loaded ultra-HD video backgrounds effortlessly.',
       challenges: ['Heavy LCP penalties from background videos.', 'Cluttered mobile nav systems.'],
@@ -327,7 +256,7 @@ export const projects: Project[] = [
     description: 'A localized real-estate portal explicitly engineered for hyper-fast localized search indexing.',
     techStack: ['React', 'SSR', 'SEO Engine'],
     liveUrl: 'https://jessicabouzane.californiarealtyagents.com',
-    imageUrl: jessicaImg,
+    imageUrl: '/jessica.jpg',
     caseStudy: {
       overview: 'Local real estate depends on brutal algorithmic SEO. The entire site had to be Server-Side Rendered for maximum crawlability.',
       challenges: ['Dynamically generated property pages indexing poorly.', 'Slow map-pin clustering.'],
@@ -342,7 +271,7 @@ export const projects: Project[] = [
     description: 'A complex educational SaaS portal bridging students with real-time video tutoring protocols.',
     techStack: ['WebRTC', 'React', 'Node.js'],
     liveUrl: 'https://accentadvisor.com',
-    imageUrl: accentAdvisorImg,
+    imageUrl: '/accent-advisor.jpg',
     caseStudy: {
       overview: 'Providing smooth VoIP/Video tutoring directly in the browser demands strict real-time protocol management.',
       challenges: ['WebRTC connection instability across disparate networks.', 'Synthesizing scheduling logic dynamically.'],
@@ -357,7 +286,7 @@ export const projects: Project[] = [
     description: 'A minimalist fashion storefront focusing entirely on cart optimization and visual aesthetics.',
     techStack: ['Shopify Headless', 'React', 'Tailwind'],
     liveUrl: 'https://www.kboutiquere.com',
-    imageUrl: boutiqueImg,
+    imageUrl: '/boutique.jpg',
     caseStudy: {
       overview: 'K-Boutique required a stark departure from raw Shopify templates into a purely bespoke headless environment.',
       challenges: ['Slow checkout transitions via native liquid.', 'Boring product grids.'],
@@ -372,7 +301,7 @@ export const projects: Project[] = [
     description: 'A fully scaled marketplace architecture managing massive volumes of independent vendor hubs.',
     techStack: ['React', 'PostgreSQL', 'Microservices'],
     liveUrl: 'https://felt.co.nz',
-    imageUrl: feltImg,
+    imageUrl: '/felt.jpg',
     caseStudy: {
       overview: 'P2P marketplaces demand incredible scalability. When independent vendors push items, the feeds must update synchronously.',
       challenges: ['Vendor dashboard slowness.', 'Feed staleness vs aggressive caching matrices.'],
@@ -387,7 +316,7 @@ export const projects: Project[] = [
     description: 'A vibrant, highly localized martial arts academy portal designed explicitly to maximize parent onboarding.',
     techStack: ['React', 'Stripe', 'Tailwind'],
     liveUrl: 'https://dojochamp.com/',
-    imageUrl: dojoChampImg,
+    imageUrl: '/dojo-champ.jpg',
     caseStudy: {
       overview: 'DojoChamp requires extremely fluid class scheduling and integrated liability waivers.',
       challenges: ['Cumbersome onboarding forms.', 'Confusing nested class schedules.'],
@@ -402,7 +331,7 @@ export const projects: Project[] = [
     description: 'A high-impact, deeply atmospheric corporate brand landing page.',
     techStack: ['React', 'GSAP', 'Next.js'],
     liveUrl: 'https://www.esseyi.com',
-    imageUrl: esseyiImg,
+    imageUrl: '/esseyi.jpg',
     caseStudy: {
       overview: 'Esseyi demanded a UI that instantly commanded respect via massive typography and immersive motion.',
       challenges: ['GSAP animations conflicting with React strict mode.', 'Mobile scroll-jacking penalties.'],
@@ -417,7 +346,7 @@ export const projects: Project[] = [
     description: 'A high-performance, visually engaging portfolio built specifically for a videographer and content creator. Engineered with a sleek dark-mode aesthetic, the platform focuses on ultra-fast load times and fluid media playback without performance bottlenecks.',
     techStack: ['Next.js', 'Media Stream', 'Performance', 'Dark Mode'],
     liveUrl: 'https://eaasyreels.vercel.app/',
-    imageUrl: eaasyreelsImg,
+    imageUrl: '/eaasyreels.png',
     caseStudy: {
       overview: 'Eaasyreels required a platform that matched the visual fidelity of their video content. A videographer\'s portfolio lives and dies by media performance, so ultra-fast load times and fluid playback were non-negotiable.',
       challenges: [
@@ -444,7 +373,7 @@ export const projects: Project[] = [
     description: 'Scaled the digital storefront architecture for a leading D2C fragrance subscription platform. Focused strictly on Conversion Rate Optimization (CRO), reducing subscription checkout friction, and drastically improving the mobile discovery experience.',
     techStack: ['React', 'Stripe', 'GraphQL', 'Tailwind'],
     liveUrl: 'https://www.scentbird.com',
-    imageUrl: scentbirdImg,
+    imageUrl: '/scentbird.png',
     caseStudy: {
       overview: 'Scentbird moves immense volume. At this enterprise scale, a 1% drop in conversion equals millions in lost revenue. The platform required a frontend overhaul focused entirely on speed, trust signals, and frictionless checkout flow.',
       challenges: [
@@ -471,7 +400,7 @@ export const projects: Project[] = [
     description: 'A high-end photography editing platform powered by Machine Learning. I architected the real-time processing pipeline and the responsive React interface allowing photographers to bulk-process thousands of raw images instantly.',
     techStack: ['Next.js', 'Python API', 'Data Viz', 'Vercel'],
     liveUrl: 'https://nupt.ai/',
-    imageUrl: nuptAiImg,
+    imageUrl: '/nupt-ai.png',
     caseStudy: {
       overview: 'Nupt handles massive payloads of RAW photography. The frontend needed to effortlessly accept gigabytes of data, stream the progress to the user via WebSockets, and present a sleek, minimalist environment to review the AI-edited outputs without distracting from the photography itself.',
       challenges: [
@@ -498,7 +427,7 @@ export const projects: Project[] = [
     description: 'An enterprise-grade, high-trust Legal SaaS application dashboard. Built for strict security, displaying corporate document generation, progress trackers for LLC formation, and intricately validated secure data-entry forms.',
     techStack: ['React', 'Security', 'FinTech', 'Next.js'],
     liveUrl: 'https://app2.betterlegal.com',
-    imageUrl: betterLegalImg,
+    imageUrl: '/betterlegal.png',
     caseStudy: {
       overview: 'BetterLegal requires maximum user trust. Handling sensitive corporate documents, EIN formations, and routing financial data means the UI cannot just look good, but must feel impenetrable, reliable, and strictly professional.',
       challenges: [
@@ -525,7 +454,7 @@ export const projects: Project[] = [
     description: 'A climate-tech sustainability data dashboard engineered to visualize complex metrics. Displaying interactive maps plotting global offset projects, intricate metrics tracking widgets, and stark, transparent reporting logics.',
     techStack: ['React', 'Mapbox', 'D3.js', 'Vercel'],
     liveUrl: 'https://carma.earth',
-    imageUrl: carmaImg,
+    imageUrl: '/carma.png',
     caseStudy: {
       overview: 'Carma aims to transparently map global carbon offsets. The frontend challenge was rendering immense volumes of geospatial and statistical data in a way that was instantly digestible for enterprise buyers and environmentally conscious end-users.',
       challenges: [
@@ -552,7 +481,7 @@ export const projects: Project[] = [
     description: 'Engineered a highly performant, minimalist D2C storefront for a global sustainable footwear brand. Focused on sub-second paint times, fluid product exploration, and frictionless cart architecture.',
     techStack: ['React', 'Shopify Plus', 'WebGL', 'Tailwind'],
     liveUrl: 'https://www.allbirds.com',
-    imageUrl: allbirdsImg,
+    imageUrl: '/allbirds.png',
     caseStudy: {
       overview: 'Allbirds demanded an online experience as light and minimal as their physical products. The core frontend challenge was rendering extremely high-resolution product photography and 3D models without sacrificing crucial core web vitals and mobile conversion speeds.',
       challenges: [
@@ -579,7 +508,7 @@ export const projects: Project[] = [
     description: 'A striking agency landing page engineered for maximum conversion and ultra-fast paint times.',
     techStack: ['React', 'Framer Motion', 'Tailwind'],
     liveUrl: 'https://addxstudio.com',
-    imageUrl: genLandImg,
+    imageUrl: '/generic_landing.png',
     caseStudy: {
       overview: 'AddX Studio required a bold, high-performance landing page to capture enterprise leads. Strict optimization constraints were required to maintain smooth animations.',
       challenges: ['Layout shift during heavy animation sequences.', 'Cross-browser LCP times.'],
@@ -594,7 +523,7 @@ export const projects: Project[] = [
     description: 'A premium real-estate lead generation landing page built for high-touch clients.',
     techStack: ['Webflow', 'React', 'GSAP'],
     liveUrl: 'https://fortunespacesolution.webflow.io',
-    imageUrl: genLandImg,
+    imageUrl: '/generic_landing.png',
     caseStudy: {
       overview: 'Fortune Space needed a flawless, luxury digital presence to market high-end real estate.',
       challenges: ['Heavy imagery bogging down mobile responsiveness.', 'Complex multi-step form abandonment.'],
@@ -609,7 +538,7 @@ export const projects: Project[] = [
     description: 'A highly custom frontend storefront marrying Webflow aesthetics with transactional speed.',
     techStack: ['Node.js', 'E-Commerce', 'Tailwind'],
     liveUrl: 'https://gundo-shoe.webflow.io',
-    imageUrl: genEcomImg,
+    imageUrl: '/generic_ecommerce.png',
     caseStudy: {
       overview: 'A boutique footwear brand demanding a fluid, immersive shopping experience.',
       challenges: ['Complex CMS linking for variant management.', 'Mobile cart slide-out latency.'],
@@ -624,7 +553,7 @@ export const projects: Project[] = [
     description: 'A highly sophisticated AI infrastructure platform powering autonomous agent tooling.',
     techStack: ['Next.js', 'LLMs', 'WebSockets', 'Tailwind'],
     liveUrl: 'https://agent.ai/sincode',
-    imageUrl: genSaasImg,
+    imageUrl: '/generic_saas.png',
     caseStudy: {
       overview: 'SinCode requires instantaneous, continuous connection protocols to stream LLM responses to a complex, multi-modal editor UI.',
       challenges: ['Handling persistent WebSocket connection drops.', 'Parsing streaming markdown at 60fps.'],
@@ -639,7 +568,7 @@ export const projects: Project[] = [
     description: 'A vast culturally diverse storefront managing hundreds of complex SKUs effortlessly.',
     techStack: ['React', 'Next.js', 'Redis'],
     liveUrl: 'https://boutiqueafricaine.com',
-    imageUrl: genEcomImg,
+    imageUrl: '/generic_ecommerce.png',
     caseStudy: {
       overview: 'Handling vastly diverse SKUs with deep variant mapping requires strict architectural data boundaries.',
       challenges: ['Complex filtering by extremely granular product tags.', 'Slow category indexing.'],
@@ -654,7 +583,7 @@ export const projects: Project[] = [
     description: 'A deep-level SaaS architecture dedicated to infrastructure management and complex logging.',
     techStack: ['React', 'Tailwind', 'WebSockets'],
     liveUrl: 'https://www.cratebase.io',
-    imageUrl: genSaasImg,
+    imageUrl: '/generic_saas.png',
     caseStudy: {
       overview: 'Cratebase visualizes raw system metrics. The frontend must parse intense JSON log structures instantly.',
       challenges: ['Browser tab crashing during heavy log tailing.', 'Unreadable dense syntax.'],
@@ -669,7 +598,7 @@ export const projects: Project[] = [
     description: 'A hyper-chic, specialized brand portal blending profound storytelling with deep checkout flows.',
     techStack: ['Next.js', 'Framer Motion', 'Tailwind'],
     liveUrl: 'https://ckin.com',
-    imageUrl: genEcomImg,
+    imageUrl: '/generic_ecommerce.png',
     caseStudy: {
       overview: 'CKIN required the storefront to feel like a high-fashion editorial piece immediately driving to cart.',
       challenges: ['High-resolution storytelling elements bloating TTFB.', 'Clunky native shopping cart models.'],
@@ -684,7 +613,7 @@ export const projects: Project[] = [
     description: 'An aggressive B2B landing page architected solely for local conversion and trust-building.',
     techStack: ['React', 'HTML/CSS', 'SEO'],
     liveUrl: 'https://www.justshredding.co.uk',
-    imageUrl: genLandImg,
+    imageUrl: '/generic_landing.png',
     caseStudy: {
       overview: 'B2B service conversions require immediate trust signals and blisteringly fast phone-number visibility.',
       challenges: ['Poor mobile tap-targets.', 'Lack of instantaneous quote formulation.'],
@@ -699,7 +628,7 @@ export const projects: Project[] = [
     description: 'A comprehensive hospitality portal managing intricate room bookings and dynamic hospitality scaling.',
     techStack: ['React', 'Booking API', 'Node.js'],
     liveUrl: 'https://www.hotelfusionsf.com/stay',
-    imageUrl: genPortImg,
+    imageUrl: '/generic_portal.png',
     caseStudy: {
       overview: 'Hospitality APIs return massively complex hierarchical data. The frontend needs to simplify this totally.',
       challenges: ['Complex room-availability state matrix synchronization.', 'Slow calendar rendering.'],
@@ -714,7 +643,7 @@ export const projects: Project[] = [
     description: 'An institutional-grade Risk Management SaaS offering profound data clarity via custom tables.',
     techStack: ['React', 'Ag-Grid', 'D3.js'],
     liveUrl: 'https://app.riskhero.com/login',
-    imageUrl: genSaasImg,
+    imageUrl: '/generic_saas.png',
     caseStudy: {
       overview: 'Risk modeling demands unparalleled data clarity. The dashboard must handle thousands of rows with zero latency.',
       challenges: ['Native HTML tables locking rendering threads on large payloads.', 'Complex multi-column sorting.'],
@@ -729,7 +658,7 @@ export const projects: Project[] = [
     description: 'An intensive academic productivity SaaS platform linking massive disparate institutional datasets.',
     techStack: ['React', 'GraphQL', 'Data Viz'],
     liveUrl: 'https://yojana.academicunderdogs.com',
-    imageUrl: genSaasImg,
+    imageUrl: '/generic_saas.png',
     caseStudy: {
       overview: 'Synthesizing deeply hierarchical academic data requires profound architectural forethought.',
       challenges: ['Deep GraphQL querying returning immensely nested data.', 'Displaying recursive hierarchies.'],

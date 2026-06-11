@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, Send } from 'lucide-react';
+import { trackEvent } from './AnalyticsTracker';
 
 type Message = {
   id: string;
@@ -128,6 +129,11 @@ const formatMessageText = (text: string, isUser: boolean) => {
             href={mdLinkMatch[2]}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (mdLinkMatch[2].includes('wa.link') || mdLinkMatch[2].includes('whatsapp.com')) {
+                trackEvent('click_whatsapp', { source: 'chatbot' });
+              }
+            }}
             className={`${
               isUser ? 'text-white underline font-semibold' : 'text-blue-400 hover:text-blue-300 underline font-medium'
             } transition-colors inline-flex items-center gap-0.5`}
@@ -147,6 +153,11 @@ const formatMessageText = (text: string, isUser: boolean) => {
             href={part}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (part.includes('wa.link') || part.includes('whatsapp.com')) {
+                trackEvent('click_whatsapp', { source: 'chatbot' });
+              }
+            }}
             className={`${
               isUser ? 'text-white underline font-semibold' : 'text-blue-400 hover:text-blue-300 underline font-medium'
             } transition-colors inline-flex items-center gap-0.5`}
@@ -282,6 +293,12 @@ export const FloatingWidgets = () => {
 
   const [showPop, setShowPop] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    if (isAiOpen) {
+      trackEvent('open_chatbot');
+    }
+  }, [isAiOpen]);
 
   useEffect(() => {
     let triggered = false;

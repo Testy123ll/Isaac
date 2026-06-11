@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Zap, Send, Terminal, AlertCircle, CheckCircle2, Github, Linkedin, Twitter, Instagram, MessageCircle } from 'lucide-react';
-import { useForm, ValidationError } from '@formspree/react';
 
+import { useForm, ValidationError } from '@formspree/react';
+import { trackEvent } from './AnalyticsTracker';
 
 const FORM_ID = "xwvnkvkg";
+
 
 const budgetOptions = [
   { id: 'under-500', label: 'Under $500' },
@@ -16,6 +18,13 @@ const budgetOptions = [
 export const ContactSection = () => {
   const [selectedBudget, setSelectedBudget] = useState('500-1500');
   const [state, handleSubmit] = useForm(FORM_ID);
+
+  useEffect(() => {
+    if (state.succeeded) {
+      trackEvent('submit_contact_form', { source: 'homepage' });
+    }
+  }, [state.succeeded]);
+
 
   if (state.succeeded) {
       return (
@@ -101,7 +110,14 @@ export const ContactSection = () => {
                           </div>
                       </a>
 
-                      <a href="https://wa.link/0cit50" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-green-500/50 transition-all duration-300">
+                      <a 
+                        href="https://wa.link/0cit50" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackEvent('click_whatsapp', { source: 'contact_section' })}
+                        className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-green-500/50 transition-all duration-300"
+                      >
+
                           <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center text-green-400 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
                               <MessageCircle size={20} />
                           </div>

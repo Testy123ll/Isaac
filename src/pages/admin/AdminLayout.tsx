@@ -11,7 +11,8 @@ import {
   LogOut, 
   Menu, 
   X,
-  Compass
+  Compass,
+  BarChart3
 } from 'lucide-react';
 
 export const AdminLayout = () => {
@@ -70,6 +71,7 @@ export const AdminLayout = () => {
     { label: 'Testimonials', path: '/admin/testimonials', icon: MessageSquare },
     { label: 'Site Content', path: '/admin/site-content', icon: Settings },
     { label: 'FAQ Accordion', path: '/admin/faq', icon: HelpCircle },
+    { label: 'Analytics', path: '/admin/analytics', icon: BarChart3 },
   ];
 
   return (

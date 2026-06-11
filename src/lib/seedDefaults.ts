@@ -4,43 +4,7 @@
  * Safe to call on every app load — never overwrites existing data.
  */
 import { supabase } from './supabase';
-
-// @ts-ignore
-import drSaadImg from '/dr-saad.jpg';
-// @ts-ignore
-import impactPestImg from '/impactpest.png';
-// @ts-ignore
-import curtsyJpg from '/curtsy.jpg';
-// @ts-ignore
-import blessedOlasImg from '/blessed-olas.png?w=1200&format=webp';
-// @ts-ignore
-import riseImg from '/rise.jpg';
-// @ts-ignore
-import weglobaleeImg from '/weglobalee.jpg';
-// @ts-ignore
-import eaasyreelsImg from '/eaasyreels.png?w=1200&format=webp';
-// @ts-ignore
-import hatachImg from '/hatach.jpg';
-// @ts-ignore
-import kittenishJpg from '/kittenish.jpg';
-// @ts-ignore
-import opositivJpg from '/opositiv.jpg';
-// @ts-ignore
-import nuptAiImg from '/nupt-ai.png';
-// @ts-ignore
-import scentbirdImg from '/scentbird.png';
-// @ts-ignore
-import betterLegalImg from '/betterlegal.png';
-// @ts-ignore
-import carmaImg from '/carma.png';
-// @ts-ignore
-import oceanAirImg from '/ocean-air.jpg';
-// @ts-ignore
-import jessicaImg from '/jessica.jpg';
-// @ts-ignore
-import accentAdvisorImg from '/accent-advisor.jpg';
-// @ts-ignore
-import allbirdsImg from '/allbirds.png';
+import { projects as fallbackProjects } from '../data/projects';
 
 // ─── FAQs ────────────────────────────────────────────────────────────────────
 const DEFAULT_FAQS = [
@@ -129,26 +93,11 @@ const DEFAULT_BLOG_POSTS = [
 ];
 
 // ─── Projects ─────────────────────────────────────────────────────────────────
-const DEFAULT_PROJECTS = [
-  { slug: 'austin-elite-smiles', title: 'Austin Elite Smiles', category: 'Luxury Dental UX', description: 'A complete Website Audit & Redesign for a luxury dental clinic. By identifying UX friction, specifically treating high-ticket veneer leads like standard cleaning leads, I engineered a custom "Smart Triage" React modal and an immersive "Atmosphere Video" hero to significantly increase VIP conversions.', techStack: ['React', 'Site Audit', 'CRO', 'Tailwind CSS'], liveUrl: 'https://austin-smiles.vercel.app/', imageUrl: drSaadImg, type: 'client', order_index: 0, caseStudy: { overview: 'Austin Elite Smiles handles high-ticket VIP patients. A thorough website audit revealed critical UX friction: the original site treated a $30,000 veneer lead identical to an $80 cleaning lead.', challenges: ['Generic funnel creating high friction for premium clients.', 'High bounce rates due to an uninspiring visual atmosphere.', 'No clear segregation between routine care and luxury cosmetic procedures.'], solutions: ['Engineered a custom "Smart Triage" React modal that segments visitors based on their exact needs.', 'Implemented an "Atmosphere Video" hero to immediately establish trust and luxury branding.', 'Streamlined the conversion process specifically for high-ticket veneer leads.'], results: ['Dramatically increased VIP conversion rates.', 'Reduced bounce rate through instant visual engagement.', 'Clean, actionable lead generation data provided to the clinic.'] } },
-  { slug: 'impact-pest', title: 'Impact Pest', category: 'Lead-Gen Website', description: 'A completely functional, high-converting lead generation platform built for a pest control company. This project directly connects localized SEO with an ultra-fast frontend to capture residential and commercial leads before they bounce to competitors.', techStack: ['React', 'SEO Optimization', 'Lead Gen', 'Tailwind'], liveUrl: 'https://impactpest-com.vercel.app/', imageUrl: impactPestImg, type: 'client', order_index: 1, caseStudy: { overview: 'Impact Pest needed a dominant local presence to outrank established competitors. Their previous site was a slow, templated brochure that leaked potential leads.', challenges: ['Outdated templated design failing to convert mobile traffic.', 'Extremely slow load times harming Google Business Profile rankings.', 'Lack of clear trust signals and immediate call-to-actions for stressed homeowners.'], solutions: ['Engineered a blazingly fast React frontend ensuring sub-second load times on 3G networks.', 'Structured the UI entirely around immediate lead capture.', 'Implemented rigorous on-page technical SEO to dominate local search queries.'], results: ['Massive spike in highly localized, qualified leads.', 'Zero-friction mobile experience leading to higher call volumes.', 'A scalable platform ready to expand into new service territories.'] } },
-  { slug: 'curtsy', title: 'Curtsy App', category: 'P2P Marketplace', description: 'A modern, ultra-clean P2P fashion marketplace. Engineered massive feeds of high-quality clothing items, intricate user profile interactions, and heavily complex filtering and search mechanisms optimized for mobile conversion.', techStack: ['React', 'GraphQL', 'Algolia', 'Tailwind'], liveUrl: 'https://curtsyapp.com', imageUrl: curtsyJpg, type: 'client', order_index: 2, caseStudy: { overview: 'Curtsy is a rapidly growing P2P marketplace. The core engineering requirement was speed, meaning instantaneous, infinite-scrolling results mapped precisely against dense inventory databases.', challenges: ['Infinite scrolling feeds lagging heavily on mid-range Android and older iOS devices.', 'Complex multi-variable filtering slowing down DB queries.', 'Messy, untrusted user-uploaded images ruining aesthetic consistency.'], solutions: ['Re-architected the main product feed using virtualization techniques to ensure 60fps scrolling.', 'Integrated Algolia Search pipelines natively for sub-10ms query returns.', 'Built a client-side image cropping and normalization pipeline.'], results: ['Liquid-smooth infinite scrolling unlocked massive increases in session duration.', 'Lightning-fast filter manipulation drove higher cart-add rates.', 'A highly scalable, universally aesthetic marketplace.'] } },
-  { slug: 'blessed-olas', title: 'Blessed Olas', category: 'Modern Web App', description: 'A modern, conversion-optimized web application engineered for scalability. This project focused heavily on clean architectural principles, perfect mobile responsiveness, and an incredibly smooth user experience.', techStack: ['React', 'Clean Arch', 'Responsive', 'UX Design'], liveUrl: 'https://blessed-olas.vercel.app/', imageUrl: blessedOlasImg, type: 'client', order_index: 3, caseStudy: { overview: 'Blessed Olas needed a completely modern web application that not only looked great but was architected for optimal conversions and smooth user traversal.', challenges: ['Lack of structural clarity leading to confused user journeys.', 'Poor mobile optimization causing traffic drop-offs.', 'A need for pure, scalable code architecture.'], solutions: ['Prioritized clean architecture and maintainable code for extreme scalability.', 'Engineered perfect mobile responsiveness, ensuring the application feels native on any device.', 'Optimized the entire UX flow to guide visitors intuitively to the primary call-to-action.'], results: ['Massively improved mobile conversion pipeline.', 'A consistently smooth user experience free of structural friction.', 'A resilient, maintainable codebase ready for future feature expansion.'] } },
-  { slug: 'rise-fairsketch', title: 'Rise Fairsketch', category: 'SaaS', description: 'An enterprise-scale productivity suite dashboard designed to drastically reduce cognitive load.', techStack: ['React', 'TypeScript', 'Redux'], liveUrl: 'https://rise.fairsketch.com', imageUrl: riseImg, type: 'client', order_index: 4, caseStudy: { overview: 'Fairsketch needed a rigid, highly typed dashboard capable of digesting massive real-time project metrics.', challenges: ['Deeply nested state objects causing infinite re-renders.', 'Complex drag-and-drop mechanics rendering slowly.'], solutions: ['Architected a flattened Redux state lattice.', 'Integrated strictly memoized drag-and-drop contexts.'], results: ['Utterly solid 60fps interaction models.', 'Massive reduction in memory profiling spikes.'] } },
-  { slug: 'weglobalee', title: 'WeGlobalee', category: 'Portal', description: 'A complex, multi-tenant portal application orchestrating extensive global logistics flows.', techStack: ['React', 'Dashboards', 'API Auth'], liveUrl: 'https://app.weglobalee.com', imageUrl: weglobaleeImg, type: 'client', order_index: 5, caseStudy: { overview: 'WeGlobalee acts as the central hub for global supply chains, requiring strict data access controls and complex tabular rendering.', challenges: ['Rendering immense datasets without locking the browser.', 'Complex multi-role authorization layers.'], solutions: ['Implemented strict windowed list virtualization.', 'Engineered middleware-level JWT parsing.'], results: ['Liquid-smooth scrolling on huge datasets.', 'Absolute security compliance.'] } },
-  { slug: 'eaasyreels', title: 'Eaasyreels', category: 'Creator Platform', description: 'A high-performance, visually engaging portfolio built specifically for a videographer and content creator. Engineered with a sleek dark-mode aesthetic, the platform focuses on ultra-fast load times and fluid media playback.', techStack: ['Next.js', 'Media Stream', 'Performance', 'Dark Mode'], liveUrl: 'https://eaasyreels.vercel.app/', imageUrl: eaasyreelsImg, type: 'client', order_index: 6, caseStudy: { overview: "Eaasyreels required a platform that matched the visual fidelity of their video content. A videographer's portfolio lives and dies by media performance.", challenges: ['Balancing high-quality massive video assets with rapid page load speeds.', 'Creating an interface that doesn\'t distract from the actual content.', 'Ensuring perfectly smooth scrolling and media playback across all devices.'], solutions: ['Built a custom dark-mode aesthetic that allows the vibrant video content to pop.', 'Engineered a highly optimized media pipeline ensuring ultra-fast load times.', 'Implemented fluid video playback components.'], results: ['Sub-second load times despite heavy, uncompromised media files.', 'A sleek, cinematic user experience.', 'Higher engagement times as visitors explore the video galleries.'] } },
-  { slug: 'hatch-collection', title: 'Hatch Collection', category: 'Luxury Maternity D2C', description: 'Designed and deployed a chic, high-end editorial commerce platform. Blended high-fashion editorial content directly with a highly optimized, high-converting Shopify cart pipeline.', techStack: ['Next.js', 'Shopify', 'Framer Motion', 'React'], liveUrl: 'https://www.hatchcollection.com', imageUrl: hatachImg, type: 'client', order_index: 7, caseStudy: { overview: 'Hatch Collection bridges the gap between high-fashion editorial and D2C commerce.', challenges: ['Rigid, heavily customized CSS grid layouts breaking across non-standard viewport sizes.', 'Integrating a complex, high-res editorial CMS (Sanity) directly with a transaction engine (Shopify).', 'Creating liquid-smooth page transitions to emulate physical magazine turning.'], solutions: ['Engineered a fluid, deeply responsive CSS Grid foundation.', 'Built a custom Next.js middleware bridge to instantly sync Sanity editorial content with live Shopify inventory.', 'Implemented strict Framer Motion orchestration for smooth, hardware-accelerated page transitions.'], results: ['A flawlessly premium, uncompromised luxury shopping experience.', 'Eliminated inventory mismatches between editorial features and live stock.', 'Significant increase in Average Order Value (AOV).'] } },
-  { slug: 'kittenish', title: 'Kittenish', category: 'Fast-Fashion D2C', description: 'A vibrant, high-energy fashion boutique platform engineered for massive traffic spikes. Built a deeply optimized, highly dynamic product grid capable of handling extreme fast-fashion inventory turnover.', techStack: ['React', 'GraphQL', 'Redis', 'Vercel'], liveUrl: 'https://kittenish.com', imageUrl: kittenishJpg, type: 'client', order_index: 8, caseStudy: { overview: 'Kittenish operates in the hyper-fast world of trendy fast-fashion. The platform required an architecture capable of surviving massive concurrent loads.', challenges: ['Database bottlenecking during major influencer-driven collection drops.', 'Rendering hundreds of unique, dynamically requested product cards smoothly.', 'Maintaining a strict pink/gold visual aesthetic across aggressively changing inventory datasets.'], solutions: ['Bypassed the primary database utilizing a highly distributed Redis edge caching layer.', 'Implemented strict DOM virtualization mapping for the main infinite-scrolling product grid.', 'Built a centralized Tailwind design-token system.'], results: ['The platform successfully absorbed 10x traffic multipliers during collection drops.', 'Flawless, jitter-free infinite scrolling across massive product catalogs.', 'A highly vibrant, instantly recognizable brand storefront UI.'] } },
-  { slug: 'opositiv', title: 'O Positiv', category: 'Clinical Wellness SaaS', description: 'Architected a highly interactive, clinical-grade D2C subscription platform for health supplements. Engineered a bespoke subscription builder paired with deep data visualizations regarding active ingredient efficacy.', techStack: ['Next.js', 'Stripe', 'D3.js', 'TypeScript'], liveUrl: 'https://opositiv.com', imageUrl: opositivJpg, type: 'client', order_index: 9, caseStudy: { overview: 'O Positiv combines D2C wellness with clinical data. The user interface needed to project extreme medical trust while guiding users through a complex, personalized supplement subscription builder.', challenges: ['High drop-off rates in the multi-step personalized subscription onboarding funnel.', 'Displaying complex clinical ingredient data without overwhelming the user.', 'Navigating intricate recurring billing edge cases cleanly in the UI.'], solutions: ['Engineered a highly fluid, optimistic-UI driven onboarding wizard.', 'Integrated custom, interactive D3.js ingredient visualizations.', 'Built a centralized, rigorously tested TypeScript state machine to hand off flawless billing mutations to Stripe.'], results: ['Drastic improvements in personalized subscription completion rates.', 'Established immense consumer trust via clinical, interaction-driven ingredient data mapping.', 'A profoundly stable, beautifully clinical white-and-peach dashboard architecture.'] } },
-  { slug: 'nupt-ai', title: 'Nupt AI', category: 'Computer Vision SaaS', description: 'A high-end photography editing platform powered by Machine Learning. I architected the real-time processing pipeline and the responsive React interface allowing photographers to bulk-process thousands of raw images instantly.', techStack: ['Next.js', 'Python API', 'Data Viz', 'Vercel'], liveUrl: 'https://nupt.ai/', imageUrl: nuptAiImg, type: 'client', order_index: 10, caseStudy: { overview: 'Nupt handles massive payloads of RAW photography. The frontend needed to effortlessly accept gigabytes of data and stream progress to the user via WebSockets.', challenges: ['Managing massive multi-file client-side uploads without crashing the browser tab.', 'Communicating real-time AI processing progress back to the user smoothly.', 'Rendering hundreds of high-res edited outputs instantly.'], solutions: ['Built a multi-threaded chunking upload client bypassing standard browser file-size limits.', 'Implemented full WebSocket integration to deliver granular, per-image progress bars.', 'Designed a high-end, bright-mode minimalist UI.'], results: ['Photographers can now process entire wedding albums without single browser failure.', 'Extremely high user retention driven by an incredibly satisfying, frictionless UI.', 'A scalable frontend specifically engineered to handle limitless asset arrays.'] } },
-  { slug: 'scentbird', title: 'Scentbird', category: 'Enterprise D2C', description: 'Scaled the digital storefront architecture for a leading D2C fragrance subscription platform. Focused strictly on Conversion Rate Optimization (CRO), reducing subscription checkout friction, and drastically improving the mobile discovery experience.', techStack: ['React', 'Stripe', 'GraphQL', 'Tailwind'], liveUrl: 'https://www.scentbird.com', imageUrl: scentbirdImg, type: 'client', order_index: 11, caseStudy: { overview: 'Scentbird moves immense volume. At this enterprise scale, a 1% drop in conversion equals millions in lost revenue.', challenges: ['High mobile cart-abandonment rate due to a bloated legacy checkout system.', 'Extremely slow product discovery pages caused by hundreds of high-res image requests.', 'Complex recurring billing logic confusing first-time users.'], solutions: ['Redesigned the entire onboarding quiz flow and checkout pipeline using strict single-page (SPA) state.', 'Migrated legacy REST APIs to a highly cached GraphQL edge network.', 'Implemented rigorous A/B testing frameworks across the primary funnel.'], results: ['Achieved a double-digit increase in completed subscription checkouts.', 'Slashed mobile interaction latency globally.', 'Delivered a frictionless, luxury user experience mapped to strict ADA compliance.'] } },
-  { slug: 'betterlegal', title: 'BetterLegal', category: 'Legal Tech SaaS', description: 'An enterprise-grade, high-trust Legal SaaS application dashboard. Built for strict security, displaying corporate document generation, progress trackers for LLC formation, and intricately validated secure data-entry forms.', techStack: ['React', 'Security', 'FinTech', 'Next.js'], liveUrl: 'https://app2.betterlegal.com', imageUrl: betterLegalImg, type: 'client', order_index: 12, caseStudy: { overview: 'BetterLegal requires maximum user trust. Handling sensitive corporate documents, EIN formations, and routing financial data means the UI must feel impenetrable.', challenges: ['Form abandonment rates caused by overwhelming, overly complex legal questionnaires.', 'Ensuring strict frontend data sanitization before transmitting sensitive PII.', 'Creating a dark-blue, enterprise-tier aesthetic that projects institutional authority.'], solutions: ['Engineered a highly intelligent, multi-step React form wizard that contextualizes questions and auto-saves progress constantly.', 'Implemented rigorous Zod schema validation across all inputs.', 'Designed a stark navy-blue and white dashboard focusing purely on typography and whitespace.'], results: ['Drastic reduction in LLC formation abandonment rates.', 'Zero security incidents originating from client-side vulnerability.', 'A highly authoritative, enterprise-grade architecture actively trusted by thousands of businesses.'] } },
-  { slug: 'carma-earth', title: 'Carma', category: 'Climate Data Dashboard', description: 'A climate-tech sustainability data dashboard engineered to visualize complex metrics. Displaying interactive maps plotting global offset projects, intricate metrics tracking widgets, and stark, transparent reporting logics.', techStack: ['React', 'Mapbox', 'D3.js', 'Vercel'], liveUrl: 'https://carma.earth', imageUrl: carmaImg, type: 'client', order_index: 13, caseStudy: { overview: 'Carma aims to transparently map global carbon offsets. The frontend challenge was rendering immense volumes of geospatial and statistical data in a way that was instantly digestible.', challenges: ['Rendering heavy interactive maps overloaded with data points crashing browsers.', 'Translating complex climate science data into clean, readable dashboard widgets.', 'Creating a green/slate aesthetic uniquely modern.'], solutions: ['Integrated Mapbox GL natively, clustering geospatial data efficiently to ensure smooth 60fps panning.', 'Engineered custom D3.js charting components for deep, high-performance data visualizations.', 'Executed an emerald-green and dark-slate UI system.'], results: ['A profoundly functional, deeply beautiful sustainability dashboard.', 'Fluid, interactive data exploration previously impossible on older architectures.', 'Established absolute domain authority through a pure, uncompromised front-end experience.'] } },
-  { slug: 'oceanair-travels', title: 'OceanAir Travels', category: 'Landing Page', description: 'A heavily optimized travel and tourism platform handling immense visual media without stuttering.', techStack: ['React', 'Next.js', 'Image Caching'], liveUrl: 'https://www.oceanairtravels.com', imageUrl: oceanAirImg, type: 'client', order_index: 14, caseStudy: { overview: 'Travel sites are notoriously heavy. OceanAir required an architecture that loaded ultra-HD video backgrounds effortlessly.', challenges: ['Heavy LCP penalties from background videos.', 'Cluttered mobile nav systems.'], solutions: ['Engineered aggressive lazy-loading Intersection Observers.', 'Built an elegant, hardware-accelerated mobile side-sheet.'], results: ['Sub-second First Input Delay.', 'Massive spike in mobile bookings.'] } },
-  { slug: 'california-realty', title: 'California Realty', category: 'Landing Page', description: 'A localized real-estate portal explicitly engineered for hyper-fast localized search indexing.', techStack: ['React', 'SSR', 'SEO Engine'], liveUrl: 'https://jessicabouzane.californiarealtyagents.com', imageUrl: jessicaImg, type: 'client', order_index: 15, caseStudy: { overview: 'Local real estate depends on brutal algorithmic SEO. The entire site had to be Server-Side Rendered for maximum crawlability.', challenges: ['Dynamically generated property pages indexing poorly.', 'Slow map-pin clustering.'], solutions: ['Architected dynamic Next.js routes with aggressive getStaticPaths.', 'Implemented cluster-based WebGL map rendering.'], results: ['Dominated local hyper-specific search queries.', 'Flawless map interactions.'] } },
-  { slug: 'accentadvisor', title: 'AccentAdvisor', category: 'SaaS', description: 'A complex educational SaaS portal bridging students with real-time video tutoring protocols.', techStack: ['WebRTC', 'React', 'Node.js'], liveUrl: 'https://accentadvisor.com', imageUrl: accentAdvisorImg, type: 'client', order_index: 16, caseStudy: { overview: 'Providing smooth VoIP/Video tutoring directly in the browser demands strict real-time protocol management.', challenges: ['WebRTC connection instability across disparate networks.', 'Synthesizing scheduling logic dynamically.'], solutions: ['Deployed global STUN/TURN resilient fallbacks.', 'Built a deeply custom calendar slot grid using React hook mechanics.'], results: ['Pristine, non-dropping video sessions.', 'Utterly frictionless tutor-to-student scheduling.'] } },
-  { slug: 'allbirds', title: 'Allbirds', category: 'Sustainable E-Commerce', description: 'Engineered a highly performant, minimalist D2C storefront for a global sustainable footwear brand. Focused on sub-second paint times, fluid product exploration, and frictionless cart architecture.', techStack: ['React', 'Shopify Plus', 'WebGL', 'Tailwind'], liveUrl: 'https://www.allbirds.com', imageUrl: allbirdsImg, type: 'client', order_index: 17, caseStudy: { overview: 'Allbirds demanded an online experience as light and minimal as their physical products.', challenges: ['Heavy image payloads drastically slowing down First Contentful Paint (FCP) on mobile devices.', 'Complex variant switching causing DOM repaints and jank.', 'Integrating a heavy 3D rendering engine (WebGL) without locking the main thread.'], solutions: ['Implemented rigorous WebP/AVIF image pipelines with ultra-aggressive edge caching.', 'Architected a strict React state matrix to pre-fetch variant data.', 'Offloaded 3D WebGL rendering to a dedicated Web Worker.'], results: ['Achieved sub-second load times globally.', 'Zero-jank variant switching resulted in higher engagement per product page.', 'A stark, minimalist UI that perfectly mirrors the brand\'s sustainable ethos.'] } },
-];
+const DEFAULT_PROJECTS = fallbackProjects.map((p, i) => ({
+  ...p,
+  type: (p as any).type || 'client',
+  order_index: i,
+}));
 
 // ─── Seeder ───────────────────────────────────────────────────────────────────
 export async function seedDefaultsIfEmpty(): Promise<void> {
@@ -189,31 +138,40 @@ export async function seedDefaultsIfEmpty(): Promise<void> {
       else console.log('✓ blog posts seeded');
     }
 
-    // --- Seed projects ---
-    const { count: pCount, error: pCountErr } = await supabase
-      .from('projects').select('*', { count: 'exact', head: true });
-    if (!pCountErr && pCount === 0) {
-      // Insert in batches of 10 to avoid payload limits
-      const batch1 = DEFAULT_PROJECTS.slice(0, 10);
-      const batch2 = DEFAULT_PROJECTS.slice(10);
-      const { error: e1 } = await supabase.from('projects').insert(batch1);
-      const { error: e2 } = await supabase.from('projects').insert(batch2);
-      if (e1 || e2) console.warn('projects seed failed:', e1?.message || e2?.message);
-      else console.log(`✓ ${DEFAULT_PROJECTS.length} projects seeded`);
-    }
+    // --- Seed & Sync projects ---
+    for (const proj of DEFAULT_PROJECTS) {
+      const { data: existing, error: checkErr } = await supabase
+        .from('projects')
+        .select('id, imageUrl')
+        .eq('slug', proj.slug)
+        .maybeSingle();
 
-    // --- Sync missing/empty project images ---
-    const { data: dbProjects, error: fetchErr } = await supabase.from('projects').select('id, slug, imageUrl');
-    if (!fetchErr && dbProjects && dbProjects.length > 0) {
-      for (const dbProj of dbProjects) {
-        if (!dbProj.imageUrl || dbProj.imageUrl === '') {
-          const defaultProj = DEFAULT_PROJECTS.find(p => p.slug === dbProj.slug);
-          if (defaultProj && defaultProj.imageUrl) {
-            await supabase
+      if (!checkErr) {
+        if (existing) {
+          // If the database imageUrl is empty, is a compiled asset path, or differs from the default path, sync it
+          const needsSync = !existing.imageUrl || 
+                            existing.imageUrl.includes('/assets/') || 
+                            existing.imageUrl !== proj.imageUrl;
+          if (needsSync) {
+            const { error: updateErr } = await supabase
               .from('projects')
-              .update({ imageUrl: defaultProj.imageUrl })
-              .eq('id', dbProj.id);
-            console.log(`✓ Synced image URL for project: ${dbProj.slug}`);
+              .update({ imageUrl: proj.imageUrl })
+              .eq('id', existing.id);
+            if (updateErr) {
+              console.warn(`Failed to sync imageUrl for project ${proj.slug}:`, updateErr.message);
+            } else {
+              console.log(`✓ Synced image URL to ${proj.imageUrl} for project: ${proj.slug}`);
+            }
+          }
+        } else {
+          // Insert missing project
+          const { error: insertErr } = await supabase
+            .from('projects')
+            .insert([proj]);
+          if (insertErr) {
+            console.warn(`Failed to seed project ${proj.slug}:`, insertErr.message);
+          } else {
+            console.log(`✓ Seeded project: ${proj.slug}`);
           }
         }
       }

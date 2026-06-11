@@ -5,12 +5,19 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { projects as fallbackProjects, type Project } from '../data/projects';
 import { supabase } from '../lib/supabase';
+import { trackEvent } from '../components/AnalyticsTracker';
 
 const BASE_URL = 'https://blue-stark.vercel.app'; // Production URL for absolute links
 
 export const CaseStudy = () => {
   const { slug } = useParams();
   const [project, setProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (slug) {
+      trackEvent('view_case_study', { slug });
+    }
+  }, [slug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
