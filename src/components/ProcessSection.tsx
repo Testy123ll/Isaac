@@ -40,7 +40,7 @@ export const ProcessSection = () => {
             The Engineering Process
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light">
-            Here's exactly how I work — from your first message to a live, performing website.
+            Here's exactly how I work, from your first message to a live, performing website.
           </p>
         </motion.div>
 

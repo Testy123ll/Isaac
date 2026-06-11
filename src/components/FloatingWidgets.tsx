@@ -239,7 +239,7 @@ No bloated page builders or templates are used; every line of code is custom-wri
   if (query.includes('who is') || query.includes('about') || query.includes('isaac') || query.includes('testimony') || query.includes('brand') || query.includes('bluestark') || query.includes('location') || query.includes('where')) {
     return `Isaac Testimony is a professional Full-Stack Web Developer and Civil Engineering student building premium web applications under the **BlueStark** brand. 
 
-He serves a global client base (spanning Nigeria, the UK, the Middle East, and beyond) and maintains direct, single-point accountability—meaning he personally writes every line of code without outsourcing.
+He serves a global client base (spanning Nigeria, the UK, the Middle East, and beyond) and maintains direct, single-point accountability, meaning he personally writes every line of code without outsourcing.
 
 To discuss collaboration opportunities, message him on [WhatsApp](https://wa.link/0cit50) or email **isaactestimony.dev@gmail.com**.`;
   }
@@ -256,7 +256,7 @@ For inquiries regarding active availability, pricing quotes, or architectural co
   if (query.includes('why') || query.includes('different') || query.includes('better') || query.includes('choose') || query.includes('special')) {
     return `Choosing Isaac (BlueStark) offers distinct structural advantages:
 
-1. **End-to-End Execution**: He manages the entire development lifecycle himself—no subcontractors or hand-offs.
+1. **End-to-End Execution**: He manages the entire development lifecycle himself, with no subcontractors or hand-offs.
 2. **Fixed-Fee Clarity**: All project quotes are flat fees with zero hidden charges. No billing by the hour.
 3. **Engineering Discipline**: Development is structured, systematic, and thoroughly verified.
 4. **Transparent Communication**: You communicate directly with the individual engineer writing your code.

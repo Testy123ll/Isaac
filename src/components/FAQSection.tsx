@@ -6,7 +6,7 @@ import { supabase } from '../lib/supabase';
 const defaultFaqs = [
   {
     question: "How do you work?",
-    answer: "I start by understanding your business and what the site needs to achieve. Then I define the structure, design the layout, build it in clean code, test it, and hand it over live. You're updated at every stage — no surprises."
+    answer: "I start by understanding your business and what the site needs to achieve. Then I define the structure, design the layout, build it in clean code, test it, and hand it over live. You're updated at every stage, with no surprises."
   },
   {
     question: "How long does a project take?",
@@ -14,7 +14,7 @@ const defaultFaqs = [
   },
   {
     question: "How much do you charge?",
-    answer: "Pricing depends on the scope of the project. A basic business website starts from $300. Landing pages start from $150. I offer flat-fee pricing — no hidden costs, no hourly surprises. Message me and I'll give you an exact quote."
+    answer: "Pricing depends on the scope of the project. A basic business website starts from $300. Landing pages start from $150. I offer flat-fee pricing with no hidden costs and no hourly surprises. Message me and I'll give you an exact quote."
   },
   {
     question: "How many revisions do I get?",
@@ -26,7 +26,7 @@ const defaultFaqs = [
   },
   {
     question: "What's your pricing model?",
-    answer: "I charge a flat project fee — not hourly. You know the full cost before I write a single line of code. 50% upfront, 50% on delivery. No retainers unless you want ongoing maintenance."
+    answer: "I charge a flat project fee rather than an hourly rate. You know the full cost before I write a single line of code. 50% upfront, 50% on delivery. No retainers unless you want ongoing maintenance."
   }
 ];
 

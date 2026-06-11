@@ -4,12 +4,12 @@ import { Briefcase, Calendar } from 'lucide-react';
 const experiences = [
   {
     title: "Freelance Web Developer",
-    period: "2022 — Present",
+    period: "2022 to Present",
     description: "Building websites and web apps for small businesses and founders across Nigeria, UK, and the Middle East. Projects span business websites, landing pages, and custom web applications."
   },
   {
     title: "Web Design & Lead Generation Agency",
-    period: "2023 — Present",
+    period: "2023 to Present",
     description: "Running a solo agency offering flat-fee website builds and lead generation services, targeting businesses with no web presence across multiple markets."
   }
 ];

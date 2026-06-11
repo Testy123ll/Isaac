@@ -104,7 +104,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
           >
-            {subheadline || "Full-Stack Web Developer helping businesses and founders build fast, conversion-focused websites — written in real code, no templates, no shortcuts."}
+            {subheadline || "Full-Stack Web Developer helping businesses and founders build fast, conversion-focused websites, written in real code with no templates and no shortcuts."}
           </motion.p>
         
         {/* CTA Buttons */}

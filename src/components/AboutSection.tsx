@@ -102,10 +102,10 @@ export const AboutSection = () => {
                             ) : (
                               <>
                                 <p>
-                                    Hi, I'm Isaac Testimony — a Full-Stack Web Developer and final-year Civil Engineering student. My engineering background shapes everything I build. I think in systems, plan before I write a single line of code, and solve problems from first principles.
+                                    Hi, I'm Isaac Testimony, a Full-Stack Web Developer and final-year Civil Engineering student. My engineering background shapes everything I build. I think in systems, plan before I write a single line of code, and solve problems from first principles.
                                 </p>
                                 <p>
-                                    When I build your website, I'm thinking about structure, performance, and how it holds up under real-world pressure — the same discipline I apply to engineering problems.
+                                    When I build your website, I'm thinking about structure, performance, and how it holds up under real-world pressure, using the same discipline I apply to engineering problems.
                                 </p>
                                 <p>
                                     I personally handle everything: the architecture, the frontend, the backend, and the launch. No handoffs, no communication gaps, no agency markup.

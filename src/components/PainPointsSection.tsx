@@ -15,7 +15,7 @@ const painPoints = [
   },
   {
     quote: "I built it on Wix. My 12-year-old niece said it looked cheap.",
-    description: "Free website builders are obvious. They signal that you don't take your business seriously — even when you do."
+    description: "Free website builders are obvious. They signal that you don't take your business seriously, even when you do."
   },
   {
     quote: "My site takes 8 seconds to load. I know people are leaving.",
@@ -23,7 +23,7 @@ const painPoints = [
   },
   {
     quote: "They quoted me £8,000. For five pages and a contact form.",
-    description: "Big agency, big overhead, junior developer doing the actual work. You're paying for their office — not your website."
+    description: "Big agency, big overhead, junior developer doing the actual work. You're paying for their office, not your website."
   },
   {
     quote: "I've explained this idea to three developers. None of them built what I described.",
@@ -80,13 +80,13 @@ export function PainPointsSection() {
           className="text-center mb-16 space-y-4 max-w-3xl mx-auto"
         >
           <div className="inline-flex items-center gap-2 text-slate-500 font-mono text-sm tracking-widest uppercase mb-2">
-             — PAIN POINTS
+            <span className="text-slate-600">//</span> PAIN POINTS
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight serif-title italic">
-            {title || "You've Got the Vision. The Build Is Where It Falls Apart."}
+            {title || "You've Got the Vision, The Build Is Where It Falls Apart."}
           </h2>
           <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto mt-4">
-            {desc || "These aren't hypothetical struggles. These are the exact conversations I have every week with founders who found me right before they gave up."}
+            {desc || "These aren't hypothetical struggles, These are the exact conversations I have every week with founders who found me right before they gave up."}
           </p>
         </motion.div>
 
@@ -124,7 +124,7 @@ export function PainPointsSection() {
           className="text-center mt-16 space-y-6 max-w-md mx-auto"
         >
           <p className="text-slate-300 text-lg font-medium">
-            If any of these sound familiar — let's talk.
+            If any of these sound familiar, let's talk.
           </p>
           <a
             href="https://wa.link/0cit50"

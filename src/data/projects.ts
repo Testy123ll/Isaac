@@ -90,7 +90,7 @@ export const projects: Project[] = [
     slug: 'austin-elite-smiles',
     title: 'Austin Elite Smiles',
     category: 'Luxury Dental UX',
-    description: 'A complete Website Audit & Redesign for a luxury dental clinic. By identifying UX friction—specifically treating high-ticket veneer leads like standard cleaning leads—I engineered a custom "Smart Triage" React modal and an immersive "Atmosphere Video" hero to significantly increase VIP conversions.',
+    description: 'A complete Website Audit & Redesign for a luxury dental clinic. By identifying UX friction, specifically treating high-ticket veneer leads like standard cleaning leads, I engineered a custom "Smart Triage" React modal and an immersive "Atmosphere Video" hero to significantly increase VIP conversions.',
     techStack: ['React', 'Site Audit', 'CRO', 'Tailwind CSS'],
     liveUrl: 'https://austin-smiles.vercel.app/',
     imageUrl: drSaadImg,
@@ -500,7 +500,7 @@ export const projects: Project[] = [
     liveUrl: 'https://app2.betterlegal.com',
     imageUrl: betterLegalImg,
     caseStudy: {
-      overview: 'BetterLegal requires maximum user trust. Handling sensitive corporate documents, EIN formations, and routing financial data means the UI cannot just look good—it must feel impenetrable, reliable, and strictly professional.',
+      overview: 'BetterLegal requires maximum user trust. Handling sensitive corporate documents, EIN formations, and routing financial data means the UI cannot just look good, but must feel impenetrable, reliable, and strictly professional.',
       challenges: [
         'Form abandonment rates caused by overwhelming, overly complex legal questionnaires.',
         'Ensuring strict frontend data sanitization before transmitting sensitive PII.',

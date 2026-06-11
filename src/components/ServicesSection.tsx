@@ -39,7 +39,7 @@ export const ServicesSection = () => {
     {
       icon: LayoutTemplate,
       title: "Technical Redesigns",
-      description: "I take slow, outdated websites and rebuild them properly — fast architecture, modern standards, real results.",
+      description: "I take slow, outdated websites and rebuild them properly, with fast architecture, modern standards, and real results.",
       tag: "REDESIGN"
     },
     {
