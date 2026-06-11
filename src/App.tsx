@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { HashLink as Link } from 'react-router-hash-link';
 import { NavigationBar } from './components/NavigationBar';
 import { FloatingWidgets } from './components/FloatingWidgets';
+import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { PortfolioPage } from './pages/PortfolioPage';
 import { BlogPage } from './pages/BlogPage';
@@ -51,31 +52,7 @@ function AppContent() {
         </Route>
       </Routes>
       
-      {!isAdminPath && (
-        <footer className="bg-slate-950 py-16 border-t border-slate-800/50 relative z-10">
-           <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-              {/* Copyright column */}
-              <div className="text-slate-500 font-mono text-sm uppercase tracking-wide text-center md:text-left">
-                © 2025 Isaac Testimony. All rights reserved.
-              </div>
-
-              {/* Navigation column */}
-              <div className="flex gap-6 justify-center">
-                 <Link smooth to="/" className="text-slate-400 hover:text-white transition-colors font-mono text-sm">// Home</Link>
-                 <Link smooth to="/portfolio" className="text-slate-400 hover:text-white transition-colors font-mono text-sm">// Portfolio</Link>
-                 <Link smooth to="/blog" className="text-slate-400 hover:text-white transition-colors font-mono text-sm">// Blog</Link>
-                 <Link smooth to="/#contact" className="text-slate-400 hover:text-white transition-colors font-mono text-sm">// Contact</Link>
-              </div>
-
-              {/* Social Links column */}
-              <div className="flex gap-6 justify-center md:justify-end">
-                 <a href="https://linkedin.com/in/isaac-testimony-b63243230" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors font-mono text-sm">LinkedIn</a>
-                 <a href="https://github.com/Testy123ll" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors font-mono text-sm">GitHub</a>
-                 <a href="https://wa.link/0cit50" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors font-mono text-sm">WhatsApp</a>
-              </div>
-           </div>
-        </footer>
-      )}
+      {!isAdminPath && <Footer />}
     </main>
   );
 }
