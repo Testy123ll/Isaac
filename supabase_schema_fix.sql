@@ -92,7 +92,7 @@ INSERT INTO auth.identities (
   email
 )
 SELECT 
-  id::text,
+  id,
   id,
   json_build_object('sub', id, 'email', email),
   'email',
