@@ -85,18 +85,22 @@ INSERT INTO auth.identities (
   user_id,
   identity_data,
   provider,
+  provider_id,
   last_sign_in_at,
   created_at,
-  updated_at
+  updated_at,
+  email
 )
 SELECT 
-  gen_random_uuid(),
+  id::text,
   id,
   json_build_object('sub', id, 'email', email),
   'email',
+  id::text,
   now(),
   now(),
-  now()
+  now(),
+  email
 FROM auth.users
 WHERE email = 'admin@testimony.com'
   AND NOT EXISTS (
