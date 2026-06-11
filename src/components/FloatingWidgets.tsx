@@ -265,7 +265,7 @@ Connect on [WhatsApp](https://wa.link/0cit50) to start your project.`;
   }
   
   if (query.includes('hi') || query.includes('hello') || query.includes('hey') || query.includes('sup') || query.includes('morning') || query.includes('afternoon') || query.includes('evening')) {
-    return `Hello. I am Isaac's professional AI assistant. Please let me know how I can assist you today regarding services, pricing, project timelines, tech stack, or booking a consultation.`;
+    return `Hello. I am Isaac Twin, Isaac's professional AI assistant. Please let me know how I can assist you today regarding services, pricing, project timelines, tech stack, or booking a consultation.`;
   }
   
   return `Thank you for your inquiry. To get a precise answer or initiate a project request, please contact Isaac directly on [WhatsApp](https://wa.link/0cit50) or via email at **isaactestimony.dev@gmail.com**. He will respond promptly to coordinate next steps.`;
@@ -274,7 +274,7 @@ Connect on [WhatsApp](https://wa.link/0cit50) to start your project.`;
 export const FloatingWidgets = () => {
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', role: 'assistant', content: "Hi! I'm Isaac's assistant. Ask me anything about his work, pricing, or how to get started." }
+    { id: '1', role: 'assistant', content: "Hi! I'm Isaac Twin, Isaac's AI assistant. Ask me anything about his work, pricing, or how to get started." }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -428,7 +428,7 @@ export const FloatingWidgets = () => {
           
           {/* Default hover tooltip */}
           <span className={`absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono rounded-lg opacity-0 ${showTooltip ? '' : 'group-hover:opacity-100'} whitespace-nowrap pointer-events-none transition-opacity duration-300`}>
-            Ask Portfolio AI
+            Ask Isaac Twin
           </span>
 
           {/* Auto-popup tooltip on scroll */}
@@ -465,7 +465,7 @@ export const FloatingWidgets = () => {
                   <Sparkles className="w-4 h-4 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-white font-medium text-sm">Portfolio AI</h3>
+                  <h3 className="text-white font-medium text-sm">Isaac Twin</h3>
                   <p className="text-xs text-slate-400 font-mono flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     Online
