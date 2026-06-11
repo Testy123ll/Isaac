@@ -88,8 +88,7 @@ INSERT INTO auth.identities (
   provider_id,
   last_sign_in_at,
   created_at,
-  updated_at,
-  email
+  updated_at
 )
 SELECT 
   id,
@@ -99,8 +98,7 @@ SELECT
   id::text,
   now(),
   now(),
-  now(),
-  email
+  now()
 FROM auth.users
 WHERE email = 'admin@testimony.com'
   AND NOT EXISTS (
