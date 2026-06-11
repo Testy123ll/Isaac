@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Zap, Send, Terminal, AlertCircle, CheckCircle2, Github, Linkedin, Twitter, Instagram, MessageCircle } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
-import { CalendlyWidget } from '../components/CalendlyWidget';
+
 
 const FORM_ID = "xwvnkvkg";
 
@@ -259,15 +259,7 @@ export const ContactPage = () => {
             </div>
         </div>
 
-        <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="max-w-6xl mx-auto mt-16"
-        >
-            <CalendlyWidget />
-        </motion.div>
+
       </div>
     </section>
   );
