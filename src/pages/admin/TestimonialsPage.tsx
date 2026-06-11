@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Plus, Edit2, Trash2, X, Upload, Eye, AlertCircle, RefreshCw } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Upload, AlertCircle, RefreshCw, MessageSquare } from 'lucide-react';
 
 interface Testimonial {
   id?: string;
@@ -158,62 +158,62 @@ export const TestimonialsPage = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="flex justify-between items-center">
+    <div className="space-y-8 font-sans">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold font-header text-white mb-2">Testimonials</h1>
-          <p className="text-slate-400 font-mono text-xs uppercase tracking-wider">// Client success reviews</p>
+          <h1 className="text-3xl md:text-4xl font-bold font-header text-white mb-2 tracking-tight">Client Endorsements</h1>
+          <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">// Manage client reviews</p>
         </div>
         <button
           onClick={() => {
             resetForm();
             setFormOpen(true);
           }}
-          className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-mono text-sm tracking-wider uppercase transition-colors"
+          className="flex items-center justify-center gap-2 px-5 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl font-mono text-xs uppercase tracking-wider font-bold shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
         >
-          <Plus size={16} /> Add Review
+          <Plus size={15} /> Add Endorsement
         </button>
       </div>
 
       {loading ? (
         <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-16 bg-slate-900/40 border border-slate-800 animate-pulse rounded-2xl" />
+            <div key={i} className="h-20 bg-slate-900/30 border border-slate-800 animate-pulse rounded-2xl" />
           ))}
         </div>
       ) : error ? (
-        <div className="flex flex-col items-center justify-center py-16 space-y-4 bg-slate-900/40 border border-slate-800 rounded-3xl">
-          <AlertCircle className="text-red-400" size={28} />
+        <div className="flex flex-col items-center justify-center py-16 space-y-4 bg-slate-900/10 border border-slate-800 rounded-3xl">
+          <AlertCircle className="text-red-400 animate-pulse" size={28} />
           <p className="text-red-400 font-mono text-sm text-center max-w-sm">{error}</p>
-          <button onClick={fetchTestimonials} className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-mono text-xs uppercase tracking-wider transition-colors">
-            <RefreshCw size={14} /> Retry
+          <button onClick={fetchTestimonials} className="flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 rounded-xl font-mono text-xs uppercase tracking-wider transition-colors cursor-pointer">
+            <RefreshCw size={14} /> Retry Query
           </button>
         </div>
       ) : (
-        <div className="bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden">
+        <div className="bg-slate-900/20 backdrop-blur-md border border-slate-800/80 rounded-3xl overflow-hidden shadow-xl">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-500 font-mono text-xs uppercase tracking-wider">
-                  <th className="px-6 py-4">Avatar</th>
-                  <th className="px-6 py-4">Name</th>
-                  <th className="px-6 py-4">Position / Company</th>
-                  <th className="px-6 py-4">Order</th>
-                  <th className="px-6 py-4 text-right">Actions</th>
+                <tr className="border-b border-slate-800/80 text-slate-500 font-mono text-xs uppercase tracking-widest bg-slate-950/20">
+                  <th className="px-6 py-4.5">Client User</th>
+                  <th className="px-6 py-4.5">Profile Name</th>
+                  <th className="px-6 py-4.5">Job Designation / Entity</th>
+                  <th className="px-6 py-4.5">Index Order</th>
+                  <th className="px-6 py-4.5 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 font-sans text-slate-300">
+              <tbody className="divide-y divide-slate-800/40 font-sans text-slate-300">
                 {testimonials.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-6 py-10 text-center text-slate-500 font-mono">
-                      // No testimonials found. Add your first client review.
+                    <td colSpan={5} className="px-6 py-12 text-center text-slate-600 font-mono text-xs uppercase tracking-wider">
+                      // Endorsements queue empty. Add client feedback.
                     </td>
                   </tr>
                 ) : (
                   testimonials.map((t) => (
-                    <tr key={t.id} className="hover:bg-slate-900/30 transition-colors">
+                    <tr key={t.id} className="hover:bg-slate-900/20 transition-colors">
                       <td className="px-6 py-4">
-                        <div className="w-10 h-10 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center text-xs font-mono font-bold text-blue-400">
+                        <div className="w-10 h-10 rounded-xl border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center text-xs font-mono font-bold text-purple-400 shadow-inner">
                           {t.avatar_url ? (
                             <img src={t.avatar_url} alt={t.name} className="w-full h-full object-cover" />
                           ) : (
@@ -222,20 +222,20 @@ export const TestimonialsPage = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4 font-semibold text-white">{t.name}</td>
-                      <td className="px-6 py-4 text-sm font-mono">{t.position} at {t.company}</td>
-                      <td className="px-6 py-4 text-sm font-mono">{t.order_index}</td>
-                      <td className="px-6 py-4 text-right space-x-2">
+                      <td className="px-6 py-4 text-xs font-mono text-slate-400">{t.position} at <span className="text-slate-300">{t.company}</span></td>
+                      <td className="px-6 py-4 text-xs font-mono">{t.order_index}</td>
+                      <td className="px-6 py-4 text-right space-x-1">
                         <button
                           onClick={() => handleEdit(t)}
-                          className="p-2 text-slate-400 hover:text-white transition-colors"
+                          className="p-2 text-slate-500 hover:text-white hover:bg-slate-900/60 border border-transparent hover:border-slate-800 rounded-xl transition-all cursor-pointer"
                         >
-                          <Edit2 size={16} />
+                          <Edit2 size={14} />
                         </button>
                         <button
                           onClick={() => handleDelete(t.id!)}
-                          className="p-2 text-slate-400 hover:text-red-400 transition-colors"
+                          className="p-2 text-slate-500 hover:text-red-400 hover:bg-red-950/10 border border-transparent hover:border-red-900/10 rounded-xl transition-all cursor-pointer"
                         >
-                          <Trash2 size={16} />
+                          <Trash2 size={14} />
                         </button>
                       </td>
                     </tr>
@@ -249,138 +249,150 @@ export const TestimonialsPage = () => {
 
       {/* Form Modal */}
       {formOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
-            <div className="px-6 py-5 border-b border-slate-800 flex justify-between items-center shrink-0">
-              <h2 className="text-xl font-bold font-header text-white">
-                {editingId ? 'Edit Testimonial' : 'New Testimonial'}
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="w-full max-w-2xl bg-slate-900 border border-slate-800/80 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            <div className="px-8 py-6 border-b border-slate-800/60 flex justify-between items-center shrink-0">
+              <h2 className="text-xl font-bold font-header text-white tracking-wide">
+                {editingId ? 'Edit Endorsement block' : 'Register Client Endorsement'}
               </h2>
               <button
                 onClick={() => setFormOpen(false)}
-                className="p-1.5 text-slate-400 hover:text-white transition-colors"
+                className="p-2 text-slate-400 hover:text-white rounded-xl border border-slate-800 bg-slate-950/40 hover:bg-slate-950/80 transition-colors"
               >
-                <X size={20} />
+                <X size={16} />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-6 flex-1">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Client Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                  />
-                </div>
+            <form onSubmit={handleSubmit} className="p-8 overflow-y-auto space-y-6 flex-1">
+              
+              {/* Form Grid: Group 1 (Identity) */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-mono text-purple-400 uppercase tracking-widest font-bold flex items-center gap-2">
+                  <MessageSquare size={14} /> // Client details
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Client Name</label>
+                    <input
+                      type="text"
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="e.g. Austin Dental Clinic"
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Position / Job Title</label>
-                  <input
-                    type="text"
-                    required
-                    value={position}
-                    onChange={(e) => setPosition(e.target.value)}
-                    placeholder="e.g. Founder & CEO"
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                  />
-                </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Position / Job Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={position}
+                      onChange={(e) => setPosition(e.target.value)}
+                      placeholder="e.g. Operations Lead"
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Company</label>
-                  <input
-                    type="text"
-                    required
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)}
-                    placeholder="e.g. Acme Corp"
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                  />
-                </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Company / Entity</label>
+                    <input
+                      type="text"
+                      required
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      placeholder="e.g. Impact Pest Control"
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Order Index</label>
-                  <input
-                    type="number"
-                    required
-                    value={orderIndex}
-                    onChange={(e) => setOrderIndex(Number(e.target.value))}
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 text-center"
-                  />
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Index Order</label>
+                    <input
+                      type="number"
+                      required
+                      value={orderIndex}
+                      onChange={(e) => setOrderIndex(Number(e.target.value))}
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white text-center focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Testimonial Body</label>
+              {/* Text Body */}
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Endorsement text body</label>
                 <textarea
                   required
                   rows={4}
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
-                  placeholder="The text body of the testimonial review..."
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
+                  placeholder="Isaac completely transformed our website..."
+                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
                 />
               </div>
 
-              {/* Avatar Image Section */}
-              <div className="p-5 border border-slate-800 bg-slate-950/40 rounded-2xl space-y-4">
-                <label className="text-xs font-mono text-slate-300 uppercase tracking-widest block font-semibold">// Client Avatar (Supabase Storage)</label>
-                <div className="flex flex-col md:flex-row items-center gap-6">
-                  {avatarUrl ? (
-                    <div className="w-20 h-20 rounded-full border border-slate-800 bg-slate-900 overflow-hidden shrink-0 relative group">
-                      <img src={avatarUrl} alt="Preview" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <a href={avatarUrl} target="_blank" rel="noreferrer" className="text-white p-2">
-                          <Eye size={16} />
-                        </a>
+              {/* Avatar File Dropzone */}
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Client Profile Avatar</label>
+                <div className="p-6 border border-dashed border-slate-800 bg-slate-950/20 rounded-2xl relative overflow-hidden group hover:border-purple-500/30 transition-all duration-300">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    id="avatar-file"
+                    onChange={handleAvatarUpload}
+                    className="hidden"
+                    disabled={uploadingAvatar}
+                  />
+                  <label
+                    htmlFor="avatar-file"
+                    className="flex flex-col items-center justify-center gap-3 cursor-pointer text-center py-2"
+                  >
+                    {avatarUrl ? (
+                      <div className="relative w-20 h-20 rounded-full border border-slate-800 bg-slate-900 overflow-hidden shadow-lg shadow-black/40">
+                        <img src={avatarUrl} alt="" className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                          <span className="text-[9px] text-white font-mono uppercase tracking-wider">Change</span>
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div className="w-20 h-20 rounded-full border border-slate-800 bg-slate-900 flex items-center justify-center shrink-0 text-slate-600 font-mono text-xs font-bold text-center">
-                      Initials
-                    </div>
-                  )}
-                  <div className="flex-1 space-y-2 w-full">
-                    <div className="relative">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        id="avatar-file"
-                        onChange={handleAvatarUpload}
-                        className="hidden"
-                        disabled={uploadingAvatar}
-                      />
-                      <label
-                        htmlFor="avatar-file"
-                        className="flex items-center justify-center gap-2 px-4 py-3 border border-slate-800 hover:border-slate-700 bg-slate-900 hover:bg-slate-800 rounded-xl font-mono text-xs uppercase cursor-pointer text-slate-300 hover:text-white transition-colors"
-                      >
-                        <Upload size={14} /> 
-                        {uploadingAvatar ? 'Uploading...' : 'Upload Avatar'}
-                      </label>
-                    </div>
-                    <p className="text-slate-500 text-xs font-mono leading-relaxed">
-                      Saves to 'testimonial-avatars' bucket. If left blank, initials are displayed as fallback.
-                    </p>
-                  </div>
+                    ) : (
+                      <>
+                        <div className="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-purple-400 transition-colors shadow-inner">
+                          <Upload size={18} />
+                        </div>
+                        <div>
+                          <span className="text-xs font-semibold text-slate-200 block">Click to upload avatar file</span>
+                          <span className="text-[10px] font-mono text-slate-500 block uppercase mt-1">Accepts PNG/JPG/WebP · max 2MB</span>
+                        </div>
+                      </>
+                    )}
+                    {uploadingAvatar && (
+                      <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center gap-2">
+                        <div className="w-5 h-5 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+                        <span className="text-[10px] font-mono text-slate-300">Uploading File...</span>
+                      </div>
+                    )}
+                  </label>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-800 flex justify-end gap-3 shrink-0">
+              {/* Modal Actions */}
+              <div className="pt-6 border-t border-slate-800/80 flex justify-end gap-3 shrink-0">
                 <button
                   type="button"
                   onClick={() => setFormOpen(false)}
-                  className="px-5 py-3 border border-slate-800 hover:border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl font-mono text-xs uppercase transition-colors"
+                  className="px-5 py-3 border border-slate-800 hover:border-slate-700 bg-slate-950 hover:bg-slate-900 text-slate-400 hover:text-white rounded-xl font-mono text-xs uppercase transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-3 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 text-white rounded-xl font-mono text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                  className="px-5 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:from-purple-600/50 disabled:to-indigo-600/50 text-white rounded-xl font-mono text-xs uppercase tracking-wider font-bold transition-all cursor-pointer"
                 >
-                  {submitting ? 'Saving...' : 'Save Testimonial'}
+                  {submitting ? 'Saving...' : 'Save Endorsement'}
                 </button>
               </div>
             </form>

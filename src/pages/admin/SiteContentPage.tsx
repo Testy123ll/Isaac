@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Save, AlertCircle, RefreshCw } from 'lucide-react';
+import { Save, AlertCircle, RefreshCw, Layers, Compass, BarChart4, MessageCircle } from 'lucide-react';
 
 export const SiteContentPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [savingSection, setSavingSection] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('hero');
 
   // States for Hero Section
   const [heroHeadline, setHeroHeadline] = useState('');
@@ -124,20 +125,20 @@ export const SiteContentPage = () => {
 
   if (loading || error) {
     return (
-      <div className="space-y-8">
+      <div className="space-y-8 font-sans">
         <div className="h-10 w-48 bg-slate-900 rounded-xl animate-pulse" />
         {loading ? (
           <div className="space-y-6 animate-pulse">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="h-48 bg-slate-900 rounded-3xl" />
+              <div key={i} className="h-48 bg-slate-900/30 rounded-3xl border border-slate-800/40" />
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-16 space-y-4 bg-slate-900/40 border border-slate-800 rounded-3xl">
-            <AlertCircle className="text-red-400" size={28} />
+          <div className="flex flex-col items-center justify-center py-16 space-y-4 bg-slate-900/10 border border-slate-800 rounded-3xl">
+            <AlertCircle className="text-red-400 animate-pulse" size={28} />
             <p className="text-red-400 font-mono text-sm text-center max-w-sm">{error}</p>
-            <button onClick={fetchSiteContent} className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-mono text-xs uppercase tracking-wider transition-colors">
-              <RefreshCw size={14} /> Retry
+            <button onClick={fetchSiteContent} className="flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 rounded-xl font-mono text-xs uppercase tracking-wider transition-colors cursor-pointer">
+              <RefreshCw size={14} /> Retry Query
             </button>
           </div>
         )}
@@ -145,267 +146,308 @@ export const SiteContentPage = () => {
     );
   }
 
+  const tabItems = [
+    { id: 'hero', label: 'Hero Section', icon: Compass },
+    { id: 'about', label: 'Biography Info', icon: Layers },
+    { id: 'stats', label: 'Performance Metrics', icon: BarChart4 },
+    { id: 'services', label: 'Services & Struggles', icon: MessageCircle }
+  ];
+
   return (
-    <div className="space-y-12 pb-16">
-      <div>
-        <h1 className="text-3xl md:text-4xl font-bold font-header text-white mb-2">Site Content</h1>
-        <p className="text-slate-400 font-mono text-xs uppercase tracking-wider">// Manage copywriting and statistics copy</p>
+    <div className="space-y-8 font-sans pb-16">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold font-header text-white mb-2 tracking-tight">Copywriting Desk</h1>
+          <p className="text-slate-400 font-mono text-xs uppercase tracking-widest">// Manage site content & copy</p>
+        </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
-        <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-          <h2 className="text-xl font-bold font-header text-white">// Hero Section</h2>
-          <button
-            onClick={() => saveSection('hero', {
-              headline: heroHeadline,
-              subheadline: heroSubheadline,
-              availability: heroAvailability,
-            })}
-            disabled={savingSection === 'hero'}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 text-white rounded-lg font-mono text-xs uppercase tracking-wider transition-colors"
-          >
-            <Save size={14} /> {savingSection === 'hero' ? 'Saving...' : 'Save'}
-          </button>
-        </div>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Headline (HTML tags supported)</label>
-            <textarea
-              rows={3}
-              value={heroHeadline}
-              onChange={(e) => setHeroHeadline(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 font-mono text-sm"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Subheadline</label>
-            <textarea
-              rows={3}
-              value={heroSubheadline}
-              onChange={(e) => setHeroSubheadline(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Availability Pill Text</label>
-            <input
-              type="text"
-              value={heroAvailability}
-              onChange={(e) => setHeroAvailability(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
-        </div>
-      </section>
+      {/* Tab Selectors */}
+      <div className="flex flex-wrap gap-2 border-b border-slate-800/60 pb-3">
+        {tabItems.map((tab) => {
+          const Icon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+                activeTab === tab.id 
+                  ? 'bg-gradient-to-r from-purple-600/10 to-indigo-600/10 border border-purple-500/20 text-purple-400 font-bold shadow-md shadow-purple-500/5' 
+                  : 'text-slate-400 border border-transparent hover:text-slate-200 hover:bg-slate-900/30'
+              }`}
+            >
+              <Icon size={14} />
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
+      </div>
 
-      {/* About Section */}
-      <section className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
-        <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-          <h2 className="text-xl font-bold font-header text-white">// About Section</h2>
-          <button
-            onClick={() => saveSection('about', {
-              title: aboutTitle,
-              bio: aboutBio,
-            })}
-            disabled={savingSection === 'about'}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 text-white rounded-lg font-mono text-xs uppercase tracking-wider transition-colors"
-          >
-            <Save size={14} /> {savingSection === 'about' ? 'Saving...' : 'Save'}
-          </button>
-        </div>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Profile Header</label>
-            <input
-              type="text"
-              value={aboutTitle}
-              onChange={(e) => setAboutTitle(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-            />
+      {/* Hero Tab */}
+      {activeTab === 'hero' && (
+        <section className="bg-slate-900/20 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl animate-fade-in">
+          <div className="flex justify-between items-center border-b border-slate-800/60 pb-4">
+            <h2 className="text-lg font-bold font-header text-white">// Hero Copywriting</h2>
+            <button
+              onClick={() => saveSection('hero', {
+                headline: heroHeadline,
+                subheadline: heroSubheadline,
+                availability: heroAvailability,
+              })}
+              disabled={savingSection === 'hero'}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:from-purple-600/50 disabled:to-indigo-600/50 text-white rounded-xl font-mono text-xs uppercase tracking-wider font-bold transition-all cursor-pointer shadow-md shadow-purple-500/10"
+            >
+              <Save size={14} /> {savingSection === 'hero' ? 'Saving...' : 'Commit Changes'}
+            </button>
           </div>
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Developer Biography (Linebreaks preserve paragraphs)</label>
-            <textarea
-              rows={6}
-              value={aboutBio}
-              onChange={(e) => setAboutBio(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500 leading-relaxed"
-            />
+          <div className="space-y-5">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Primary Headline (HTML tags supported)</label>
+              <textarea
+                rows={3}
+                value={heroHeadline}
+                onChange={(e) => setHeroHeadline(e.target.value)}
+                className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all font-mono text-sm leading-relaxed"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Subheadline Introduction</label>
+              <textarea
+                rows={3}
+                value={heroSubheadline}
+                onChange={(e) => setHeroSubheadline(e.target.value)}
+                className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all leading-relaxed"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Pulse Availability badge</label>
+              <input
+                type="text"
+                value={heroAvailability}
+                onChange={(e) => setHeroAvailability(e.target.value)}
+                className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Stats Section */}
-      <section className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
-        <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-          <h2 className="text-xl font-bold font-header text-white">// About Stats</h2>
-          <button
-            onClick={() => saveSection('stats', {
-              stat1_val: stat1Val,
-              stat1_lbl: stat1Lbl,
-              stat2_val: stat2Val,
-              stat2_lbl: stat2Lbl,
-              stat3_val: stat3Val,
-              stat3_lbl: stat3Lbl,
-              stat4_val: stat4Val,
-              stat4_lbl: stat4Lbl,
-            })}
-            disabled={savingSection === 'stats'}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 text-white rounded-lg font-mono text-xs uppercase tracking-wider transition-colors"
-          >
-            <Save size={14} /> {savingSection === 'stats' ? 'Saving...' : 'Save'}
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Stat 1 */}
-          <div className="space-y-3 p-4 border border-slate-800/80 bg-slate-950/20 rounded-2xl">
-            <span className="text-xs font-mono text-slate-500 block uppercase tracking-wide">// Stat 1</span>
-            <input
-              type="text"
-              placeholder="e.g. 15+"
-              value={stat1Val}
-              onChange={(e) => setStat1Val(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none"
-            />
-            <input
-              type="text"
-              placeholder="Label"
-              value={stat1Lbl}
-              onChange={(e) => setStat1Lbl(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-300 text-center text-xs focus:outline-none"
-            />
+      {/* About Tab */}
+      {activeTab === 'about' && (
+        <section className="bg-slate-900/20 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl animate-fade-in">
+          <div className="flex justify-between items-center border-b border-slate-800/60 pb-4">
+            <h2 className="text-lg font-bold font-header text-white">// Biography Copywriting</h2>
+            <button
+              onClick={() => saveSection('about', {
+                title: aboutTitle,
+                bio: aboutBio,
+              })}
+              disabled={savingSection === 'about'}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:from-purple-600/50 disabled:to-indigo-600/50 text-white rounded-xl font-mono text-xs uppercase tracking-wider font-bold transition-all cursor-pointer shadow-md shadow-purple-500/10"
+            >
+              <Save size={14} /> {savingSection === 'about' ? 'Saving...' : 'Commit Changes'}
+            </button>
           </div>
-          {/* Stat 2 */}
-          <div className="space-y-3 p-4 border border-slate-800/80 bg-slate-950/20 rounded-2xl">
-            <span className="text-xs font-mono text-slate-500 block uppercase tracking-wide">// Stat 2</span>
-            <input
-              type="text"
-              placeholder="e.g. 10+"
-              value={stat2Val}
-              onChange={(e) => setStat2Val(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none"
-            />
-            <input
-              type="text"
-              placeholder="Label"
-              value={stat2Lbl}
-              onChange={(e) => setStat2Lbl(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-300 text-center text-xs focus:outline-none"
-            />
+          <div className="space-y-5">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Biography Section Header</label>
+              <input
+                type="text"
+                value={aboutTitle}
+                onChange={(e) => setAboutTitle(e.target.value)}
+                className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Full Developer Biography (Linebreaks preserve paragraphs)</label>
+              <textarea
+                rows={7}
+                value={aboutBio}
+                onChange={(e) => setAboutBio(e.target.value)}
+                className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all leading-relaxed font-sans"
+              />
+            </div>
           </div>
-          {/* Stat 3 */}
-          <div className="space-y-3 p-4 border border-slate-800/80 bg-slate-950/20 rounded-2xl">
-            <span className="text-xs font-mono text-slate-500 block uppercase tracking-wide">// Stat 3</span>
-            <input
-              type="text"
-              placeholder="e.g. 2+"
-              value={stat3Val}
-              onChange={(e) => setStat3Val(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none"
-            />
-            <input
-              type="text"
-              placeholder="Label"
-              value={stat3Lbl}
-              onChange={(e) => setStat3Lbl(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-300 text-center text-xs focus:outline-none"
-            />
-          </div>
-          {/* Stat 4 */}
-          <div className="space-y-3 p-4 border border-slate-800/80 bg-slate-950/20 rounded-2xl">
-            <span className="text-xs font-mono text-slate-500 block uppercase tracking-wide">// Stat 4</span>
-            <input
-              type="text"
-              placeholder="e.g. 100%"
-              value={stat4Val}
-              onChange={(e) => setStat4Val(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none"
-            />
-            <input
-              type="text"
-              placeholder="Label"
-              value={stat4Lbl}
-              onChange={(e) => setStat4Lbl(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-300 text-center text-xs focus:outline-none"
-            />
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Capabilities / Services */}
-      <section className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
-        <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-          <h2 className="text-xl font-bold font-header text-white">// Services Section</h2>
-          <button
-            onClick={() => saveSection('services', {
-              title: servicesTitle,
-              desc: servicesDesc,
-            })}
-            disabled={savingSection === 'services'}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 text-white rounded-lg font-mono text-xs uppercase tracking-wider transition-colors"
-          >
-            <Save size={14} /> {savingSection === 'services' ? 'Saving...' : 'Save'}
-          </button>
-        </div>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Section Title</label>
-            <input
-              type="text"
-              value={servicesTitle}
-              onChange={(e) => setServicesTitle(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-            />
+      {/* Stats Tab */}
+      {activeTab === 'stats' && (
+        <section className="bg-slate-900/20 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl animate-fade-in">
+          <div className="flex justify-between items-center border-b border-slate-800/60 pb-4">
+            <h2 className="text-lg font-bold font-header text-white">// Performance Metrics Values</h2>
+            <button
+              onClick={() => saveSection('stats', {
+                stat1_val: stat1Val,
+                stat1_lbl: stat1Lbl,
+                stat2_val: stat2Val,
+                stat2_lbl: stat2Lbl,
+                stat3_val: stat3Val,
+                stat3_lbl: stat3Lbl,
+                stat4_val: stat4Val,
+                stat4_lbl: stat4Lbl,
+              })}
+              disabled={savingSection === 'stats'}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:from-purple-600/50 disabled:to-indigo-600/50 text-white rounded-xl font-mono text-xs uppercase tracking-wider font-bold transition-all cursor-pointer shadow-md shadow-purple-500/10"
+            >
+              <Save size={14} /> {savingSection === 'stats' ? 'Saving...' : 'Commit Changes'}
+            </button>
           </div>
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Section Description</label>
-            <textarea
-              rows={3}
-              value={servicesDesc}
-              onChange={(e) => setServicesDesc(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* Stat 1 */}
+            <div className="space-y-3 p-5 border border-slate-800 bg-slate-950/20 rounded-2xl flex flex-col justify-between">
+              <span className="text-[10px] font-mono text-slate-500 block uppercase tracking-widest font-bold">// Metric unit 1</span>
+              <input
+                type="text"
+                placeholder="e.g. 15+"
+                value={stat1Val}
+                onChange={(e) => setStat1Val(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none focus:border-purple-500/80"
+              />
+              <input
+                type="text"
+                placeholder="Label"
+                value={stat1Lbl}
+                onChange={(e) => setStat1Lbl(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-400 text-center text-xs focus:outline-none focus:border-purple-500/80"
+              />
+            </div>
+            {/* Stat 2 */}
+            <div className="space-y-3 p-5 border border-slate-800 bg-slate-950/20 rounded-2xl flex flex-col justify-between">
+              <span className="text-[10px] font-mono text-slate-500 block uppercase tracking-widest font-bold">// Metric unit 2</span>
+              <input
+                type="text"
+                placeholder="e.g. 10+"
+                value={stat2Val}
+                onChange={(e) => setStat2Val(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none focus:border-purple-500/80"
+              />
+              <input
+                type="text"
+                placeholder="Label"
+                value={stat2Lbl}
+                onChange={(e) => setStat2Lbl(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-400 text-center text-xs focus:outline-none focus:border-purple-500/80"
+              />
+            </div>
+            {/* Stat 3 */}
+            <div className="space-y-3 p-5 border border-slate-800 bg-slate-950/20 rounded-2xl flex flex-col justify-between">
+              <span className="text-[10px] font-mono text-slate-500 block uppercase tracking-widest font-bold">// Metric unit 3</span>
+              <input
+                type="text"
+                placeholder="e.g. 2+"
+                value={stat3Val}
+                onChange={(e) => setStat3Val(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none focus:border-purple-500/80"
+              />
+              <input
+                type="text"
+                placeholder="Label"
+                value={stat3Lbl}
+                onChange={(e) => setStat3Lbl(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-400 text-center text-xs focus:outline-none focus:border-purple-500/80"
+              />
+            </div>
+            {/* Stat 4 */}
+            <div className="space-y-3 p-5 border border-slate-800 bg-slate-950/20 rounded-2xl flex flex-col justify-between">
+              <span className="text-[10px] font-mono text-slate-500 block uppercase tracking-widest font-bold">// Metric unit 4</span>
+              <input
+                type="text"
+                placeholder="e.g. 100%"
+                value={stat4Val}
+                onChange={(e) => setStat4Val(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-bold text-center text-lg focus:outline-none focus:border-purple-500/80"
+              />
+              <input
+                type="text"
+                placeholder="Label"
+                value={stat4Lbl}
+                onChange={(e) => setStat4Lbl(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-400 text-center text-xs focus:outline-none focus:border-purple-500/80"
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Pain Points */}
-      <section className="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
-        <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-          <h2 className="text-xl font-bold font-header text-white">// Pain Points Section</h2>
-          <button
-            onClick={() => saveSection('pain_points', {
-              title: painPointsTitle,
-              desc: painPointsDesc,
-            })}
-            disabled={savingSection === 'pain_points'}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 text-white rounded-lg font-mono text-xs uppercase tracking-wider transition-colors"
-          >
-            <Save size={14} /> {savingSection === 'pain_points' ? 'Saving...' : 'Save'}
-          </button>
+      {/* Services and Pain Points Tab */}
+      {activeTab === 'services' && (
+        <div className="space-y-8 animate-fade-in">
+          {/* Services Section */}
+          <section className="bg-slate-900/20 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+            <div className="flex justify-between items-center border-b border-slate-800/60 pb-4">
+              <h2 className="text-lg font-bold font-header text-white">// Capabilities Details</h2>
+              <button
+                onClick={() => saveSection('services', {
+                  title: servicesTitle,
+                  desc: servicesDesc,
+                })}
+                disabled={savingSection === 'services'}
+                className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:from-purple-600/50 disabled:to-indigo-600/50 text-white rounded-xl font-mono text-xs uppercase tracking-wider font-bold transition-all cursor-pointer shadow-md shadow-purple-500/10"
+              >
+                <Save size={14} /> {savingSection === 'services' ? 'Saving...' : 'Commit Changes'}
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Capabilities Segment Header</label>
+                <input
+                  type="text"
+                  value={servicesTitle}
+                  onChange={(e) => setServicesTitle(e.target.value)}
+                  className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Capabilities Description Text</label>
+                <textarea
+                  rows={3}
+                  value={servicesDesc}
+                  onChange={(e) => setServicesDesc(e.target.value)}
+                  className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all leading-relaxed"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* Pain Points Section */}
+          <section className="bg-slate-900/20 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+            <div className="flex justify-between items-center border-b border-slate-800/60 pb-4">
+              <h2 className="text-lg font-bold font-header text-white">// Target Struggles & Pain points</h2>
+              <button
+                onClick={() => saveSection('pain_points', {
+                  title: painPointsTitle,
+                  desc: painPointsDesc,
+                })}
+                disabled={savingSection === 'pain_points'}
+                className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:from-purple-600/50 disabled:to-indigo-600/50 text-white rounded-xl font-mono text-xs uppercase tracking-wider font-bold transition-all cursor-pointer shadow-md shadow-purple-500/10"
+              >
+                <Save size={14} /> {savingSection === 'pain_points' ? 'Saving...' : 'Commit Changes'}
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Pain points Header title</label>
+                <input
+                  type="text"
+                  value={painPointsTitle}
+                  onChange={(e) => setPainPointsTitle(e.target.value)}
+                  className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Pain points Description Text</label>
+                <textarea
+                  rows={3}
+                  value={painPointsDesc}
+                  onChange={(e) => setPainPointsDesc(e.target.value)}
+                  className="w-full px-4 py-3.5 bg-slate-950 border border-slate-800/80 rounded-xl text-sm text-white focus:outline-none focus:border-purple-500/80 focus:ring-4 focus:ring-purple-500/5 transition-all leading-relaxed"
+                />
+              </div>
+            </div>
+          </section>
         </div>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Section Title</label>
-            <input
-              type="text"
-              value={painPointsTitle}
-              onChange={(e) => setPainPointsTitle(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">Section Description</label>
-            <textarea
-              rows={3}
-              value={painPointsDesc}
-              onChange={(e) => setPainPointsDesc(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
-        </div>
-      </section>
+      )}
     </div>
   );
 };
