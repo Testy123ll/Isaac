@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { NavigationBar } from './components/NavigationBar';
 import { FloatingWidgets } from './components/FloatingWidgets';
 import { Footer } from './components/Footer';
@@ -42,6 +42,7 @@ function AppContent() {
 
         {/* Protected admin routes */}
         <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="blog" element={<AdminBlogPage />} />
