@@ -67,12 +67,12 @@ export const ContactPage = () => {
              </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto bg-slate-900/40 rounded-[2.5rem] border border-slate-800 p-8 md:p-14 backdrop-blur-sm relative overflow-hidden">
+        <div className="max-w-6xl mx-auto bg-slate-900/40 rounded-[2rem] md:rounded-[2.5rem] border border-slate-800 p-4 sm:p-8 md:p-14 backdrop-blur-sm relative overflow-hidden">
              
              {/* Inner Glow */}
              <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/5 to-transparent pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 relative z-10">
                 
                 {/* Left Side (Context) */}
                 <motion.div 
@@ -104,7 +104,7 @@ export const ContactPage = () => {
                           </div>
                           <div>
                               <p className="text-sm font-mono text-slate-500 mb-1">Email Connection</p>
-                              <p className="text-white font-medium">isaactestimony.dev@gmail.com</p>
+                              <p className="text-white font-medium">Send email message</p>
                           </div>
                       </a>
 
@@ -148,7 +148,7 @@ export const ContactPage = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="lg:col-span-3 bg-slate-950 p-8 md:p-10 rounded-3xl border border-slate-800 shadow-xl shadow-slate-950/50"
+                    className="lg:col-span-3 bg-slate-950 p-5 sm:p-8 md:p-10 rounded-[2rem] border border-slate-800 shadow-xl shadow-slate-950/50"
                 >
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Hidden budget input to pass select value to formspree */}
